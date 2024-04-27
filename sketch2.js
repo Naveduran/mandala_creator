@@ -162,7 +162,6 @@ functionsForFigures = {
 function draw()
 {
   setCenter(width/2, height/2);
-  polarSquares(8,4,160,()=>{return 8,4,160,4});
   const layers = example1.layers
   background(0,0,0);
   layers.forEach((layer) => {
