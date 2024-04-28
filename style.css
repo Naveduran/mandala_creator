@@ -1,4 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sacramento&display=swap');
+
 body {
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  font-size: 4vw;
+  line-height: 6vw;
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+  width: 100%;
 }
+
+canvas {
+  order: 3;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.layer-group {
+  order: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 35px;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: "Sacramento", cursive;
+  font-size: 95px;
+  text-wrap: nowrap;
+  align-self: center;
+  margin: 110px 0px 50px 0px;
+  order: 1;
+  box-sizing: border-box;
+}
+
+input, select {
+  font-size: 4vw;
+  line-height: 6vw;
+  font-family: "Open Sans", sans-serif;
+}
+
+button {
+  align-self: center;
+  font-family: "Open Sans", sans-serif;
+  background-color: #f0a40c;
+  border: 0;
+  border-radius: 56px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 38px;
+  line-height: 38px;
+  font-weight: 600;
+  outline: 0;
+  padding: 16px 21px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 50%;
+  max-width: 600px;
+}
+
+button:before {
+  background-color: initial;
+  background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+  border-radius: 125px;
+  content: "";
+  height: 50%;
+  left: 4%;
+  opacity: .5;
+  position: absolute;
+  top: 0;
+  transition: all .3s;
+  width: 92%;
+}
+
+button:hover {
+  box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  transform: scale(1.1);
+}
+
+.line-centered-add-layer {
+  order: 100;
+  display: flex;
+  flex-direction: row;
+  width: inherit;
+  gap: 5vw;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.line-play-button {
+  display: flex;
+  flex-direction: row;
+  width: inherit;
+  order: 4;
+  padding: 30px 30px  0 30px;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.line-undo-and-redo {
+  display: flex;
+  flex-direction: row;
+  width: inherit;
+  gap: 5vw;
+  justify-content: center;
+  order: 2;
+}
+
+.line-end-button {
+  display: flex;
+  flex-direction: row;
+  width: inherit;
+  justify-content: flex-end;
+}
+
+.line-end-button button{
+  background-color: gray;
+  border: none;
+  max-width: 80px;
+}
+
+.line-two-inputs {
+  display: flex;
+  flex-direction: row;
+  width: inherit;
+  justify-content: center;
+}
+
+.line-two-inputs input {
+  width: 30%;
+  text-align: center;
+}
+.line-two-inputs select {
+  width: 40%;
+  text-align: center;
+}
+
+.line-two-inputs select option {
+  width: 30%;
+  font-size: 2vw;
+  line-height: 3vw;
+}
+
+.line-two-labeled-inputs {
+  display: flex;
+  flex-direction: row;
+  width: inherit;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.line-two-labeled-inputs input {
+  width: 30%;
+  height: 84px;
+}
+
+.line-page-configuration {
+  order: 0;
+  display: flex;
+  flex-direction: row;
+  width: inherit;
+  justify-content: space-evenly;
+  justify-content: flex-end;
+  gap: 25px;
+  color: gray;
+}
+
+.line-page-configuration input {
+  width: 10%;
+  height: 30px;
+  align-self: center;
+  font-size: 22px;
+}
+.line-page-configuration label {
+  font-size: 22px;
+}
+.line-page-configuration select {
+  font-size: 22px;
+  color: gray; 
+}
+.line-page-configuration select option{
+  font-size: 13px;
+  color: gray;
+}
+.custom-number-input {
+  width: 40%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.line-footer {
+  order: 101;
+  padding-top: 10px;
+  font-size: 30px;
+  text-align: center;
+}
+/*Desktops*/
+/* @media only screen and (min-width: 800px) {
+  body {
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+
+  canvas {
+    max-width: 50%;
+  }
+
+  .mandala-form {
+    max-width: 446px;
+    padding: 25px;
+  }
+
+  .h1 {
+    font-size: 60px;
+  }
+} */
+
+
+
