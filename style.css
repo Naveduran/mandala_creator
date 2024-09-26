@@ -12,13 +12,11 @@ body {
   box-sizing: border-box;
   width: 100%;
 }
-
 canvas {
   order: 3;
   width: 100% !important;
   height: 100% !important;
 }
-
 .layer-group {
   order: 4;
   display: flex;
@@ -29,7 +27,6 @@ canvas {
   padding: 35px;
   box-sizing: border-box;
 }
-
 h1 {
   font-family: "Sacramento", cursive;
   font-size: 95px;
@@ -38,14 +35,13 @@ h1 {
   margin: 110px 0px 50px 0px;
   order: 1;
   box-sizing: border-box;
+  cursor: context-menu;
 }
-
 input, select {
   font-size: 4vw;
   line-height: 6vw;
   font-family: "Open Sans", sans-serif;
 }
-
 button {
   align-self: center;
   font-family: "Open Sans", sans-serif;
@@ -70,7 +66,6 @@ button {
   width: 50%;
   max-width: 600px;
 }
-
 button:before {
   background-color: initial;
   background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
@@ -84,12 +79,10 @@ button:before {
   transition: all .3s;
   width: 92%;
 }
-
 button:hover {
   box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
   transform: scale(1.1);
 }
-
 .line-centered-add-layer {
   order: 100;
   display: flex;
@@ -99,7 +92,6 @@ button:hover {
   justify-content: center;
   box-sizing: border-box;
 }
-
 .line-play-button {
   display: flex;
   flex-direction: row;
@@ -109,7 +101,6 @@ button:hover {
   justify-content: center;
   box-sizing: border-box;
 }
-
 .line-undo-and-redo {
   display: flex;
   flex-direction: row;
@@ -118,27 +109,23 @@ button:hover {
   justify-content: center;
   order: 2;
 }
-
 .line-end-button {
   display: flex;
   flex-direction: row;
   width: inherit;
   justify-content: flex-end;
 }
-
 .line-end-button button{
   background-color: gray;
   border: none;
   max-width: 80px;
 }
-
 .line-two-inputs {
   display: flex;
   flex-direction: row;
   width: inherit;
   justify-content: center;
 }
-
 .line-two-inputs input {
   width: 30%;
   text-align: center;
@@ -147,13 +134,11 @@ button:hover {
   width: 40%;
   text-align: center;
 }
-
 .line-two-inputs select option {
   width: 30%;
   font-size: 2vw;
   line-height: 3vw;
 }
-
 .line-two-labeled-inputs {
   display: flex;
   flex-direction: row;
@@ -163,12 +148,10 @@ button:hover {
   align-items: center;
   padding-top: 20px;
 }
-
 .line-two-labeled-inputs input {
   width: 30%;
   height: 84px;
 }
-
 .line-page-configuration {
   order: 0;
   display: flex;
@@ -179,7 +162,6 @@ button:hover {
   gap: 25px;
   color: gray;
 }
-
 .line-page-configuration input {
   width: 10%;
   height: 30px;
@@ -208,7 +190,13 @@ button:hover {
   padding-top: 10px;
   font-size: 30px;
   text-align: center;
+  cursor: context-menu;
 }
+
+.clickable-button {
+  cursor: pointer;
+}
+
 /*Desktops*/
 /* @media only screen and (min-width: 800px) {
   body {
