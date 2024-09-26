@@ -1,3 +1,5 @@
+// This functions allows to create mandalas easily based on a configuration. It uses p5 and p5.polar libraries to do it.
+
 // Creates the space to draw
 function setup()
 {
@@ -23,27 +25,52 @@ function drawLayer(layer){
     if (layer.fillColor){fill(layer.fillColor);
     } else {noFill();}
 
-    drawFigures[layer.figureName](layer.figureSettings)
+    drawFigures(layer.figureName, layer.figureSettings)
 }
 
-// Translate the figure name into a function that can draw the respective figures using the required parameters
-const drawFigures = {
+// Run the function that creates a figure
+function drawFigures(figureName, figureSettings){
+  figures[figureName](figureSettings)
+}
+
+// Contains the figures name with its correspondent function
+const figures = {
   'line': function lines({total, size, distance=0}){
     for (line=0; line < total; line++){
       let angle = (360 /total)*line;
-      polarLine(angle, size, distance);
+      try {
+        polarLine(angle, size, distance);
+      } catch (error) {
+        console.error(error);
+      }
     }
   },
   'circle': function circles({total, radius, distance=0}){
-    polarEllipses(total, radius, radius, distance);
+    try {
+      polarEllipses(total, radius, radius, distance);
+    } catch (error) {
+      console.error(error);
+    }
   },
   'triangle': function triangle({total, radius, distance=0}){
-    polarTriangles(total, radius, distance);
+    try {
+      polarTriangles(total, radius, distance);
+    } catch (error) {
+      console.error(error);
+    }
   },
   'square':  function square({total, radius, distance=0}){
+    try {
+      //polarSquares(total, radius, distance);
+    } catch (error) {
+      console.error(error);
+    }
     //Not working for a problem with the original library :(
     //polarSquares(8,4,160);
     //polarSquares(total, radius, distance);
     //maybe let's consider rectangles!
   }
 }
+
+function figuresNames() {return Object.keys(figures)}
+function figuresNumber() {return Object.keys(figures).length}

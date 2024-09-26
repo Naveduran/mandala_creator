@@ -1,5 +1,31 @@
 
-const config = {
+const emptyConfig = {
+  size: 900,
+  layers: [
+  ]
+}
+
+function addLayer() {
+  // to config
+  config.layers.concat({
+      name:'new layer'.concat(figuresNumber()),
+      strokeColor: null,
+      fillColor: 'hsla(239, 100%, 65%, 0.5)',
+      figureName:  figuresNames()[Math.floor(Math.random() * figuresNumber)],
+      figureSettings: {
+        total: [10, 20, 30][Math.floor(Math.random() * 3)],
+        radius: [30, 80, 150][Math.floor(Math.random() * 3)],
+        distance: [100, 200, 300][Math.floor(Math.random() * 3)]
+      },
+  })
+
+  //to html
+
+  
+}
+
+
+const initialConfig = {
   size: 900,
   layers: [
     {
@@ -135,3 +161,5 @@ const config = {
     },
   ]
 }
+
+const config = initialConfig

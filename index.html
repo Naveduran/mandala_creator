@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <div class="line-page-configuration">
+    <div class="config">
       <label for="backgroundColor">Background</label>
       <input type="color" id="backgroundColor" name="backgroundColor" />
       <label for="pageLanguage">Language</label>
@@ -154,48 +154,32 @@
 
     <h1>Mandala Playground</h1>
 
-    <div class="line-undo-and-redo">
+    <div class="line-saving">
       <img width="64" height="64" src="https://img.icons8.com/arcade/64/undo.png" alt="undo" class="clickable-button"/>
       <img width="64" height="64" src="https://img.icons8.com/arcade/64/redo.png" alt="redo" class="clickable-button"/>
+      <img width="64" height="64" src="https://img.icons8.com/?size=100&id=m2rAYiXkqccX&format=png&color=000000" alt="circled-chevron-right" class="clickable-button"/>
+      <img width="64" height="64" src="https://img.icons8.com/?size=100&id=N5XGajFJ4g5N&format=png&color=000000" alt="circled-chevron-right" class="clickable-button"/>
     </div>
 
-    <div class="line-play-button">
-      <button type="button"  id="playButton" class="playButton">Play </button>
-    </div>
-
-    <div class="layer-group">
-        <div class="line-end-button">
-          <button type="button" id="removeLayer" class="removeLayerButton">x</button>
-        </div>
-
-        <div class="line-two-inputs">
-          <div class="custom-number-input">
-            <img width="84" height="84" src="https://img.icons8.com/arcade/64/000000/circled-chevron-left.png" alt="circled-chevron-left" class="clickable-button"/>
-            <input type="text" id="figureNumber" name="figureNumber" value="3" />
-            <img width="84" height="84" src="https://img.icons8.com/arcade/64/000000/circled-chevron-right.png" alt="circled-chevron-right" class="clickable-button"/>
-          </div>
+    <div class="layers">
+      <div class="layer">
+          <img width="64" height="64" src="https://img.icons8.com/?size=100&id=9pZaZjPydJpa&format=png&color=000000" class="clickable-button"/>
+          <input type="text" id="figureNumber" name="figureNumber" value="3" />
+          <img width="64" height="64" src="https://img.icons8.com/?size=100&id=mHya2GmV5809&format=png&color=000000" alt="circled-chevron-right" class="clickable-button"/>
           <select name="figureName" id="figureName" form="carform" class="clickable-button">
-            <option value="circle" class="clickable-button">Circles</option>
             <option value="triangle" class="clickable-button">Triangles</option>
+            <option value="circle" class="clickable-button">Circles</option>
             <option value="line" class="clickable-button">Lines</option>
           </select>
-        </div>
-
-        <div class="line-two-labeled-inputs">
           <label for="borderColor">Border</label>
           <input type="color" id="borderColor" name="borderColor" value="#e66465" class="clickable-button "/>
           <label for="fillColor">Fill</label>
           <input type="color" id="fillColor" name="fillColor" value="#f6b73c"  class="clickable-button"/>
-        </div>
-      </div>
-
-    <div class="line-centered-add-layer">
-      <button type="button"> Add layer  +</button>
-     </div>
-
-     <div class="line-footer">
-      <p>Made for fun by Natalia Vera</button>
-     </div>
+          <button type="button" class="plus-button">+</button>
+          <button type="button" class="close-button">x</button>
+      </div>      
+    </div>
+    <p class="line-footer">Made for fun by Natalia Vera</p>
 
   </body>
 </html>
