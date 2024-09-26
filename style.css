@@ -82,6 +82,7 @@ h1 {
 .layer input {
   width: 15%;
   text-align: center;
+  border-radius: 4vw;
 }
 .layer select {
   width: 50%;
