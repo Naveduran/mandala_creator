@@ -3,7 +3,8 @@
 // Creates the space to draw
 function setup()
 {
-	createCanvas(900, 900);
+  createCanvas(900,900);
+  windowResized()
 }
 
 // Iterates trough configuration to draw each layer of the mandala
@@ -74,3 +75,15 @@ const figures = {
 
 function figuresNames() {return Object.keys(figures)}
 function figuresNumber() {return Object.keys(figures).length}
+
+// Resize the canvas when the browser's size changes.
+function windowResized() {
+  if (windowHeight > windowWidth){
+    //cell
+    resizeCanvas(windowWidth, windowWidth);
+  } else { 
+    //desktop
+    resizeCanvas(windowHeight, windowHeight);
+  }
+
+}
