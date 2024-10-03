@@ -10,10 +10,13 @@
   <body>
     <header>
       <div class="config">
-        <label for="backgroundColor">Background</label>
-        <input type="color" id="backgroundColor" name="backgroundColor" />
+        <label for="backgroundColor">Theme</label>
+        <select name="theme" id="theme" form="theme">
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+        </select>
         <label for="pageLanguage">Language</label>
-        <select name="pageLanguage" id="pageLanguage" form="carform">
+        <select name="pageLanguage" id="pageLanguage" form="pageLanguage">
           <option value="AB">Abkhazian</option>
           <option value="AA">Afar</option>
           <option value="AF">Afrikanns</option>
@@ -152,7 +155,7 @@
           <option value="ZU">Zulu</option>
         </select>
       </div>
-      <h1>Mandala Playground</h1>
+      <h1>Mandala Pla<p class="accent-1">y</p><p class="accent-2">g</p>round</h1>
     </header>
     <main>
       <div class="line-saving">
@@ -177,12 +180,9 @@
             <label for="fillColor">Fill</label>
             <input type="color" id="fillColor" name="fillColor" value="#f6b73c"  class="clickable-button"/>
             <button type="button" class="plus-button">+</button>
-            <button type="button" class="close-button">x</button>
         </div>
       </div>
-      <div class="empty"></div>
       <p class="line-footer">Made for fun by Natalia Vera</p>
     </main>
-
   </body>
 </html>

@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sacramento&display=swap');
 
+:root {
+  /* lightmode */
+  --lm-background-color: #ffffff;
+  --lm-font-color: #000000;
+  --lm-accent-color-1: #0b0eb6;
+  --lm-accent-color-2: #b60b9a;
+  --lm-unaccent-color: rgb(32, 32, 32);
+
+    /* dark mode */
+  --dm-background-color: #000000;
+  --dm-font-color: #e9e9e9;
+  --dm-accent-color-1: #0b0eb6;
+  --dm-accent-color-2: #b60b9a;
+  --dm-unaccent-color: rgb(85, 84, 84);
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -11,6 +27,8 @@ body {
   font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
   width: 100%;
+  background-color: var(--lm-background-color);
+  color: var(--lm-font-color);
 }
 header {
   display: flex;
@@ -32,10 +50,10 @@ canvas {
   display: flex;
   flex-direction: row;
   gap: 0.5em;
-  color: gray;
   font-size: 0.5em;
   align-self: self-end;
   margin-right: 0.5em;
+  color: var(--lm-unaccent-color);
 }
 .config input {
   width: 10%;
@@ -50,12 +68,12 @@ canvas {
 .config select {
   font-size: inherit;
   line-height: inherit;
-  color: gray;
+  color: inherit;
 }
 .config select option{
   font-size: inherit;
   line-height: inherit;
-  color: gray;
+  color: inherit;
 }
 h1 {
   font-family: "Sacramento", cursive;
@@ -65,6 +83,14 @@ h1 {
   margin: 1em 0;
   box-sizing: border-box;
   cursor: context-menu;
+}
+h1 .accent-1 {
+  color: var(--lm-accent-color-1);
+  display: inline;
+}
+h1 .accent-2 {
+  color: var(--lm-accent-color-2);
+  display: inline;
 }
 .line-saving {
   display: flex;
@@ -100,6 +126,7 @@ h1 {
 }
 .layer select {
   text-align: center;
+  color: inherit;
 }
 option {
   font-size: 2vw;
@@ -171,9 +198,6 @@ button:hover {
 select .clickable-button {
   min-width: fit-content;
 }
-.close-button {
-  background-color: grey;
-}
 .custom-number-input {
   width: 40%;
   display: flex;
@@ -184,6 +208,7 @@ select .clickable-button {
 }
 input#figureNumber {
   max-width: 1em;
+  color: inherit;
 }
 .line-footer {
   font-size: inherit;
@@ -220,5 +245,23 @@ img {
     height: 100vh;
     min-width: 100vh !important;
     max-width: 100vh;
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--dm-background-color);
+    color: var(--dm-font-color);
+  }
+  .config {
+    color: var(--dm-unaccent-color);
+  }
+  h1 .accent-1 {
+    color: var(--dm-accent-color-1);
+    display: inline;
+  }
+  h1 .accent-2 {
+    color: var(--dm-accent-color-2);
+    display: inline;
   }
 }

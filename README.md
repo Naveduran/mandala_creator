@@ -30,16 +30,22 @@ Thanks to [Monica Vera Duran](https://www.linkedin.com/in/monica-vera-duran-91b4
       OK ultragrande
       OK si mas ancho que largo, poner controles al lado izquierdo
 
+### OK habilitar dark theme
+      OK disminuir la cantidad de lugares en donde se cambian los colores
+      OK set colors for dark and light theme
+      OK get dark-light theme preference from user system and apply automatically
+
+### habilitar cambiar background 
+      - crear una variable en js
+      - crear listener
+      - asignar background y font color cuando la variable cambie
+      - cambiar background del canvas
+
 ### crear los botones de los layers de acuerdo a la config inicial
 
 ### Change squares for rectangles en la config de polar
 
 ### boton para ver una sola layer a la vez
-
-### background activar 
-      - crear una variable en js
-      - crear listener
-      - asignar background y font color cuando la variable cambie
 
 ### Set history saving to make multiple redo and undo
 
