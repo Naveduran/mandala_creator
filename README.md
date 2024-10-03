@@ -19,7 +19,8 @@ Thanks to [Monica Vera Duran](https://www.linkedin.com/in/monica-vera-duran-91b4
       OK - separate config in another file
         OK - study modules 
         OK - study cors
-      OK- for each leer "initial config" para crear el mandala
+      OK - for each leer "initial config" para crear el mandala
+      OK - modify size to fit smaller screen sizes
 
 ### OK crear boton guardar en archivo y cargar de archivo
 
@@ -35,19 +36,18 @@ Thanks to [Monica Vera Duran](https://www.linkedin.com/in/monica-vera-duran-91b4
       OK set colors for dark and light theme
       OK get dark-light theme preference from user system and apply automatically
 
-### habilitar cambiar background 
-      - crear una variable en js
-      - crear listener
-      - asignar background y font color cuando la variable cambie
-      - cambiar background del canvas
+### habilitar cambiar background
+      OK crear variable
+      OK crear event listener para el input y la funcion que corre cuando se detona el evento
+      - cambiar el background del canvas
 
 ### crear los botones de los layers de acuerdo a la config inicial
 
-### Change squares for rectangles en la config de polar
+### change squares for rectangles en la config de polar
 
 ### boton para ver una sola layer a la vez
 
-### Set history saving to make multiple redo and undo
+### set history saving to make multiple redo and undo
 
 ### crear boton reset
       - boton css

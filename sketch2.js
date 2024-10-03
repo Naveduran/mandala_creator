@@ -1,5 +1,30 @@
 // This functions allows to create mandalas easily based on a configuration. It uses p5 and p5.polar libraries to do it.
 
+
+
+let backgroundColor;
+
+window.addEventListener("load", startup, false);
+
+function startup() {
+  backgroundColor = document.querySelector("#backgroundColor");
+  backgroundColor.addEventListener("input", updateCanvasColor, false);
+  backgroundColor.select();
+}
+
+function updateCanvasColor(event) {
+  /*
+  const p = document.querySelector("p");
+  if (p) {
+    p.style.color = event.target.value;
+  }
+    */
+  console.log(event.target.value)
+}
+
+
+
+
 // Creates the space to draw
 function setup()
 {
@@ -78,12 +103,13 @@ function figuresNumber() {return Object.keys(figures).length}
 
 // Resize the canvas when the browser's size changes.
 function windowResized() {
-  if (windowHeight > windowWidth){
-    //cell
+  if (windowHeight > windowWidth){ //phone
     resizeCanvas(windowWidth, windowWidth);
-  } else { 
-    //desktop
+  } else { //desktop
     resizeCanvas(windowHeight, windowHeight);
   }
+}
 
+function changeBackground(backgroundColor){
+  console.log(backgroundColor)
 }
