@@ -1,41 +1,41 @@
 // This functions allows to create mandalas easily based on a configuration. It uses p5 and p5.polar libraries to do it.
-
-
-
-let backgroundColor;
+let a;
+let backgroundColorInput;
+let backgroundColor = "#ffffff"
 
 window.addEventListener("load", startup, false);
 
 function startup() {
-  backgroundColor = document.querySelector("#backgroundColor");
-  backgroundColor.addEventListener("input", updateCanvasColor, false);
-  backgroundColor.select();
-}
 
-function updateCanvasColor(event) {
-  /*
-  const p = document.querySelector("p");
-  if (p) {
-    p.style.color = event.target.value;
+  // Allow changing the background color of the canvas
+  backgroundColorInput = document.querySelector("#backgroundColorInput");
+  backgroundColorInput.addEventListener("input", updateCanvasColor, false);
+  backgroundColorInput.select();
+
+  // Set dark background if the user theme is dark
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    backgroundColor = "#000000"
   }
-    */
-  console.log(event.target.value)
+
 }
 
-
-
+// use the rgb values of the color picker to set the mandala background
+function updateCanvasColor(event) {
+  backgroundColor = event.target.value
+}
 
 // Creates the space to draw
 function setup()
 {
   createCanvas(900,900);
   windowResized()
+  frameRate(100);
 }
 
 // Iterates trough configuration to draw each layer of the mandala
 function draw() {
   const layers = config.layers
-  background(0,0,0);
+  background(backgroundColor);
   setCenter(width/2, height/2);
   layers.forEach((layer) => {
     drawLayer(layer)
@@ -110,6 +110,6 @@ function windowResized() {
   }
 }
 
-function changeBackground(backgroundColor){
-  console.log(backgroundColor)
+function changeBackground(backgroundColorInput){
+  console.log(backgroundColorInput)
 }
