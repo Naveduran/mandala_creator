@@ -35,7 +35,7 @@ const initialConfig = {
       figureName: 'line',
       figureSettings: {
         total: 4,
-        size: 360
+        size: 180
       },
     },
     {
@@ -45,8 +45,8 @@ const initialConfig = {
       figureName: 'circle',
       figureSettings: {
         total: 14,
-        radius: 100,
-        distance: 330
+        radius: 50,
+        distance: 165
       },
     },
     {
@@ -56,8 +56,8 @@ const initialConfig = {
       figureName: 'circle',
       figureSettings: {
         total: 10,
-        radius: 70,
-        distance: 270
+        radius: 35,
+        distance: 135
       },
     },
     {
@@ -66,9 +66,9 @@ const initialConfig = {
       fillColor: 'hsla(240, 94%, 81%, 0.5)',
       figureName: 'circle',
       figureSettings: {
-        radius: 120,
+        radius: 60,
         total: 10,
-        distance: 160
+        distance: 80
       },
     },
     {
@@ -77,9 +77,9 @@ const initialConfig = {
       fillColor: 'hsla(54, 86%, 83%, 0.5)',
       figureName: 'circle',
       figureSettings: {
-        radius: 60,
+        radius: 30,
         total: 10,
-        distance: 160
+        distance: 80
       },
     },
     {
@@ -89,8 +89,8 @@ const initialConfig = {
       figureName: 'circle',
       figureSettings: {
         total: 5,
-        radius: 80,
-        distance: 70
+        radius: 40,
+        distance: 35
       },
     },
     {
@@ -100,8 +100,8 @@ const initialConfig = {
       figureName: 'circle',
       figureSettings: {
         total: 12,
-        radius: 15,
-        distance: 80
+        radius: 8,
+        distance: 40
       },
     },
     {
@@ -111,8 +111,8 @@ const initialConfig = {
       figureName: 'circle',
       figureSettings: {
         total: 5,
-        radius: 40,
-        distance: 70
+        radius: 20,
+        distance: 35
       },
     },
     {
@@ -122,8 +122,8 @@ const initialConfig = {
       figureName: 'triangle',
       figureSettings: {
         total: 4,
-        radius: 12,
-        distance: 120
+        radius: 6,
+        distance: 60
       },
     },
     {
@@ -133,8 +133,8 @@ const initialConfig = {
       figureName: 'triangle',
       figureSettings: {
         total: 4,
-        radius: 20,
-        distance: 350
+        radius: 10,
+        distance: 175
       },
     },
     {
@@ -144,8 +144,8 @@ const initialConfig = {
       figureName: 'square',
       figureSettings: {
         total: 8,
-        radius: 4,
-        distance: 160
+        radius: 2,
+        distance: 80
       },
     },
     {
@@ -155,8 +155,8 @@ const initialConfig = {
       figureName: 'square',
       figureSettings: {
         total: 4,
-        radius: 10,
-        distance: 300
+        radius: 5,
+        distance: 150
       },
     },
   ]
