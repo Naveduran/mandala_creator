@@ -2,7 +2,7 @@
 
 :root {
   /* lightmode */
-  --lm-background-color: #ffffff;
+  --lm-background-color: rgb(255, 255, 255);
   --lm-font-color: #000000;
   --lm-accent-color-1: #0b0eb6;
   --lm-accent-color-2: #b60b9a;
@@ -123,10 +123,12 @@ h1 .accent-2 {
   text-align: center;
   border-radius: 0.3em;
   padding: 0;
+  background: inherit;
 }
 .layer select {
   text-align: center;
   color: inherit;
+  background: inherit;
 }
 option {
   font-size: 2vw;
