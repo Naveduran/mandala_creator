@@ -8,14 +8,13 @@
   --lm-accent-color-2: #b60b9a;
   --lm-unaccent-color: rgb(32, 32, 32);
 
-    /* dark mode */
+  /* dark mode */
   --dm-background-color: #000000;
   --dm-font-color: #e9e9e9;
   --dm-accent-color-1: #0b0eb6;
   --dm-accent-color-2: #b60b9a;
   --dm-unaccent-color: rgb(85, 84, 84);
 }
-
 body {
   padding: 0;
   margin: 0;
@@ -46,41 +45,12 @@ main {
 canvas {
   order: 2;
 }
-.config {
-  display: flex;
-  flex-direction: row;
-  gap: 0.5em;
-  font-size: 0.5em;
-  align-self: self-end;
-  margin-right: 0.5em;
-  color: var(--lm-unaccent-color);
-}
-.config input {
-  width: 10%;
-  height: 1em;
-  align-self: center;
-  font-size: inherit;
-}
-.config label {
-  font-size: inherit;
-  line-height: inherit;
-}
-.config select {
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
-}
-.config select option{
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
-}
 h1 {
   font-family: "Sacramento", cursive;
   font-size: 2.5em;
   text-wrap: nowrap;
   align-self: center;
-  margin: 1em 0;
+  margin: 1em 0 0.8em 0;
   box-sizing: border-box;
   cursor: context-menu;
 }
@@ -96,8 +66,9 @@ h1 .accent-2 {
   display: flex;
   flex-direction: row;
   width: inherit;
-  gap: 0.5em;
+  gap: 1em;
   justify-content: center;
+  padding-top: 1em;
 }
 .layers {
   display: flex;
@@ -197,6 +168,11 @@ button:hover {
 .clickable-button {
   cursor: pointer;
 }
+.imagedButton{
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0.5em;
+}
 select .clickable-button {
   min-width: fit-content;
 }
@@ -205,19 +181,44 @@ select .clickable-button {
   display: flex;
   justify-content: flex-start;
 }
-.button-big {
-  margin: -10px;
-}
 input#figureNumber {
   max-width: 1em;
   color: inherit;
 }
 .line-footer {
+  display: flex;
+  flex-direction: column;
   font-size: inherit;
   line-height: inherit;
   margin: 0.5em 0;
   text-align: center;
   cursor: context-menu;
+  width: 100%;
+}
+.config {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+  font-size: 0.5em;
+  align-self: self-end;
+  margin-right: 0.5em;
+  color: var(--lm-unaccent-color);
+  width: 100%;
+  justify-content: flex-end;
+}
+.config label {
+  font-size: inherit;
+  line-height: inherit;
+}
+.config select {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+.config select option{
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
 }
 img {
   width: 2em;
