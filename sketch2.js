@@ -3,6 +3,35 @@
 let backgroundColorInput;
 let backgroundColor = "#ffffff"
 
+const initialConfig = {
+  size: 900,
+  layers: [
+    {
+      name:'Lines',
+      strokeColor: '#f6f678',
+      fillColor: '#f6f678',
+      figureName: 'line',
+      figureSettings: {
+        total: 4,
+        size: 180
+      },
+    },
+    {
+      name:'Circle 1',
+      strokeColor: '#f33890',
+      fillColor: '#f33890',
+      figureName: 'circle',
+      figureSettings: {
+        total: 14,
+        radius: 50,
+        distance: 165
+      },
+    },
+  ]
+}
+
+const config = initialConfig
+
 // Resize the canvas when the browser's size changes.
 function windowResized() {
   if (windowHeight > windowWidth){ //phone
@@ -59,57 +88,28 @@ function drawHtmlLayer(layerConfig){
     {
       name:"button",
       attributes:{class: "imagedButton"},
-      children: [
-        {
-          name:"img",
-          attributes: {
-            class:"clickable-button", src:"https://img.icons8.com/?size=100&id=63794&format=png&color=000000",
-            alt:"less"
-          },
-        }
-      ]
+      children: [{name:"img",attributes: {class:"clickable-button", src:"https://img.icons8.com/?size=100&id=25019&format=png&color=000000", alt:"move"}}]
     },
     {
       name:"input",
-      attributes:{type:"text", id:"figureNumber", name:"figureNumber", value:layerConfig.figureSettings.total},
+      attributes:{type:"number", id:"figureNumber", name:"figureNumber", value:layerConfig.figureSettings.total},
     },
-    {
-      name:"button",
-      attributes:{class: "imagedButton"},
-      children:[
-        {
-          name:"img",
-          attributes: {
-            class:"clickable-button", src:"https://img.icons8.com/?size=100&id=63796&format=png&color=000000",
-            alt:"more"
-          },
-        }
-      ]
+    {/*replaced for size in lines*/
+      name:"input",
+      attributes:{type:"number", id:"figureRadius", name:"figureRadius", value:layerConfig.figureSettings.radius},
+    },
+    {/*removed in lines*/
+      name:"input",
+      attributes:{type:"number", id:"figureDistance", name:"figureDistance", value:layerConfig.figureSettings.distance},
     },
     {
       name:"select",
       attributes:{name:"figureName", id:"figureName", class:"clickable-button", value:layerConfig.figureName},
       children:[
-        {
-          name:"option",
-          attributes:{value:"triangle", class:"clickable-button"},
-          textNode: "Triangles"
-        },
-        {
-          name:"option",
-          attributes:{value:"circle", class:"clickable-button"},
-          textNode: "Circles"
-        },
-        {
-          name:"option",
-          attributes:{value:"line", class:"clickable-button"},
-          textNode: "Lines"
-        },
-        {
-          name:"option",
-          attributes:{value:"square", class:"clickable-button"},
-          textNode: "Squares"
-        },
+        {name:"option", attributes:{value:"triangle", class:"clickable-button"}, textNode: "Triangles"},
+        {name:"option", attributes:{value:"circle", class:"clickable-button"}, textNode: "Circles"},
+        {name:"option", attributes:{value:"line", class:"clickable-button"}, textNode: "Lines"},
+        {name:"option", attributes:{value:"square", class:"clickable-button"}, textNode: "Squares"},
       ]
     },
     {
@@ -128,22 +128,74 @@ function drawHtmlLayer(layerConfig){
     },
     {
       name:"input",
-      attributes:{type:"color", id:"fillColor", name:"fillColor", class:"clickable-button", value:"#e66465"/**/},
+      attributes:{type:"color", id:"fillColor", name:"fillColor", class:"clickable-button", value:layerConfig.fillColor},
     },
     {
       name:"button",
       attributes:{type:"button", class:"plus-button"},
       textNode: "+"
     },
+    {
+      name:"button",
+      attributes:{class: "imagedButton"},
+      children: [{name:"img", attributes: {class:"clickable-button", src:"https://img.icons8.com/?size=100&id=13758&format=png&color=000000", alt:"visibility"}}]
+    },
   ]
 
+  /*if line, then remove radius and distance and add size*/ 
+  if(layerConfig.figureName == 'line'){
+
+    elementsOfLayer[2] = {name:"input", attributes:{type:"number", id:"figureSize", name:"figureSize", value:layerConfig.figureSettings.size}},
+    elementsOfLayer[3] = {name:"div", attributes:{class:"empty-attribute"}}
+  }
 
   for (let element of elementsOfLayer) {
-    htmlElement = createHtmlElement(element, layerConfig)
-    newLayer.appendChild(htmlElement);
+    if (element){
+      htmlElement = createHtmlElement(element, layerConfig)
+      newLayer.appendChild(htmlElement);
+    }
   }
   return newLayer
 }
+
+
+function createHtmlElement(element, layer){
+  // Creates an html element with it's attributes
+  // it's children and text node
+
+  console.log(element)
+
+  let eName = element.name
+  let eAtts = element.attributes
+  let eChildren = element.children
+  let eText = element.textNode
+  let htmlElement = document.createElement(eName);
+
+  if (eAtts){
+    eAtts = Object.entries(eAtts)
+    for (let i = 0; i < eAtts.length; i++){
+      htmlElement.setAttribute(
+        eAtts[i][0],
+        eAtts[i][1]
+      );
+    }
+  }
+  if (eChildren){
+    b = eChildren
+    for (let child of eChildren){
+      a = child
+      let newChild = createHtmlElement(child)
+      htmlElement.appendChild(newChild)
+    }
+  }
+  if (eText){
+    let text = document.createTextNode(eText);
+    htmlElement.appendChild(text);
+  }
+  return htmlElement
+}
+
+
 
 
 // Use the received layer configuration to draw the described figures with its respective border and fill color

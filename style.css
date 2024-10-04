@@ -124,6 +124,7 @@ select {
 input {
   min-height: 1.8em;
   min-width: 1.8em;
+  max-width: 4em;
 }
 button {
   align-self: center;
@@ -225,6 +226,11 @@ img {
   height: 2em;
   align-self: center;
 }
+.empty-attribute {
+  min-width: 1.8em;
+  max-width: 4em;
+}
+
 @media only screen and (min-width: 768px) {
   header, main {
     font-size: 1.5vw;
