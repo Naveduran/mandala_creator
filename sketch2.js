@@ -1,11 +1,16 @@
 // This functions allows to create mandalas easily based on a configuration. It uses p5 and p5.polar libraries to do it.
+
 let a;
+let b;
+let c;
+let d;
 let backgroundColorInput;
 let backgroundColor = "#ffffff"
 
 window.addEventListener("load", startup, false);
 
 function startup() {
+
 
   // Allow changing the background color of the canvas
   backgroundColorInput = document.querySelector("#backgroundColorInput");
@@ -16,13 +21,161 @@ function startup() {
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     backgroundColor = "#000000"
   }
+  
+  // read config to create html editable layers
+  createLayers();
+}
 
+// Resize the canvas when the browser's size changes.
+function windowResized() {
+  if (windowHeight > windowWidth){ //phone
+    resizeCanvas(windowWidth - 18, windowWidth - 18);
+  } else { //desktop
+    resizeCanvas(windowHeight - 18, windowHeight - 18);
+  }
 }
 
 // use the rgb values of the color picker to set the mandala background
 function updateCanvasColor(event) {
   backgroundColor = event.target.value
 }
+
+//-------------------CONFIG----------------------------
+
+elementsOfLayer = [
+  {
+    name:"button",
+    attributes:{class: "imagedButton"},
+    children:[
+      {
+        name:"img",
+        attributes: {
+          class:"clickable-button", src:"https://img.icons8.com/?size=100&id=63794&format=png&color=000000",
+          alt:"less"
+        },
+      }
+    ]
+  },
+  {
+    name:"input",
+    attributes:{type:"text", id:"figureNumber", name:"figureNumber", value:"3"},
+  },
+  {
+    name:"button",
+    attributes:{class: "imagedButton"},
+    children:[
+      {
+        name:"img",
+        attributes: {
+          class:"clickable-button", src:"https://img.icons8.com/?size=100&id=63796&format=png&color=000000",
+          alt:"more"
+        },
+      }
+    ]
+  },
+  {
+    name:"select",
+    attributes:{name:"figureName", id:"figureName", class:"clickable-button"},
+    children:[
+      {
+        name:"option",
+        attributes:{value:"triangle", class:"clickable-button"},
+        textNode: "Triangles"
+      },
+      {
+        name:"option",
+        attributes:{value:"circle", class:"clickable-button"},
+        textNode: "Circles"
+      },
+      {
+        name:"option",
+        attributes:{value:"line", class:"clickable-button"},
+        textNode: "Lines"
+      },
+      {
+        name:"option",
+        attributes:{value:"square", class:"clickable-button"},
+        textNode: "Squares"
+      },
+    ]
+  },
+  {
+    name:"label",
+    attributes:{for:"borderColor"},
+    textNode: "Border"
+  },
+  {
+    name:"input",
+    attributes:{type:"color", id:"borderColor", name:"borderColor", value:"#e66465", class:"clickable-button"},
+  },
+  {
+    name:"label",
+    attributes:{for:"fillColor"},
+    textNode: "Fill"
+  },
+  {
+    name:"input",
+    attributes:{type:"color", id:"fillColor", name:"fillColor", value:"#e66465", class:"clickable-button"},
+  },
+  {
+    name:"button",
+    attributes:{type:"button", class:"plus-button"},
+    textNode: "+"
+  },
+]
+
+function createHtmlElement(element){
+  // Creates an html element with it's attributes
+  // it's children and text node
+  let eName = element.name
+  let eAtts = element.attributes
+  let eChildren = element.children
+  let eText = element.textNode
+
+  let htmlElement = document.createElement(eName);
+
+  if (eAtts){
+    eAtts = Object.entries(eAtts)
+    for (let i = 0; i < eAtts.length; i++){
+      htmlElement.setAttribute(
+        eAtts[i][0],
+        eAtts[i][1]
+      );
+    }
+  }
+  if (eChildren){
+    b = eChildren
+    for (let child of eChildren){
+      a = child
+      let newChild = createHtmlElement(child)
+      htmlElement.appendChild(newChild)
+    }
+  }
+  if (eText){
+    let text = document.createTextNode(eText);
+    htmlElement.appendChild(text);
+  }
+  return htmlElement
+}
+
+function createLayers() {
+  let layers = document.getElementById("layers");
+ 
+  // create layer iterando en la config
+
+  
+    //create elements usando la config del layer!!!
+  
+  for (let element of elementsOfLayer) {
+    let newLayer = document.createElement('div');
+    htmlElement = createHtmlElement(element)
+    newLayer.appendChild(htmlElement);
+  }
+  layers.appendChild(newLayer);
+}
+
+
+//-------------------DRAWING----------------------------
 
 // Creates the space to draw
 function setup()
@@ -100,16 +253,3 @@ const figures = {
 
 function figuresNames() {return Object.keys(figures)}
 function figuresNumber() {return Object.keys(figures).length}
-
-// Resize the canvas when the browser's size changes.
-function windowResized() {
-  if (windowHeight > windowWidth){ //phone
-    resizeCanvas(windowWidth, windowWidth);
-  } else { //desktop
-    resizeCanvas(windowHeight, windowHeight);
-  }
-}
-
-function changeBackground(backgroundColorInput){
-  console.log(backgroundColorInput)
-}
