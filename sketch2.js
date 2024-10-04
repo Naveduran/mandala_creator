@@ -3,25 +3,6 @@
 let backgroundColorInput;
 let backgroundColor = "#ffffff"
 
-window.addEventListener("load", startup, false);
-
-function startup() {
-
-
-  // Allow changing the background color of the canvas
-  backgroundColorInput = document.querySelector("#backgroundColorInput");
-  backgroundColorInput.addEventListener("input", updateCanvasColor, false);
-  backgroundColorInput.select();
-
-  // Set dark background if the user theme is dark
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    backgroundColor = "#000000"
-  }
-  
-  // read config to create html editable layers
-  createLayers();
-}
-
 // Resize the canvas when the browser's size changes.
 function windowResized() {
   if (windowHeight > windowWidth){ //phone
@@ -36,163 +17,137 @@ function updateCanvasColor(event) {
   backgroundColor = event.target.value
 }
 
-//-------------------CONFIG----------------------------
-
-elementsOfLayer = [
-  {
-    name:"button",
-    attributes:{class: "imagedButton"},
-    children:[
-      {
-        name:"img",
-        attributes: {
-          class:"clickable-button", src:"https://img.icons8.com/?size=100&id=63794&format=png&color=000000",
-          alt:"less"
-        },
-      }
-    ]
-  },
-  {
-    name:"input",
-    attributes:{type:"text", id:"figureNumber", name:"figureNumber", value:"3"},
-  },
-  {
-    name:"button",
-    attributes:{class: "imagedButton"},
-    children:[
-      {
-        name:"img",
-        attributes: {
-          class:"clickable-button", src:"https://img.icons8.com/?size=100&id=63796&format=png&color=000000",
-          alt:"more"
-        },
-      }
-    ]
-  },
-  {
-    name:"select",
-    attributes:{name:"figureName", id:"figureName", class:"clickable-button"},
-    children:[
-      {
-        name:"option",
-        attributes:{value:"triangle", class:"clickable-button"},
-        textNode: "Triangles"
-      },
-      {
-        name:"option",
-        attributes:{value:"circle", class:"clickable-button"},
-        textNode: "Circles"
-      },
-      {
-        name:"option",
-        attributes:{value:"line", class:"clickable-button"},
-        textNode: "Lines"
-      },
-      {
-        name:"option",
-        attributes:{value:"square", class:"clickable-button"},
-        textNode: "Squares"
-      },
-    ]
-  },
-  {
-    name:"label",
-    attributes:{for:"borderColor"},
-    textNode: "Border"
-  },
-  {
-    name:"input",
-    attributes:{type:"color", id:"borderColor", name:"borderColor", value:"#e66465", class:"clickable-button"},
-  },
-  {
-    name:"label",
-    attributes:{for:"fillColor"},
-    textNode: "Fill"
-  },
-  {
-    name:"input",
-    attributes:{type:"color", id:"fillColor", name:"fillColor", value:"#e66465", class:"clickable-button"},
-  },
-  {
-    name:"button",
-    attributes:{type:"button", class:"plus-button"},
-    textNode: "+"
-  },
-]
-
-function createHtmlElement(element){
-  // Creates an html element with it's attributes
-  // it's children and text node
-  let eName = element.name
-  let eAtts = element.attributes
-  let eChildren = element.children
-  let eText = element.textNode
-
-  let htmlElement = document.createElement(eName);
-
-  if (eAtts){
-    eAtts = Object.entries(eAtts)
-    for (let i = 0; i < eAtts.length; i++){
-      htmlElement.setAttribute(
-        eAtts[i][0],
-        eAtts[i][1]
-      );
-    }
-  }
-  if (eChildren){
-    b = eChildren
-    for (let child of eChildren){
-      a = child
-      let newChild = createHtmlElement(child)
-      htmlElement.appendChild(newChild)
-    }
-  }
-  if (eText){
-    let text = document.createTextNode(eText);
-    htmlElement.appendChild(text);
-  }
-  return htmlElement
-}
-
-function createLayers() {
-  let layers = document.getElementById("layers");
- 
-  // create layer iterando en la config
-
-
-    //create elements usando la config del layer!!!
-  
-  for (let element of elementsOfLayer) {
-    let newLayer = document.createElement('div');
-    htmlElement = createHtmlElement(element)
-    newLayer.appendChild(htmlElement);
-  }
-  layers.appendChild(newLayer);
-}
-
-
-//-------------------DRAWING----------------------------
-
-// Creates the space to draw
+// Runs once, Creates the space to draw
 function setup()
 {
   createCanvas(900,900);
   windowResized()
   frameRate(100);
+  // Allow changing the background color of the canvas
+  backgroundColorInput = document.querySelector("#backgroundColorInput");
+  backgroundColorInput.addEventListener("input", updateCanvasColor, false);
+  backgroundColorInput.select();
+
+  // Set dark background if the user theme is dark
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    backgroundColor = "#000000"
+  }
+
+  let layers = document.getElementById("layers");
+  config.layers.forEach((layerConfig) => {
+    let htmlLayer = drawHtmlLayer(layerConfig)
+    layers.appendChild(htmlLayer);
+  })
+
 }
 
 // Iterates trough configuration to draw each layer of the mandala
 function draw() {
-  const layers = config.layers
   background(backgroundColor);
   setCenter(width/2, height/2);
-  layers.forEach((layer) => {
-    drawLayer(layer)
+
+  config.layers.forEach((layerConfig) => {
+    drawMandalaLayer(layerConfig)
   })
 }
 
+function drawHtmlLayer(layerConfig){
+  let newLayer = document.createElement('div');
+  newLayer.setAttribute("class","layer");
+
+  const elementsOfLayer = [
+    {
+      name:"button",
+      attributes:{class: "imagedButton"},
+      children: [
+        {
+          name:"img",
+          attributes: {
+            class:"clickable-button", src:"https://img.icons8.com/?size=100&id=63794&format=png&color=000000",
+            alt:"less"
+          },
+        }
+      ]
+    },
+    {
+      name:"input",
+      attributes:{type:"text", id:"figureNumber", name:"figureNumber", value:layerConfig.figureSettings.total},
+    },
+    {
+      name:"button",
+      attributes:{class: "imagedButton"},
+      children:[
+        {
+          name:"img",
+          attributes: {
+            class:"clickable-button", src:"https://img.icons8.com/?size=100&id=63796&format=png&color=000000",
+            alt:"more"
+          },
+        }
+      ]
+    },
+    {
+      name:"select",
+      attributes:{name:"figureName", id:"figureName", class:"clickable-button", value:layerConfig.figureName},
+      children:[
+        {
+          name:"option",
+          attributes:{value:"triangle", class:"clickable-button"},
+          textNode: "Triangles"
+        },
+        {
+          name:"option",
+          attributes:{value:"circle", class:"clickable-button"},
+          textNode: "Circles"
+        },
+        {
+          name:"option",
+          attributes:{value:"line", class:"clickable-button"},
+          textNode: "Lines"
+        },
+        {
+          name:"option",
+          attributes:{value:"square", class:"clickable-button"},
+          textNode: "Squares"
+        },
+      ]
+    },
+    {
+      name:"label",
+      attributes:{for:"borderColor"},
+      textNode: "Border"
+    },
+    {
+      name:"input",
+      attributes:{type:"color", id:"borderColor", name:"borderColor", class:"clickable-button", value:layerConfig.strokeColor},
+    },
+    {
+      name:"label",
+      attributes:{for:"fillColor"},
+      textNode: "Fill"
+    },
+    {
+      name:"input",
+      attributes:{type:"color", id:"fillColor", name:"fillColor", class:"clickable-button", value:"#e66465"/**/},
+    },
+    {
+      name:"button",
+      attributes:{type:"button", class:"plus-button"},
+      textNode: "+"
+    },
+  ]
+
+
+  for (let element of elementsOfLayer) {
+    htmlElement = createHtmlElement(element, layerConfig)
+    newLayer.appendChild(htmlElement);
+  }
+  return newLayer
+}
+
+
 // Use the received layer configuration to draw the described figures with its respective border and fill color
-function drawLayer(layer){
+function drawMandalaLayer(layer){
     //console.log('layer:', layer.name,'\nstroke:',layer.strokeColor,'\nfill:', layer.fillColor,'\nfigure: ', layer.figureName, '\nsettings: ', layer.figureSettings)
     if (layer.strokeColor){stroke(layer.strokeColor);
     } else {noStroke();}

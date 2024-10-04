@@ -13,7 +13,7 @@ Thanks to [Monica Vera Duran](https://www.linkedin.com/in/monica-vera-duran-91b4
 
 ## Progress
 
-### OK  arrows, selects y colores senalar con dedo
+### OK arrows, selects y colores senalar con dedo
 
 ### OK construir mandala inicial
       OK - separate config in another file
@@ -36,7 +36,7 @@ Thanks to [Monica Vera Duran](https://www.linkedin.com/in/monica-vera-duran-91b4
       OK set colors for dark and light theme
       OK get dark-light theme preference from user system and apply automatically
 
-### habilitar cambiar background
+### OK habilitar cambiar background
       OK crear variable
       OK crear event listener para el input y la funcion que corre cuando se detona el evento
       OK cambiar el background del canvas
@@ -48,7 +48,7 @@ Thanks to [Monica Vera Duran](https://www.linkedin.com/in/monica-vera-duran-91b4
 ### OK encerrar imagenes de line saving en botones
 
 ### crear los botones de los layers de acuerdo a la config inicial
-      - Leer la configuracion para ver los detalles de cada layer
+      OK Leer la configuracion para ver los detalles de cada layer
       OK crear una funcion que genere codigo html X
       OK traer layers by id
       OK crear input de cantidad de figuras con sus botones
@@ -56,8 +56,11 @@ Thanks to [Monica Vera Duran](https://www.linkedin.com/in/monica-vera-duran-91b4
       OK crear selector de color de borde
       OK crear selector de color de figura
       OK crear boton para generar nueva layer
+      - Ajustar la configuracion para tener colores legibles en formato rgb
+      - Asignar ids unicos a cada elemento html del main 
+      - Ajustar valor de los tipos de figura
       
-### hacer que la configuracion de una layer se guarde en un form
+### hacer que la configuracion de una layer genere cambios en el mandala
        input de cantidad de figuras con sus botones
        select de tipo de figura
        selector de color de borde
