@@ -1,9 +1,5 @@
 // This functions allows to create mandalas easily based on a configuration. It uses p5 and p5.polar libraries to do it.
 
-let a;
-let b;
-let c;
-let d;
 let backgroundColorInput;
 let backgroundColor = "#ffffff"
 
@@ -163,7 +159,7 @@ function createLayers() {
  
   // create layer iterando en la config
 
-  
+
     //create elements usando la config del layer!!!
   
   for (let element of elementsOfLayer) {

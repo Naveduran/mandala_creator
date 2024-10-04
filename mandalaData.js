@@ -6,7 +6,6 @@ const emptyConfig = {
 }
 
 function addLayer() {
-  // to config
   config.layers.concat({
       name:'new layer'.concat(figuresNumber()),
       strokeColor: null,
@@ -19,9 +18,6 @@ function addLayer() {
       },
   })
 
-  //to html
-
-  
 }
 
 
