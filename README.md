@@ -60,8 +60,6 @@ Thanks to [Monica Vera Duran](https://www.linkedin.com/in/monica-vera-duran-91b4
 ### OK permitir cambiar distancia de las figuras
 ### OK debuggear why no se muestra el COLOR en el fillcolor
 
-### OK remove distance and radius if figure type is lines, y anadir size
-
 ### OK ponerle limite al numero, radio, y distancia de las figuras
       OK quedan descartados porque es mas usable con sliders
 
@@ -69,17 +67,20 @@ Thanks to [Monica Vera Duran](https://www.linkedin.com/in/monica-vera-duran-91b4
       OK research 
       OK ya no es necesario porque es mejor un color picker con rgba o hsla 
 
-### Habilitar alpha channel para los color picker?
+### OK Habilitar alpha channel para los color picker?
       OK general research
       OK play with https://github.com/mdbassit/Coloris
-      - play with http://www.dematte.at/tinyColorPicker/
 
-### asignar ids unicos a cada elemento html del main 
+### OK asignar ids unicos a cada elemento html del main 
 
-### rehacer el layout para ser mas usable y ajustable a phone y pcs
+### OK rehacer el layout para ser mas usable y ajustable a phone y pcs
       OK mockup
-      cambiar input number por sliders
-      cambiar select por figure selector
+      OK cambiar input number por sliders
+      OK cambiar select por figure selector
+
+### hacer que se muestre el color que viene de la config en el colorpicker
+### hacer que se muestre backgroundColor que viene del tema en el colorpicker
+### centrar el mandala
 
 ### hacer que la configuracion de una layer genere cambios en el mandala
 
@@ -88,6 +89,7 @@ Thanks to [Monica Vera Duran](https://www.linkedin.com/in/monica-vera-duran-91b4
 ### H set history saving to make multiple redo and undo
       - check if cookies could be needed
 
+### remove distance and radius if figure type is lines, y anadir size
 
 --------------------------
 
