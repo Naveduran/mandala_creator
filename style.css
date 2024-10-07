@@ -186,7 +186,7 @@ label {
   flex-direction: row;
   gap: 1em;
   width: 100%;
-  border: grey solid 0.2px;
+  border: lightgray dotted 0.1px;
 }
 .layer-column-a {
   display: flex;
