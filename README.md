@@ -78,11 +78,12 @@ Thanks to [Monica Vera Duran](https://www.linkedin.com/in/monica-vera-duran-91b4
       OK cambiar input number por sliders
       OK cambiar select por figure selector
 
+### hacer que la configuracion de una layer genere cambios en el mandala
+
 ### hacer que se muestre el color que viene de la config en el colorpicker
 ### hacer que se muestre backgroundColor que viene del tema en el colorpicker
+### hacer que se muestre el valor en el select de los tipos de figura
 ### centrar el mandala
-
-### hacer que la configuracion de una layer genere cambios en el mandala
 
 ### M change squares for rectangles en la config de polar
 
@@ -91,7 +92,7 @@ Thanks to [Monica Vera Duran](https://www.linkedin.com/in/monica-vera-duran-91b4
 
 ### remove distance and radius if figure type is lines, y anadir size
 
---------------------------
+## Extras
 
 ### H allow reorganize layers
       OK search icon
@@ -100,6 +101,5 @@ Thanks to [Monica Vera Duran](https://www.linkedin.com/in/monica-vera-duran-91b4
 ### traducir a otros idiomas (O)
 ### M Find buggs with screen reader and accesibility tools
       https://wave.webaim.org/
-### debuggear why no se muestra el valor en el select de los tipos de figura
-### hacer que el colorpicker del background del mandala coincida con el color del tema, o el color del background de la configuracion
+
 
