@@ -254,7 +254,7 @@ label {
 }
 
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1000px) {
   header, main {
     font-size: 1.5vw;
     line-height: 2vw;

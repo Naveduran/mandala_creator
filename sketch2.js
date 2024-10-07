@@ -7,6 +7,7 @@ const initialConfig = {
   size: 900,
   layers: [
     {
+      id: 0,
       name:'Lines',
       strokeColor: 'hsla(130, 0%, 50%, 1)',
       fillColor: null,
@@ -17,6 +18,7 @@ const initialConfig = {
       },
     },
     {
+      id: 1,
       name:'Circle 1',
       strokeColor: null,
       fillColor: 'hsla(239, 100%, 65%, 0.5)',
@@ -28,6 +30,7 @@ const initialConfig = {
       },
     },
     {
+      id: 2,
       name:'Circle 2',
       strokeColor: null,
       fillColor: 'hsla(240, 94%, 72%, 0.5)',
@@ -39,6 +42,7 @@ const initialConfig = {
       },
     },
     {
+      id: 3,
       name:'Circle 3',
       strokeColor: null,
       fillColor: 'hsla(240, 94%, 81%, 0.5)',
@@ -50,6 +54,7 @@ const initialConfig = {
       },
     },
     {
+      id: 4,
       name:'Circle 4',
       strokeColor: null,
       fillColor: 'hsla(54, 86%, 83%, 0.5)',
@@ -61,6 +66,7 @@ const initialConfig = {
       },
     },
     {
+      id: 5,
       name:'Circle 5',
       strokeColor: null,
       fillColor: 'hsla(300, 100%, 90%, 0.5)',
@@ -72,6 +78,7 @@ const initialConfig = {
       },
     },
     {
+      id: 6,
       name:'Details 1',
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
@@ -83,6 +90,7 @@ const initialConfig = {
       },
     },
     {
+      id: 7,
       name:'Circle 6',
       strokeColor: null,
       fillColor: 'hsla(269, 72%, 86%, 0.4)',
@@ -94,6 +102,7 @@ const initialConfig = {
       },
     },
     {
+      id: 8,
       name:'Details 2',
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
@@ -105,6 +114,7 @@ const initialConfig = {
       },
     },
     {
+      id: 9,
       name:'Details 3',
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
@@ -116,6 +126,7 @@ const initialConfig = {
       },
     },
     {
+      id: 10,
       name:'Details 4',
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
@@ -127,6 +138,7 @@ const initialConfig = {
       },
     },
     {
+      id: 11,
       name:'Details 5',
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
@@ -174,12 +186,9 @@ function setup()
 
   let layers = document.getElementById("layers");
 
-  for (let i=0; i<config.layers.length; i++){
-    let id = `layer${i}`
-    let htmlLayer = drawHtmlLayer(config.layers[i], id)
-    layers.appendChild(htmlLayer);
-  }
-
+  config.layers.forEach((layerConfig) => {
+    layers.appendChild(drawHtmlLayer(layerConfig));
+  })
 }
 
 // Iterates trough configuration to draw each layer of the mandala
@@ -191,9 +200,9 @@ function draw() {
   })
 }
 
-function drawHtmlLayer(layerConfig, id){
+function drawHtmlLayer(layerConfig){
   console.log(layerConfig)
-  let layerStructure = ` <div class="layer" id=${id}>
+  let layerStructure = ` <div class="layer" id=${layerConfig.id}>
     <div class="layer-column-a">
       <button class="imagedButton">
         <img class="clickable-button" src="https://img.icons8.com/?size=100&id=25019&format=png&color=000000" alt="move"/>
@@ -203,13 +212,13 @@ function drawHtmlLayer(layerConfig, id){
       <div class="layer-column-b-row-1">
         <div class="layer-column-b-row-1-column-a">
           <label class="row-a"> Fill 
-          <input type="text" data-coloris id="fillColor${id}" name="fillColor" class="color-picker" value=${layerConfig.fillColor}></label>
+          <input type="text" data-coloris id="fillColor${layerConfig.id}" name="fillColor" class="color-picker" value=${layerConfig.fillColor} style="background-color: ${layerConfig.fillColor}"></label>
           <label class="row-a"> Border
-          <input type="text" data-coloris id="borderColor${id}", name="borderColor" class="color-picker", value=${layerConfig.strokeColor}></label>
-          <label class="row-a"> Quantity <input type="number" id="figureNumber${id}" name="figureNumber" value=${layerConfig.figureSettings.total}></input></label>
+          <input type="text" data-coloris id="borderColor${layerConfig.id}", name="borderColor" class="color-picker", value=${layerConfig.strokeColor} style="background-color: ${layerConfig.strokeColor}"></label>
+          <label class="row-a"> Quantity <input type="number" id="figureNumber${layerConfig.id}" name="figureNumber" value=${layerConfig.figureSettings.total}></input></label>
         </div>
         <div class="layer-column-b-row-1-column-b">
-          <select name="figureName" id="figureName${id}", class="clickable-button" value=${layerConfig.figureName}>
+          <select name="figureName" id="figureName${layerConfig.id}" class="clickable-button" value=${layerConfig.figureName}>
             <option value="triangle" >
               &#9651; 
             </option>
@@ -229,8 +238,8 @@ function drawHtmlLayer(layerConfig, id){
         </div>
       </div>
       <div class="layer-column-b-row-2">
-        <label> Size <input type="range" min="1" max="800" id="figureRadius${id}" name="figureRadius" value=${layerConfig.figureSettings.radius}></input></label>
-        <label> Distance <input type="range" min="1" max="800" id="figureDistance${id}" name="figureDistance" value=${layerConfig.figureSettings.distance}></input></label>
+        <label> Size <input type="range" min="1" max="800" id="figureRadius${layerConfig.id}" name="figureRadius" value=${layerConfig.figureSettings.radius}></input></label>
+        <label> Distance <input type="range" min="1" max="800" id="figureDistance${layerConfig.id}" name="figureDistance" value=${layerConfig.figureSettings.distance}></input></label>
       </div>
     </div>
   </div> `
@@ -342,7 +351,7 @@ Coloris({
   forceAlpha: true,
   format: 'hsl',
   onChange: (color, input) => {
-    console.log(color, input)
+    console.log(color, input, typeof(color))
     input.setAttribute(
       'style',
       `background-color:${color}`
