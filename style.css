@@ -243,7 +243,7 @@ label {
   font-size: 4em;
 }
 .layer-column-b-row-1-column-b button {
-  padding-right: 1em;
+  margin-right: 1em;
 }
 .layer-column-b-row-2 {
   display: flex;
@@ -252,7 +252,6 @@ label {
 .layer-column-b-row-2 label {
   width: -webkit-fill-available;
 }
-
 
 @media only screen and (min-width: 1000px) {
   header, main {
