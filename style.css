@@ -41,6 +41,7 @@ main {
   font-size: inherit;
   line-height: inherit;
   align-items: center;
+  padding: 0 0.5em;
 }
 canvas {
   order: 2;
@@ -73,60 +74,15 @@ h1 .accent-2 {
 .layers {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.5em;
+  align-items: flex-start;
+  gap: 1em;
   width: 100%;
   padding: 1em 0;
   box-sizing: border-box;
   font-size: inherit;
   line-height: inherit;
 }
-.layer {
-  display: flex;
-  flex-direction: row;
-  width: inherit;
-  justify-content: center;
-  gap: 0.2em;
-  font-size: inherit;
-  line-height: inherit;
-}
-.layer input {
-  text-align: center;
-  border-radius: 0.3em;
-  padding: 0;
-  background: inherit;
-}
-.layer select {
-  text-align: center;
-  color: inherit;
-  background: inherit;
-}
-option {
-  font-size: 2vw;
-  line-height: 3vw;
-}
-input, select, label {
-  font-size: inherit;
-  line-height: inherit;
-  height: inherit;
-  min-height: fit-content;
-  min-width: 1.8em;
-  font-family: "Open Sans", sans-serif;
-  border: none;
-}
-label {
-  align-content: center;
-  min-width: fit-content;
-}
-select {
-  min-width: fit-content;
-}
-input {
-  min-height: 1.8em;
-  min-width: 1.8em;
-  max-width: 4em;
-}
-button {
+button{
   align-self: center;
   font-family: "Open Sans", sans-serif;
   background-color: #f0a40c;
@@ -167,24 +123,12 @@ button:hover {
   transform: scale(1.1);
 }
 .clickable-button {
-  cursor: pointer;
+  height: auto;
 }
 .imagedButton{
   background-color: transparent;
   padding: 0;
   border-radius: 0.5em;
-}
-select .clickable-button {
-  min-width: fit-content;
-}
-.custom-number-input {
-  width: 40%;
-  display: flex;
-  justify-content: flex-start;
-}
-input#figureNumber {
-  max-width: 1em;
-  color: inherit;
 }
 .line-footer {
   display: flex;
@@ -226,10 +170,82 @@ img {
   height: 2em;
   align-self: center;
 }
-.empty-attribute {
-  min-width: 1.8em;
+input, select, option {
+  font-size: inherit;
+  line-height: inherit;
   max-width: 4em;
+  border: none;
 }
+label {
+  display: flex;
+  padding: 0.2em;
+  justify-content: space-between;
+}
+.layer {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  width: 100%;
+  border: grey solid 0.2px;
+}
+.layer-column-a {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding-left: 1em;
+}
+.layer-column-b {
+  display: flex;
+  flex-direction: column;
+  width: -webkit-fill-available;
+}
+.layer-column-b-row-1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.layer-column-b-row-1-column-a {
+  display: flex;
+  flex-direction: column;
+  width: -webkit-fill-available;
+}
+.layer-column-b-row-1-column-a label {
+  display: flex;
+  flex-direction: row;
+}
+.layer-column-b-row-1-column-a .row-a {
+  padding-right: 1em;
+}
+.layer-column-b-row-1-column-a label .color-picker {
+  color: transparent;
+  max-width: 4em;
+  border: grey solid 0.2px;
+}
+.layer-column-b-row-1-column-a label input {
+  max-width: 4em;
+  text-align: center;
+}
+.layer-column-b-row-1-column-b {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+}
+.layer-column-b-row-1-column-b select {
+  display: flex;
+  flex-direction: column;
+  font-size: 4em;
+}
+.layer-column-b-row-1-column-b button {
+  padding-right: 1em;
+}
+.layer-column-b-row-2 {
+  display: flex;
+  gap: 1.5em;
+}
+.layer-column-b-row-2 label {
+  width: -webkit-fill-available;
+}
+
 
 @media only screen and (min-width: 768px) {
   header, main {

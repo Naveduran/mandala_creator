@@ -63,10 +63,12 @@ function setup()
   }
 
   let layers = document.getElementById("layers");
-  config.layers.forEach((layerConfig) => {
-    let htmlLayer = drawHtmlLayer(layerConfig)
+
+  for (let i=0; i<config.layers.length; i++){
+    let id = `layer${i}`
+    let htmlLayer = drawHtmlLayer(config.layers[i], id)
     layers.appendChild(htmlLayer);
-  })
+  }
 
 }
 
@@ -74,90 +76,61 @@ function setup()
 function draw() {
   background(backgroundColor);
   setCenter(width/2, height/2);
-
   config.layers.forEach((layerConfig) => {
     drawMandalaLayer(layerConfig)
   })
 }
 
-function drawHtmlLayer(layerConfig){
+function drawHtmlLayer(layerConfig, id){
+  console.log(layerConfig)
+  let layerStructure = ` <div class="layer" id=${id}>
+    <div class="layer-column-a">
+      <button class="imagedButton">
+        <img class="clickable-button" src="https://img.icons8.com/?size=100&id=25019&format=png&color=000000" alt="move"/>
+      </button>
+    </div>
+    <div class="layer-column-b">
+      <div class="layer-column-b-row-1">
+        <div class="layer-column-b-row-1-column-a">
+          <label class="row-a"> Fill 
+          <input type="text" data-coloris id="fillColor${id}" name="fillColor" class="color-picker" value=${layerConfig.fillColor}></label>
+          <label class="row-a"> Border
+          <input type="text" data-coloris id="borderColor${id}", name="borderColor" class="color-picker", value=${layerConfig.strokeColor}></label>
+          <label class="row-a"> Quantity <input type="number" id="figureNumber${id}" name="figureNumber" value=${layerConfig.figureSettings.total}></input></label>
+        </div>
+        <div class="layer-column-b-row-1-column-b">
+          <select name="figureName" id="figureName${id}", class="clickable-button" value=${layerConfig.figureName}>
+            <option value="triangle" >
+              &#9651; 
+            </option>
+            <option value="circle" >
+              &#9711; 
+            </option>
+            <option value="line" >
+              /
+            </option>
+            <option value="square" >
+              &#9634; 
+            </option>
+          </select>
+          <button class="imagedButton">
+            <img class="clickable-button" src="https://img.icons8.com/?size=100&id=13758&format=png&color=000000" alt="visibility"/>
+          </button>
+        </div>
+      </div>
+      <div class="layer-column-b-row-2">
+        <label> Size <input type="range" min="1" max="800" id="figureRadius${id}" name="figureRadius" value=${layerConfig.figureSettings.radius}></input></label>
+        <label> Distance <input type="range" min="1" max="800" id="figureDistance${id}" name="figureDistance" value=${layerConfig.figureSettings.distance}></input></label>
+      </div>
+    </div>
+  </div> `
+
+  //console.log(layerStructure)
   let newLayer = document.createElement('div');
   newLayer.setAttribute("class","layer");
-
-  const elementsOfLayer = [
-    {
-      name:"button",
-      attributes:{class: "imagedButton"},
-      children: [{name:"img",attributes: {class:"clickable-button", src:"https://img.icons8.com/?size=100&id=25019&format=png&color=000000", alt:"move"}}]
-    },
-    {
-      name:"input",
-      attributes:{type:"number", id:"figureNumber", name:"figureNumber", value:layerConfig.figureSettings.total},
-    },
-    {/*replaced for size in lines*/
-      name:"input",
-      attributes:{type:"number", id:"figureRadius", name:"figureRadius", value:layerConfig.figureSettings.radius},
-    },
-    {/*removed in lines*/
-      name:"input",
-      attributes:{type:"number", id:"figureDistance", name:"figureDistance", value:layerConfig.figureSettings.distance},
-    },
-    {
-      name:"select",
-      attributes:{name:"figureName", id:"figureName", class:"clickable-button", value:layerConfig.figureName},
-      children:[
-        {name:"option", attributes:{value:"triangle", class:"clickable-button"}, textNode: "Triangles"},
-        {name:"option", attributes:{value:"circle", class:"clickable-button"}, textNode: "Circles"},
-        {name:"option", attributes:{value:"line", class:"clickable-button"}, textNode: "Lines"},
-        {name:"option", attributes:{value:"square", class:"clickable-button"}, textNode: "Squares"},
-      ]
-    },
-    {
-      name:"label",
-      attributes:{for:"borderColor"},
-      textNode: "Border"
-    },
-    {
-      name:"input",
-      attributes:{type:"color", id:"borderColor", name:"borderColor", class:"clickable-button", value:layerConfig.strokeColor},
-    },
-    {
-      name:"label",
-      attributes:{for:"fillColor"},
-      textNode: "Fill"
-    },
-    {
-      name:"input",
-      attributes:{type:"color", id:"fillColor", name:"fillColor", class:"clickable-button", value:layerConfig.fillColor},
-    },
-    {
-      name:"button",
-      attributes:{type:"button", class:"plus-button"},
-      textNode: "+"
-    },
-    {
-      name:"button",
-      attributes:{class: "imagedButton"},
-      children: [{name:"img", attributes: {class:"clickable-button", src:"https://img.icons8.com/?size=100&id=13758&format=png&color=000000", alt:"visibility"}}]
-    },
-  ]
-
-  /*if line, then remove radius and distance and add size*/ 
-  if(layerConfig.figureName == 'line'){
-
-    elementsOfLayer[2] = {name:"input", attributes:{type:"number", id:"figureSize", name:"figureSize", value:layerConfig.figureSettings.size}},
-    elementsOfLayer[3] = {name:"div", attributes:{class:"empty-attribute"}}
-  }
-
-  for (let element of elementsOfLayer) {
-    if (element){
-      htmlElement = createHtmlElement(element, layerConfig)
-      newLayer.appendChild(htmlElement);
-    }
-  }
+  newLayer.innerHTML = layerStructure
   return newLayer
 }
-
 
 function createHtmlElement(element, layer){
   // Creates an html element with it's attributes
@@ -194,8 +167,6 @@ function createHtmlElement(element, layer){
   }
   return htmlElement
 }
-
-
 
 
 // Use the received layer configuration to draw the described figures with its respective border and fill color
@@ -256,3 +227,15 @@ const figures = {
 
 function figuresNames() {return Object.keys(figures)}
 function figuresNumber() {return Object.keys(figures).length}
+
+Coloris({
+  forceAlpha: true,
+  format: 'hsl',
+  onChange: (color, input) => {
+    console.log(color, input)
+    input.setAttribute(
+      'style',
+      `background-color:${color}`
+    )
+  }
+});

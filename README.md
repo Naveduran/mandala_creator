@@ -60,44 +60,44 @@ Thanks to [Monica Vera Duran](https://www.linkedin.com/in/monica-vera-duran-91b4
 ### OK permitir cambiar distancia de las figuras
 ### OK debuggear why no se muestra el COLOR en el fillcolor
 
-### asignar ids unicos a cada elemento html del main 
-
-### debuggear why no se muestra el valor en el select de los tipos de figura
-
 ### OK remove distance and radius if figure type is lines, y anadir size
 
+### OK ponerle limite al numero, radio, y distancia de las figuras
+      OK quedan descartados porque es mas usable con sliders
+
+### OK crear un mandala default con colores legibles en formato rgb
+      OK research 
+      OK ya no es necesario porque es mejor un color picker con rgba o hsla 
+
+### Habilitar alpha channel para los color picker?
+      OK general research
+      OK play with https://github.com/mdbassit/Coloris
+      - play with http://www.dematte.at/tinyColorPicker/
+
+### asignar ids unicos a cada elemento html del main 
+
+### rehacer el layout para ser mas usable y ajustable a phone y pcs
+      OK mockup
+      cambiar input number por sliders
+      cambiar select por figure selector
+
 ### hacer que la configuracion de una layer genere cambios en el mandala
-      - input de cantidad de figuras con sus botones
-      - select de tipo de figura
-      - select de tamanio de figura
-      - select de distancia de figura
-      - selector de color de borde
-      - selector de color de figura
-      - boton para generar nueva layer
 
 ### M change squares for rectangles en la config de polar
+
+### H set history saving to make multiple redo and undo
+      - check if cookies could be needed
+
+
+--------------------------
 
 ### H allow reorganize layers
       OK search icon
       OK get it into layers automatic creation system
       - make it work
- 
-### H Habilitar alpha channel para los color picker?
-     - https://stackoverflow.com/questions/40280110/how-to-add-transparency-to-a-value-from-a-html-input-type-color-field-in-css
-
-### H set history saving to make multiple redo and undo
-      - check if cookies could be needed
-
-### M Find buggs with screen reader
-
-### E permitir que una layer tenga un layout de dos lineas 
-
-### E use saveCanvas() to download the imag
-
-### boton para ver una sola layer a la vez
-      E icon
-      E insert
-
 ### traducir a otros idiomas (O)
+### M Find buggs with screen reader and accesibility tools
+      https://wave.webaim.org/
+### debuggear why no se muestra el valor en el select de los tipos de figura
+### hacer que el colorpicker del background del mandala coincida con el color del tema, o el color del background de la configuracion
 
-### crear un mandala default con colores legibles en formato rgb
