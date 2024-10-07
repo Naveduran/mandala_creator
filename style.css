@@ -45,6 +45,7 @@ main {
 }
 canvas {
   order: 2;
+  align-self: center;
 }
 h1 {
   font-family: "Sacramento", cursive;
@@ -154,11 +155,13 @@ button:hover {
 .config label {
   font-size: inherit;
   line-height: inherit;
+  width: fit-content;
 }
 .config select {
   font-size: inherit;
   line-height: inherit;
   color: inherit;
+  min-width: fit-content;
 }
 .config select option{
   font-size: inherit;
@@ -175,6 +178,9 @@ input, select, option {
   line-height: inherit;
   max-width: 4em;
   border: none;
+}
+option {
+  text-align: center;
 }
 label {
   display: flex;
@@ -215,6 +221,7 @@ label {
 }
 .layer-column-b-row-1-column-a .row-a {
   padding-right: 1em;
+  padding: -0.2em;
 }
 .layer-column-b-row-1-column-a label .color-picker {
   color: transparent;

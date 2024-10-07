@@ -84,11 +84,12 @@ Thanks to [Monica Vera Duran](https://www.linkedin.com/in/monica-vera-duran-91b4
 ### hacer que se muestre backgroundColor que viene del tema en el colorpicker
 ### hacer que se muestre el valor en el select de los tipos de figura
 ### centrar el mandala
+### volver a poner la configuracion del mandala default
 
 ### M change squares for rectangles en la config de polar
 
 ### H set history saving to make multiple redo and undo
-      - check if cookies could be needed
+      - check if cookies could be needed 
 
 ### remove distance and radius if figure type is lines, y anadir size
 
