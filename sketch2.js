@@ -152,7 +152,11 @@ const initialConfig = {
   ]
 }
 
-const config = initialConfig
+// we work over config, and we touch initialConfig only to save a permanent version
+
+let history = [initialConfig]
+let currentIndex = 0
+
 
 // Resize the canvas when the browser's size changes.
 function windowResized() {
@@ -186,7 +190,7 @@ function setup()
 
   let layers = document.getElementById("layers");
 
-  config.layers.forEach((layerConfig) => {
+  history[currentIndex].layers.forEach((layerConfig) => {
     layers.appendChild(drawHtmlLayer(layerConfig));
   })
 }
@@ -195,13 +199,12 @@ function setup()
 function draw() {
   background(backgroundColor);
   setCenter(width/2, height/2);
-  config.layers.forEach((layerConfig) => {
+  history[currentIndex].layers.forEach((layerConfig) => {
     drawMandalaLayer(layerConfig)
   })
 }
 
 function drawHtmlLayer(layerConfig){
-  console.log(layerConfig)
   let layerStructure = ` <div class="layer" id=${layerConfig.id}>
     <div class="layer-column-a">
       <button class="imagedButton">
@@ -212,13 +215,13 @@ function drawHtmlLayer(layerConfig){
       <div class="layer-column-b-row-1">
         <div class="layer-column-b-row-1-column-a">
           <label class="row-a"> Fill 
-          <input type="text" data-coloris id="fillColor${layerConfig.id}" name="fillColor" class="color-picker" value=${layerConfig.fillColor} style="background-color: ${layerConfig.fillColor}"></label>
+          <input type="text" data-coloris id="fillColor-${layerConfig.id}" name="fillColor" class="color-picker" value=${layerConfig.fillColor} style="background-color: ${layerConfig.fillColor}"></label>
           <label class="row-a"> Border
-          <input type="text" data-coloris id="borderColor${layerConfig.id}", name="borderColor" class="color-picker", value=${layerConfig.strokeColor} style="background-color: ${layerConfig.strokeColor}"></label>
-          <label class="row-a"> Quantity <input type="number" id="figureNumber${layerConfig.id}" name="figureNumber" value=${layerConfig.figureSettings.total}></input></label>
+          <input type="text" data-coloris id="strokeColor-${layerConfig.id}", name="strokeColor" class="color-picker", value=${layerConfig.strokeColor} style="background-color: ${layerConfig.strokeColor}"></label>
+          <label class="row-a"> Quantity <input type="number" id="figureNumber-${layerConfig.id}" name="figureNumber" value=${layerConfig.figureSettings.total}></input></label>
         </div>
         <div class="layer-column-b-row-1-column-b">
-          <select name="figureName" id="figureName${layerConfig.id}" class="clickable-button" value=${layerConfig.figureName}>
+          <select name="figureName" id="figureName-${layerConfig.id}" class="clickable-button" value=${layerConfig.figureName} >
             <option value="triangle" >
               &#9651; 
             </option>
@@ -244,53 +247,14 @@ function drawHtmlLayer(layerConfig){
     </div>
   </div> `
 
-  //console.log(layerStructure)
   let newLayer = document.createElement('div');
   newLayer.setAttribute("class","layer");
   newLayer.innerHTML = layerStructure
   return newLayer
 }
 
-function createHtmlElement(element, layer){
-  // Creates an html element with it's attributes
-  // it's children and text node
-
-  console.log(element)
-
-  let eName = element.name
-  let eAtts = element.attributes
-  let eChildren = element.children
-  let eText = element.textNode
-  let htmlElement = document.createElement(eName);
-
-  if (eAtts){
-    eAtts = Object.entries(eAtts)
-    for (let i = 0; i < eAtts.length; i++){
-      htmlElement.setAttribute(
-        eAtts[i][0],
-        eAtts[i][1]
-      );
-    }
-  }
-  if (eChildren){
-    b = eChildren
-    for (let child of eChildren){
-      a = child
-      let newChild = createHtmlElement(child)
-      htmlElement.appendChild(newChild)
-    }
-  }
-  if (eText){
-    let text = document.createTextNode(eText);
-    htmlElement.appendChild(text);
-  }
-  return htmlElement
-}
-
-
 // Use the received layer configuration to draw the described figures with its respective border and fill color
 function drawMandalaLayer(layer){
-    //console.log('layer:', layer.name,'\nstroke:',layer.strokeColor,'\nfill:', layer.fillColor,'\nfigure: ', layer.figureName, '\nsettings: ', layer.figureSettings)
     if (layer.strokeColor){stroke(layer.strokeColor);
     } else {noStroke();}
 
@@ -351,10 +315,12 @@ Coloris({
   forceAlpha: true,
   format: 'hsl',
   onChange: (color, input) => {
-    console.log(color, input, typeof(color))
+    // change background color and save in history
     input.setAttribute(
       'style',
       `background-color:${color}`
     )
+    let figureId = input.id.slice(input.id.indexOf("-") + 1)
   }
 });
+
