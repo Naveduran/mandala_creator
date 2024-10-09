@@ -7,6 +7,7 @@ Select forms and color and a number of layers to create your own mandalas.
 Test it!
 
 Click here to make your own [Mandala](https://naveduran.github.io/mandala_creator/)
+> This project is currently in progress, some function can be unavailable.
 
 ## Credits
 
@@ -14,7 +15,6 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
 
 ## Progress
 
-This project first version is currently in progress. 
 
 - OK Crear mandala por defecto
 
