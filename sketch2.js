@@ -314,18 +314,20 @@ function figuresNumber() {return Object.keys(figures).length}
 Coloris({
   forceAlpha: true,
   format: 'hsl',
-  onChange: (color, input) => {
-    // change background color and save in history
-    input.setAttribute(
-      'style',
-      `background-color:${color}`
-    )
-    let figureId = input.id.slice(input.id.indexOf("-") + 1)
-    // use input to identify the attribute to change
-    console.log(input)
-    // use figure id to make changes in the last index of newhistory
-  }
+  onChange: (color, input) => onChangeColor(color, input)
 });
+
+function onChangeColor(color, input){
+  // change background color and save in history
+  input.setAttribute(
+    'style',
+    `background-color:${color}`
+  )
+  let figureId = input.id.slice(input.id.indexOf("-") + 1)
+  // use input to identify the attribute to change
+  console.log(input)
+  // use figure id to make changes in the last index of newhistory
+}
 
 function undo() {
   if (currentIndex > 0) {
