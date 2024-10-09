@@ -334,6 +334,7 @@ function onChangeColor(color, input){
   input.setAttribute('style',`background-color:${color}`)
 }
 
+
 function undo() {
   if (currentIndex > 0) {
     currentIndex -= 1
@@ -351,7 +352,6 @@ function saveOnHistory(newConfig) {
   currentIndex += 1
   draw()
   drawHtmlAgain()
-  
 }
 
 function drawHtmlAgain(){

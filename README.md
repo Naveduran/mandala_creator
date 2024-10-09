@@ -164,6 +164,7 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
 
 
 
+
 - conditional format for undo a redo buttons
 
 - undo active only if currentIndex > 0
