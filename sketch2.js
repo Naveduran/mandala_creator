@@ -2,6 +2,7 @@
 
 let backgroundColorInput;
 let backgroundColor = "#ffffff"
+let a;
 
 const initialConfig = {
   size: 900,
@@ -188,11 +189,7 @@ function setup()
     backgroundColor = "#000000"
   }
 
-  let layers = document.getElementById("layers");
-
-  history[currentIndex].layers.forEach((layerConfig) => {
-    layers.appendChild(drawHtmlLayer(layerConfig));
-  })
+  setupHtmlLayers()
 }
 
 // Iterates trough configuration to draw each layer of the mandala
@@ -204,8 +201,16 @@ function draw() {
   })
 }
 
+function setupHtmlLayers() {
+  let layers = document.getElementById("layers");
+
+  history[currentIndex].layers.forEach((layerConfig) => {
+    layers.appendChild(drawHtmlLayer(layerConfig));
+  })
+}
+
 function drawHtmlLayer(layerConfig){
-  let layerStructure = ` <div class="layer" id=${layerConfig.id}>
+  let layerStructure = `
     <div class="layer-column-a">
       <button class="imagedButton">
         <img class="clickable-button" src="https://img.icons8.com/?size=100&id=25019&format=png&color=000000" alt="move"/>
@@ -244,11 +249,11 @@ function drawHtmlLayer(layerConfig){
         <label> Size <input type="range" min="1" max="800" id="figureRadius${layerConfig.id}" name="figureRadius" value=${layerConfig.figureSettings.radius}></input></label>
         <label> Distance <input type="range" min="1" max="800" id="figureDistance${layerConfig.id}" name="figureDistance" value=${layerConfig.figureSettings.distance}></input></label>
       </div>
-    </div>
-  </div> `
+    </div>`
 
   let newLayer = document.createElement('div');
-  newLayer.setAttribute("class","layer");
+  newLayer.setAttribute("class", "layer");
+  newLayer.setAttribute("id", layerConfig.id);
   newLayer.innerHTML = layerStructure
   return newLayer
 }
@@ -318,15 +323,15 @@ Coloris({
 });
 
 function onChangeColor(color, input){
-  // change background color and save in history
-  input.setAttribute(
-    'style',
-    `background-color:${color}`
-  )
+
+  let attribute = input.name
   let figureId = input.id.slice(input.id.indexOf("-") + 1)
-  // use input to identify the attribute to change
-  console.log(input)
-  // use figure id to make changes in the last index of newhistory
+
+  let newConfig = history[currentIndex]
+  newConfig.layers[figureId][attribute] = color
+  saveOnHistory(newConfig)
+
+  input.setAttribute('style',`background-color:${color}`)
 }
 
 function undo() {
@@ -341,10 +346,20 @@ function redo() {
   }
 }
 
-function onChange(){
-  let newConfig = history[currentIndex]
-  // como identificar que cambio y donde lo vamos a poner?
-  // console.log(e)
+function saveOnHistory(newConfig) {
   history[currentIndex + 1] = newConfig
   currentIndex += 1
+  draw()
+  drawHtmlAgain()
+  
+}
+
+function drawHtmlAgain(){
+  let oldLayers = document.getElementById("layers")
+  let newLayers = document.createElement('div');
+  newLayers.setAttribute("class", "layers");
+  newLayers.setAttribute("id", "layers");
+  oldLayers.replaceWith(newLayers)
+
+  setupHtmlLayers()
 }

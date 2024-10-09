@@ -138,7 +138,7 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
 
 - OK poner tooltip a los botones de la primera linea
 
-- set history saving to make multiple redo and undo
+- OK set history saving to make multiple redo and undo
 
 >OK design solution plan
 
@@ -148,18 +148,21 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
 
 >OK redo active only if History.length > currentIndex
 
->onChange save in history, increment history and remove next indexes
+- hacer que la configuracion de una layer genere cambios en el mandala
 
->- color
+> OK onChange save in history
+> OK increment hindex
+
+>OK color
 
 >- sliders
 
 >- quantity
 
 >- figure
-  
-  
-  
+> remove next indexes
+
+
 
 - conditional format for undo a redo buttons
 
@@ -169,7 +172,6 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
 
 - add functions to the buttons and test
 
-- hacer que la configuracion de una layer genere cambios en el mandala
 
 - definir rangos para tamanio y distancia
 
