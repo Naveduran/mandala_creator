@@ -321,26 +321,28 @@ Coloris({
       `background-color:${color}`
     )
     let figureId = input.id.slice(input.id.indexOf("-") + 1)
+    // use input to identify the attribute to change
+    console.log(input)
+    // use figure id to make changes in the last index of newhistory
   }
 });
 
-
 function undo() {
-  if (currentIndex > 0){
+  if (currentIndex > 0) {
     currentIndex -= 1
   }
 }
 
 function redo() {
-  if(History.length > currentIndex) {
+  if (History.length > currentIndex) {
     currentIndex += 1
   }
 }
 
-function onChange(e){
+function onChange(){
   let newConfig = history[currentIndex]
   // como identificar que cambio y donde lo vamos a poner?
-  //console.log(e)
+  // console.log(e)
   history[currentIndex + 1] = newConfig
   currentIndex += 1
 }
