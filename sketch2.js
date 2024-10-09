@@ -324,3 +324,23 @@ Coloris({
   }
 });
 
+
+function undo() {
+  if (currentIndex > 0){
+    currentIndex -= 1
+  }
+}
+
+function redo() {
+  if(History.length > currentIndex) {
+    currentIndex += 1
+  }
+}
+
+function onChange(e){
+  let newConfig = history[currentIndex]
+  // como identificar que cambio y donde lo vamos a poner?
+  //console.log(e)
+  history[currentIndex + 1] = newConfig
+  currentIndex += 1
+}
