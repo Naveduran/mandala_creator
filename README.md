@@ -111,10 +111,14 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
       > crear funcion createNewLayer()
 
 - remove next indexes when redo
-- conditional format for undo a redo buttons
+
 - hacer que se muestre backgroundColor que viene del tema en el colorpicker
+
 - BUG too much trigger of save history when pick colors 
 - BUG change squares for rectangles en la config de polar
+
+- conditional format for undo a redo buttons
+
 - allow download image
 - allow saving configuration
 
