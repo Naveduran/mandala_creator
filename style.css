@@ -254,6 +254,10 @@ label {
 .layer-column-b-row-2 label {
   width: -webkit-fill-available;
 }
+.layer-buttons {
+  display: flex;
+  flex-direction: row;
+}
 
 @media only screen and (min-width: 1000px) {
   header, main {

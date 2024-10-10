@@ -7,7 +7,6 @@ const initialConfig = {
   size: 900,
   layers: [
     {
-      id: 0,
       name:'Lines',
       strokeColor: 'hsla(130, 0%, 50%, 1)',//OK
       fillColor: null,//OK
@@ -17,7 +16,6 @@ const initialConfig = {
       distance: 0
     },
     {
-      id: 1,
       name:'Circle 1',
       strokeColor: null,
       fillColor: 'hsla(239, 100%, 65%, 0.5)',
@@ -28,7 +26,6 @@ const initialConfig = {
       
     },
     {
-      id: 2,
       name:'Circle 2',
       strokeColor: null,
       fillColor: 'hsla(240, 94%, 72%, 0.5)',
@@ -39,7 +36,6 @@ const initialConfig = {
       
     },
     {
-      id: 3,
       name:'Circle 3',
       strokeColor: null,
       fillColor: 'hsla(240, 94%, 81%, 0.5)',
@@ -50,7 +46,6 @@ const initialConfig = {
       
     },
     {
-      id: 4,
       name:'Circle 4',
       strokeColor: null,
       fillColor: 'hsla(54, 86%, 83%, 0.5)',
@@ -60,7 +55,6 @@ const initialConfig = {
       distance: 80
     },
     {
-      id: 5,
       name:'Circle 5',
       strokeColor: null,
       fillColor: 'hsla(300, 100%, 90%, 0.5)',
@@ -71,7 +65,6 @@ const initialConfig = {
       
     },
     {
-      id: 6,
       name:'Details 1',
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
@@ -81,7 +74,6 @@ const initialConfig = {
       distance: 40
     },
     {
-      id: 7,
       name:'Circle 6',
       strokeColor: null,
       fillColor: 'hsla(269, 72%, 86%, 0.4)',
@@ -91,7 +83,6 @@ const initialConfig = {
       distance: 35
     },
     {
-      id: 8,
       name:'Details 2',
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
@@ -101,7 +92,6 @@ const initialConfig = {
       distance: 60
     },
     {
-      id: 9,
       name:'Details 3',
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
@@ -111,7 +101,6 @@ const initialConfig = {
       distance: 175
     },
     {
-      id: 10,
       name:'Details 4',
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
@@ -121,7 +110,6 @@ const initialConfig = {
       distance: 80
     },
     {
-      id: 11,
       name:'Details 5',
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
@@ -185,12 +173,13 @@ function draw() {
 function setupHtmlLayers() {
   let layers = document.getElementById("layers");
 
-  history[currentIndex].layers.forEach((layerConfig) => {
-    layers.appendChild(drawHtmlLayer(layerConfig));
-  })
+  for (let i = 0; i < history[currentIndex].layers.length; i++) {
+    layers.appendChild(drawHtmlLayer(history[currentIndex].layers[i], i));
+  }
+
 }
 
-function drawHtmlLayer(layerConfig){
+function drawHtmlLayer(layerConfig, layerId){
   let layerStructure = `
     <div class="layer-column-a">
       <button class="imagedButton">
@@ -201,13 +190,13 @@ function drawHtmlLayer(layerConfig){
       <div class="layer-column-b-row-1">
         <div class="layer-column-b-row-1-column-a">
           <label class="row-a"> Fill 
-          <input type="text" data-coloris id="fillColor-${layerConfig.id}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}"></label>
+          <input type="text" data-coloris id="fillColor-${layerId}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}"></label>
           <label class="row-a"> Border
-          <input type="text" data-coloris id="strokeColor-${layerConfig.id}", name="strokeColor" class="color-picker", value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}"></label>
-          <label class="row-a"> Quantity <input type="number" id="figureNumber-${layerConfig.id}" name="figureNumber" value="${layerConfig.total}" onchange="onChangeQuantity(${layerConfig.id}, value)" ></input></label>
+          <input type="text" data-coloris id="strokeColor-${layerId}", name="strokeColor" class="color-picker", value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}"></label>
+          <label class="row-a"> Quantity <input type="number" id="figureNumber-${layerId}" name="figureNumber" value="${layerConfig.total}" onchange="onChangeQuantity(${layerId}, value)" ></input></label>
         </div>
         <div class="layer-column-b-row-1-column-b">
-          <select name="figureName" id="figureName-${layerConfig.id}" class="clickable-button" value="${layerConfig.figureName}" onchange="onChangeDefault(${layerConfig.id}, 'figureName', value)">
+          <select name="figureName" id="figureName-${layerId}" class="clickable-button" value="${layerConfig.figureName}" onchange="onChangeDefault(${layerId}, 'figureName', value)">
             <option value="triangle" ${layerConfig.figureName ==='triangle' ? "selected": ""}>
               &#9651; 
             </option>
@@ -215,26 +204,29 @@ function drawHtmlLayer(layerConfig){
               &#9711; 
             </option>
             <option value="line" ${layerConfig.figureName ==='line' ? "selected": ""}>
-               /
+              &nbsp;/
             </option>
             <option value="square" ${layerConfig.figureName ==='square' ? "selected": ""}>
               &#9634; 
             </option>
           </select>
+          <div class="layer-buttons">
           <button class="imagedButton">
             <img class="clickable-button" src="https://img.icons8.com/?size=100&id=13758&format=png&color=000000" alt="visibility"/>
           </button>
+          <button class="imagedButton" title="Reset" onclick="removeLayer(${layerId})"><img src="https://img.icons8.com/?size=100&id=74176&format=png&color=000000" alt="remove this layer" class="clickable-button"/></button>
+          </div>
         </div>
       </div>
       <div class="layer-column-b-row-2">
-        <label> Radius <input type="range" min="0" max="250" id="figureRadius${layerConfig.id}" name="figureRadius" value=${layerConfig.radius} onchange="onChangeDefault(${layerConfig.id}, 'radius', value)"></input></label>
-        <label> Distance <input type="range" min="0" max="300" id="figureDistance${layerConfig.id}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerConfig.id}, 'distance', value)"></input></label>
+        <label> Radius <input type="range" min="0" max="250" id="figureRadius${layerId}" name="figureRadius" value=${layerConfig.radius} onchange="onChangeDefault(${layerId}, 'radius', value)"></input></label>
+        <label> Distance <input type="range" min="0" max="400" id="figureDistance${layerId}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerId}, 'distance', value)"></input></label>
       </div>
     </div>`
 
   let newLayer = document.createElement('div');
   newLayer.setAttribute("class", "layer");
-  newLayer.setAttribute("id", layerConfig.id);
+  newLayer.setAttribute("id", layerId);
   newLayer.innerHTML = layerStructure
   return newLayer
 }
@@ -390,4 +382,9 @@ function cleanAll(){
   let oneLayer = history[currentIndex].layers[0]
   newConfig.layers = [oneLayer]
   saveOnHistory(newConfig)
+}
+
+function removeLayer(figureId) {
+  console.log(figureId)
+
 }

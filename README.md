@@ -97,14 +97,19 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
       > OK figure
 
 - permitir borrar una layer
-      > anadir icono
+      >OK anadir icono
       > crear funcion removeLayer() y tener en cuenta los ids
 
 - permitir cambiar el orden de las layers
       > OK icono
-      > crear funcion reorgLayer() y tener en cuenta los ids
+      > cambiar a dos iconos, uno fleccha arriba y otro hacia abajo
+      > dar estilo a css
+      > crear funcion moveLayer() y tener en cuenta los ids
 
 - allow add new layer at the end
+      > OK icono
+      > crear funcion createNewLayer()
+
 - remove next indexes when redo
 - conditional format for undo a redo buttons
 - hacer que se muestre backgroundColor que viene del tema en el colorpicker
