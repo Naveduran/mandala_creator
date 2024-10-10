@@ -88,7 +88,7 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
 - OK move add layer button to bottom
 - OK add trash button
 
-- hacer que la configuracion de una layer genere cambios en el mandala
+- OK hacer que la configuracion de una layer genere cambios en el mandala
       > OK onChange save in history
       > OK increment index
       > OK color
@@ -96,27 +96,24 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
       > OK sliders
       > OK figure
 
+- permitir borrar una layer
+      > anadir icono
+      > crear funcion removeLayer() y tener en cuenta los ids
+
+- permitir cambiar el orden de las layers
+      > OK icono
+      > crear funcion reorgLayer() y tener en cuenta los ids
+
 - remove next indexes when redo
 - conditional format for undo a redo buttons
-- debug too much trigger of save history when pick colors 
 - hacer que se muestre backgroundColor que viene del tema en el colorpicker
-- M change squares for rectangles en la config de polar
-- remove distance and radius if figure type is lines, y anadir size
+- BUG too much trigger of save history when pick colors 
+- BUG change squares for rectangles en la config de polar
 
 ## Extras
 
-- H allow reorganize layers
-
->OK search icon
-
->OK get it into layers automatic creation system
-
-- make it work
-
 - traducir a otros idiomas (O)
-
 - M Find buggs with screen reader and accesibility tools
-
->https://wave.webaim.org/
+      >https://wave.webaim.org/
 
 - poner tooltip al ojito de visibilidad
