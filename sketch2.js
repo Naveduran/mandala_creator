@@ -12,10 +12,9 @@ const initialConfig = {
       strokeColor: 'hsla(130, 0%, 50%, 1)',//OK
       fillColor: null,//OK
       figureName: 'line',
-      figureSettings: {
-        total: 4,
-        size: 180
-      },
+      total: 4,
+      radius: 180,
+      distance: 0
     },
     {
       id: 1,
@@ -23,11 +22,10 @@ const initialConfig = {
       strokeColor: null,
       fillColor: 'hsla(239, 100%, 65%, 0.5)',
       figureName: 'circle',
-      figureSettings: {
-        total: 14,
-        radius: 50,
-        distance: 165
-      },
+      total: 14,
+      radius: 50,
+      distance: 165
+      
     },
     {
       id: 2,
@@ -35,11 +33,10 @@ const initialConfig = {
       strokeColor: null,
       fillColor: 'hsla(240, 94%, 72%, 0.5)',
       figureName: 'circle',
-      figureSettings: {
-        total: 10,
-        radius: 35,
-        distance: 135
-      },
+      total: 10,
+      radius: 35,
+      distance: 135
+      
     },
     {
       id: 3,
@@ -47,11 +44,10 @@ const initialConfig = {
       strokeColor: null,
       fillColor: 'hsla(240, 94%, 81%, 0.5)',
       figureName: 'circle',
-      figureSettings: {
-        radius: 60,
-        total: 10,
-        distance: 80
-      },
+      radius: 60,
+      total: 10,
+      distance: 80
+      
     },
     {
       id: 4,
@@ -59,11 +55,9 @@ const initialConfig = {
       strokeColor: null,
       fillColor: 'hsla(54, 86%, 83%, 0.5)',
       figureName: 'circle',
-      figureSettings: {
-        radius: 30,
-        total: 10,
-        distance: 80
-      },
+      radius: 30,
+      total: 10,
+      distance: 80
     },
     {
       id: 5,
@@ -71,11 +65,10 @@ const initialConfig = {
       strokeColor: null,
       fillColor: 'hsla(300, 100%, 90%, 0.5)',
       figureName: 'circle',
-      figureSettings: {
-        total: 5,
-        radius: 40,
-        distance: 35
-      },
+      total: 5,
+      radius: 40,
+      distance: 35
+      
     },
     {
       id: 6,
@@ -83,11 +76,9 @@ const initialConfig = {
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
       figureName: 'circle',
-      figureSettings: {
-        total: 12,
-        radius: 8,
-        distance: 40
-      },
+      total: 12,
+      radius: 8,
+      distance: 40
     },
     {
       id: 7,
@@ -95,11 +86,9 @@ const initialConfig = {
       strokeColor: null,
       fillColor: 'hsla(269, 72%, 86%, 0.4)',
       figureName: 'circle',
-      figureSettings: {
-        total: 5,
-        radius: 20,
-        distance: 35
-      },
+      total: 5,
+      radius: 20,
+      distance: 35
     },
     {
       id: 8,
@@ -107,11 +96,9 @@ const initialConfig = {
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
       figureName: 'triangle',
-      figureSettings: {
-        total: 4,
-        radius: 6,
-        distance: 60
-      },
+      total: 4,
+      radius: 6,
+      distance: 60
     },
     {
       id: 9,
@@ -119,11 +106,9 @@ const initialConfig = {
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
       figureName: 'triangle',
-      figureSettings: {
-        total: 4,
-        radius: 10,
-        distance: 175
-      },
+      total: 4,
+      radius: 10,
+      distance: 175
     },
     {
       id: 10,
@@ -131,11 +116,9 @@ const initialConfig = {
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
       figureName: 'square',
-      figureSettings: {
-        total: 8,
-        radius: 2,
-        distance: 80
-      },
+      total: 8,
+      radius: 2,
+      distance: 80
     },
     {
       id: 11,
@@ -143,11 +126,9 @@ const initialConfig = {
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
       figureName: 'square',
-      figureSettings: {
-        total: 4,
-        radius: 5,
-        distance: 150
-      },
+      total: 4,
+      radius: 5,
+      distance: 150
     },
   ]
 }
@@ -178,7 +159,7 @@ function setup()
 {
   createCanvas(900,900);
   windowResized()
-  frameRate(100);
+  frameRate(1);
   // Allow changing the background color of the canvas
   backgroundColorInput = document.querySelector("#backgroundColorInput");
   backgroundColorInput.addEventListener("input", updateCanvasColor, false);
@@ -223,10 +204,10 @@ function drawHtmlLayer(layerConfig){
           <input type="text" data-coloris id="fillColor-${layerConfig.id}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}"></label>
           <label class="row-a"> Border
           <input type="text" data-coloris id="strokeColor-${layerConfig.id}", name="strokeColor" class="color-picker", value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}"></label>
-          <label class="row-a"> Quantity <input type="number" id="figureNumber-${layerConfig.id}" name="figureNumber" value=${layerConfig.figureSettings.total}></input></label>
+          <label class="row-a"> Quantity <input type="number" id="figureNumber-${layerConfig.id}" name="figureNumber" value="${layerConfig.total}" onchange="onChangeQuantity(${layerConfig.id}, value)" ></input></label>
         </div>
         <div class="layer-column-b-row-1-column-b">
-          <select name="figureName" id="figureName-${layerConfig.id}" class="clickable-button" value="${layerConfig.figureName}" >
+          <select name="figureName" id="figureName-${layerConfig.id}" class="clickable-button" value="${layerConfig.figureName}">
             <option value="triangle" ${layerConfig.figureName ==='triangle' ? "selected": ""}>
               &#9651; 
             </option>
@@ -246,8 +227,9 @@ function drawHtmlLayer(layerConfig){
         </div>
       </div>
       <div class="layer-column-b-row-2">
-        <label> Size <input type="range" min="1" max="800" id="figureRadius${layerConfig.id}" name="figureRadius" value=${layerConfig.figureSettings.radius}></input></label>
-        <label> Distance <input type="range" min="1" max="800" id="figureDistance${layerConfig.id}" name="figureDistance" value=${layerConfig.figureSettings.distance}></input></label>
+        <label> Size <input type="range" min="0" max="400" id="figureSize${layerConfig.id}" name="figureSize" value=${layerConfig.size}></input></label>
+        <label> Radius <input type="range" min="0" max="400" id="figureRadius${layerConfig.id}" name="figureRadius" value=${layerConfig.radius}></input></label>
+        <label> Distance <input type="range" min="0" max="400" id="figureDistance${layerConfig.id}" name="figureDistance" value=${layerConfig.distance}></input></label>
       </div>
     </div>`
 
@@ -266,43 +248,43 @@ function drawMandalaLayer(layer){
     if (layer.fillColor){fill(layer.fillColor);
     } else {noFill();}
 
-    drawFigures(layer.figureName, layer.figureSettings)
+    drawFigures(layer.figureName, layer)
 }
 
 // Run the function that creates a figure
-function drawFigures(figureName, figureSettings){
-  figures[figureName](figureSettings)
+function drawFigures(figureName, layer){
+  figures[figureName](layer)
 }
 
 // Contains the figures name with its correspondent function
 const figures = {
-  'line': function lines({total, size, distance=0}){
-    for (line=0; line < total; line++){
-      let angle = (360 /total)*line;
+  'line': function lines(layer){
+    for (line=0; line < layer.total; line++){
+      let angle = (360 /layer.total)*line;
       try {
-        polarLine(angle, size, distance);
+        polarLine(angle, layer.radius, layer.distance);
       } catch (error) {
         console.error(error);
       }
     }
   },
-  'circle': function circles({total, radius, distance=0}){
+  'circle': function circles(layer){
     try {
-      polarEllipses(total, radius, radius, distance);
+      polarEllipses(layer.total, layer.radius, layer.radius, layer.distance);
     } catch (error) {
       console.error(error);
     }
   },
-  'triangle': function triangle({total, radius, distance=0}){
+  'triangle': function triangle(layer){
     try {
-      polarTriangles(total, radius, distance);
+      polarTriangles(layer.total, layer.radius, layer.distance);
     } catch (error) {
       console.error(error);
     }
   },
-  'square':  function square({total, radius, distance=0}){
+  'square':  function square(layer){
     try {
-      //polarSquares(total, radius, distance);
+      //polarSquares(layer.total, layer.radius, layer.distance);
     } catch (error) {
       console.error(error);
     }
@@ -336,8 +318,8 @@ Coloris({
 });
 
 function onChangeColor(color, input){
-// bug... it is saving too much times
-
+  // bug: it is triggered too much times
+  // this if reduced the amount but not enough
   if (lastChange >= (Date.now() - delay)){
     return;
   }
@@ -358,6 +340,14 @@ function onChangeSlider(color, input){
   console.log("slider")
 }
 
+function onChangeQuantity(figureId, value){
+  let newConfig = history[currentIndex]
+  newConfig.layers[figureId].total = value
+  console.log('a', history[currentIndex].layers[0])
+  saveOnHistory(newConfig)
+  console.log('a', history[currentIndex].layers[0])
+}
+
 function undo() {
   console.log("in undo", history.length)
   console.log(document.getElementById("layers"))
@@ -372,6 +362,7 @@ function undo() {
 function redo() {
   console.log("in redo")
   if (History.length > currentIndex) {
+    console.log("lets redo")
     currentIndex += 1
   }
 }
@@ -381,7 +372,6 @@ function saveOnHistory(newConfig) {
   currentIndex += 1
   draw()
   drawHtmlAgain()
-  console.log("saved")
   //TODO: remove next layers
 }
 
