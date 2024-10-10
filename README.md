@@ -104,6 +104,7 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
       > OK icono
       > crear funcion reorgLayer() y tener en cuenta los ids
 
+- allow add new layer at the end
 - remove next indexes when redo
 - conditional format for undo a redo buttons
 - hacer que se muestre backgroundColor que viene del tema en el colorpicker
@@ -111,6 +112,7 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
 - BUG change squares for rectangles en la config de polar
 - allow download image
 - allow saving configuration
+
 
 ## Extras
 
