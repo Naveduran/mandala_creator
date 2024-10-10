@@ -207,7 +207,7 @@ function drawHtmlLayer(layerConfig){
           <label class="row-a"> Quantity <input type="number" id="figureNumber-${layerConfig.id}" name="figureNumber" value="${layerConfig.total}" onchange="onChangeQuantity(${layerConfig.id}, value)" ></input></label>
         </div>
         <div class="layer-column-b-row-1-column-b">
-          <select name="figureName" id="figureName-${layerConfig.id}" class="clickable-button" value="${layerConfig.figureName}">
+          <select name="figureName" id="figureName-${layerConfig.id}" class="clickable-button" value="${layerConfig.figureName}" onchange="onChangeDefault(${layerConfig.id}, 'figureName', value)">
             <option value="triangle" ${layerConfig.figureName ==='triangle' ? "selected": ""}>
               &#9651; 
             </option>
@@ -227,9 +227,8 @@ function drawHtmlLayer(layerConfig){
         </div>
       </div>
       <div class="layer-column-b-row-2">
-        <label> Size <input type="range" min="0" max="400" id="figureSize${layerConfig.id}" name="figureSize" value=${layerConfig.size}></input></label>
-        <label> Radius <input type="range" min="0" max="400" id="figureRadius${layerConfig.id}" name="figureRadius" value=${layerConfig.radius}></input></label>
-        <label> Distance <input type="range" min="0" max="400" id="figureDistance${layerConfig.id}" name="figureDistance" value=${layerConfig.distance}></input></label>
+        <label> Radius <input type="range" min="0" max="250" id="figureRadius${layerConfig.id}" name="figureRadius" value=${layerConfig.radius} onchange="onChangeDefault(${layerConfig.id}, 'radius', value)"></input></label>
+        <label> Distance <input type="range" min="0" max="300" id="figureDistance${layerConfig.id}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerConfig.id}, 'distance', value)"></input></label>
       </div>
     </div>`
 
@@ -335,9 +334,10 @@ function onChangeColor(color, input){
   input.setAttribute('style',`background-color:${color}`)
 }
 
-function onChangeSlider(color, input){
-  //TODO
-  console.log("slider")
+function onChangeDefault(figureId, attribute, value){
+  let newConfig = history[currentIndex]
+  newConfig.layers[figureId][attribute] = value
+  saveOnHistory(newConfig)
 }
 
 function onChangeQuantity(figureId, value){

@@ -193,6 +193,7 @@ label {
   gap: 1em;
   width: 100%;
   border: lightgray dotted 0.1px;
+  max-width: 100vw;
 }
 .layer-column-a {
   display: flex;
@@ -214,6 +215,7 @@ label {
   display: flex;
   flex-direction: column;
   width: -webkit-fill-available;
+  max-width: 55vw;
 }
 .layer-column-b-row-1-column-a label {
   display: flex;
@@ -221,7 +223,6 @@ label {
 }
 .layer-column-b-row-1-column-a .row-a {
   padding-right: 1em;
-  padding: -0.2em;
 }
 .layer-column-b-row-1-column-a label .color-picker {
   color: transparent;
@@ -247,7 +248,8 @@ label {
 }
 .layer-column-b-row-2 {
   display: flex;
-  gap: 1.5em;
+  gap: 0.2em 1.5em ;
+  flex-wrap: wrap;
 }
 .layer-column-b-row-2 label {
   width: -webkit-fill-available;
