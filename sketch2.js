@@ -2,7 +2,6 @@
 
 let backgroundColorInput;
 let backgroundColor = "#ffffff"
-let a;
 
 const initialConfig = {
   size: 900,
@@ -10,8 +9,8 @@ const initialConfig = {
     {
       id: 0,
       name:'Lines',
-      strokeColor: 'hsla(130, 0%, 50%, 1)',
-      fillColor: null,
+      strokeColor: 'hsla(130, 0%, 50%, 1)',//OK
+      fillColor: null,//OK
       figureName: 'line',
       figureSettings: {
         total: 4,
@@ -157,7 +156,8 @@ const initialConfig = {
 
 let history = [initialConfig]
 let currentIndex = 0
-
+let lastChange = 0;
+let delay = 20;
 
 // Resize the canvas when the browser's size changes.
 function windowResized() {
@@ -220,23 +220,23 @@ function drawHtmlLayer(layerConfig){
       <div class="layer-column-b-row-1">
         <div class="layer-column-b-row-1-column-a">
           <label class="row-a"> Fill 
-          <input type="text" data-coloris id="fillColor-${layerConfig.id}" name="fillColor" class="color-picker" value=${layerConfig.fillColor} style="background-color: ${layerConfig.fillColor}"></label>
+          <input type="text" data-coloris id="fillColor-${layerConfig.id}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}"></label>
           <label class="row-a"> Border
-          <input type="text" data-coloris id="strokeColor-${layerConfig.id}", name="strokeColor" class="color-picker", value=${layerConfig.strokeColor} style="background-color: ${layerConfig.strokeColor}"></label>
+          <input type="text" data-coloris id="strokeColor-${layerConfig.id}", name="strokeColor" class="color-picker", value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}"></label>
           <label class="row-a"> Quantity <input type="number" id="figureNumber-${layerConfig.id}" name="figureNumber" value=${layerConfig.figureSettings.total}></input></label>
         </div>
         <div class="layer-column-b-row-1-column-b">
-          <select name="figureName" id="figureName-${layerConfig.id}" class="clickable-button" value=${layerConfig.figureName} >
-            <option value="triangle" >
+          <select name="figureName" id="figureName-${layerConfig.id}" class="clickable-button" value="${layerConfig.figureName}" >
+            <option value="triangle" ${layerConfig.figureName ==='triangle' ? "selected": ""}>
               &#9651; 
             </option>
-            <option value="circle" >
+            <option value="circle" ${layerConfig.figureName ==='circle' ? "selected": ""}>
               &#9711; 
             </option>
-            <option value="line" >
+            <option value="line" ${layerConfig.figureName ==='line' ? "selected": ""}>
                /
             </option>
-            <option value="square" >
+            <option value="square" ${layerConfig.figureName ==='square' ? "selected": ""}>
               &#9634; 
             </option>
           </select>
@@ -319,10 +319,29 @@ function figuresNumber() {return Object.keys(figures).length}
 Coloris({
   forceAlpha: true,
   format: 'hsl',
+  // accesibility configuration for color picker:
+  a11y: {
+    open: 'Open color picker',
+    close: 'Close color picker',
+    clear: 'Clear the selected color',
+    marker: 'Saturation: {s}. Brightness: {v}.',
+    hueSlider: 'Hue slider',
+    alphaSlider: 'Opacity slider',
+    input: 'Color value field',
+    format: 'Color format',
+    swatch: 'Color swatch',
+    instruction: 'Saturation and brightness selector. Use up, down, left and right arrow keys to select.'
+  },
   onChange: (color, input) => onChangeColor(color, input)
 });
 
 function onChangeColor(color, input){
+// bug... it is saving too much times
+
+  if (lastChange >= (Date.now() - delay)){
+    return;
+  }
+  lastChange = Date.now();
 
   let attribute = input.name
   let figureId = input.id.slice(input.id.indexOf("-") + 1)
@@ -334,14 +353,24 @@ function onChangeColor(color, input){
   input.setAttribute('style',`background-color:${color}`)
 }
 
+function onChangeSlider(color, input){
+  //TODO
+  console.log("slider")
+}
 
 function undo() {
+  console.log("in undo", history.length)
+  console.log(document.getElementById("layers"))
   if (currentIndex > 0) {
+    console.log("lets undo")
     currentIndex -= 1
+    draw()
+    drawHtmlAgain()
   }
 }
 
 function redo() {
+  console.log("in redo")
   if (History.length > currentIndex) {
     currentIndex += 1
   }
@@ -352,6 +381,8 @@ function saveOnHistory(newConfig) {
   currentIndex += 1
   draw()
   drawHtmlAgain()
+  console.log("saved")
+  //TODO: remove next layers
 }
 
 function drawHtmlAgain(){
@@ -362,4 +393,11 @@ function drawHtmlAgain(){
   oldLayers.replaceWith(newLayers)
 
   setupHtmlLayers()
+}
+
+function cleanAll(){
+  let newConfig = history[currentIndex]
+  let oneLayer = history[currentIndex].layers[0]
+  newConfig.layers = [oneLayer]
+  saveOnHistory(newConfig)
 }
