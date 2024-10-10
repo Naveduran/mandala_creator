@@ -109,6 +109,8 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
 - hacer que se muestre backgroundColor que viene del tema en el colorpicker
 - BUG too much trigger of save history when pick colors 
 - BUG change squares for rectangles en la config de polar
+- allow download image
+- allow saving configuration
 
 ## Extras
 
