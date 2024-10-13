@@ -2,6 +2,7 @@
 
 let backgroundColorInput;
 let backgroundColor = "#ffffff"
+let a
 
 const initialConfig = {
   size: 900,
@@ -401,30 +402,22 @@ function cleanAll(){
 function removeLayer(layerId){
   let newConfig = history[currentIndex]
   let layers = newConfig.layers
-  console.log("remove: ", layerId)
-  console.log(layers)
-  console.log("pre layer:", layers[layerId - 1])
-  console.log("cur layer:", layers[layerId].name)
-  console.log("post layer:", layers[layerId + 1].name)
-  //first element
+
   if (layerId == 0) {
     layers.shift();
-  }
-
-  //last element
-  if (layerId + 1== layers.length){
+  } else if (layerId + 1== layers.length){
     layers.pop()
+  } else {
+    layers.splice(layerId, 1)
   }
-
-  //others
-  // cut the array in two at layerId index and pop or shift
-
   newConfig.layers = layers
   saveOnHistory(newConfig)
 }
 
+/*
 function moveLayer(layerId, direction){
   // save config and item
+  //The copyWithin() method overwrites the existing values.
   let newConfig = history[currentIndex]
   let item = newConfig.layers[layerId]
 
@@ -438,7 +431,7 @@ function moveLayer(layerId, direction){
     newConfig.layers[layerId] = previousItem
   }
   saveOnHistory(newConfig)
-}
+}*/
 
 function createNewLayer(){
   let newConfig = history[currentIndex]
