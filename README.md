@@ -80,14 +80,12 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
       >OK create variables
       >OK undo if currentIndex > 0
       >OK redo executed only if History.length > currentIndex
-*finded bug in color picker... its triggered too much
 - OK hacer que se muestre el valor en el select de los tipos de figura
       >OK entender el problema
       >OK añadir 'selected' como atributo de la opcion que coincide con el value
 - OK definir rangos para sliders de tamanio y distancia
 - OK move add layer button to bottom
 - OK add trash button
-
 - OK hacer que la configuracion de una layer genere cambios en el mandala
       > OK onChange save in history
       > OK increment index
@@ -95,10 +93,12 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
       > OK quantity
       > OK sliders
       > OK figure
-
 - OK permitir borrar una layer
       >OK anadir icono
       >OK crear funcion removeLayer() y tener en cuenta los ids
+- OK allow add new layer at the end
+      > OK icono
+      > OK crear funcion createNewLayer()
 
 - permitir cambiar el orden de las layers
       > OK icono
@@ -106,9 +106,6 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
       > dar estilo a css
       > crear funcion moveLayer() y tener en cuenta los ids
 
-- OK allow add new layer at the end
-      > OK icono
-      > OK crear funcion createNewLayer()
 
 - remove next indexes when redo
 
