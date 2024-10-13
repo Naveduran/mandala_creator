@@ -96,7 +96,7 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
       > OK sliders
       > OK figure
 
-- permitir borrar una layer
+- OK permitir borrar una layer
       >OK anadir icono
       >OK crear funcion removeLayer() y tener en cuenta los ids
 
