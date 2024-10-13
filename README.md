@@ -102,9 +102,9 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
 
 - permitir cambiar el orden de las layers
       > OK icono
-      > cambiar a dos iconos, uno fleccha arriba y otro hacia abajo
-      > dar estilo a css
-      > crear funcion moveLayer() y tener en cuenta los ids
+      > OK cambiar a dos iconos, uno fleccha arriba y otro hacia abajo
+      > OK crear funcion moveLayer() y tener en cuenta los ids
+
 
 
 - remove next indexes when redo

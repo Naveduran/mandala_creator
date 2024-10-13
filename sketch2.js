@@ -2,7 +2,7 @@
 
 let backgroundColorInput;
 let backgroundColor = "#ffffff"
-let a
+
 
 const initialConfig = {
   size: 900,
@@ -414,24 +414,25 @@ function removeLayer(layerId){
   saveOnHistory(newConfig)
 }
 
-/*
+
 function moveLayer(layerId, direction){
   // save config and item
   //The copyWithin() method overwrites the existing values.
   let newConfig = history[currentIndex]
-  let item = newConfig.layers[layerId]
+  let layers = newConfig.layers
+  let item = layers[layerId]
 
   if (direction == 'down') {
-    let nextItem = newConfig.layers[layerId + 1]
-    newConfig.layers[layerId] = nextItem
-    newConfig.layers[layerId + 1] = item
+    let nextItem = layers[layerId + 1]
+    layers[layerId] = nextItem
+    layers[layerId + 1] = item
   } else if (direction == 'up') {
-    let previousItem = newConfig.layers[layerId - 1]
-    newConfig.layers[layerId - 1] = item
-    newConfig.layers[layerId] = previousItem
+    let previousItem = layers[layerId - 1]
+    layers[layerId - 1] = item
+    layers[layerId] = previousItem
   }
   saveOnHistory(newConfig)
-}*/
+}
 
 function createNewLayer(){
   let newConfig = history[currentIndex]
