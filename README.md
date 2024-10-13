@@ -98,7 +98,7 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
 
 - permitir borrar una layer
       >OK anadir icono
-      > crear funcion removeLayer() y tener en cuenta los ids
+      >OK crear funcion removeLayer() y tener en cuenta los ids
 
 - permitir cambiar el orden de las layers
       > OK icono
@@ -106,9 +106,9 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
       > dar estilo a css
       > crear funcion moveLayer() y tener en cuenta los ids
 
-- allow add new layer at the end
+- OK allow add new layer at the end
       > OK icono
-      > crear funcion createNewLayer()
+      > OK crear funcion createNewLayer()
 
 - remove next indexes when redo
 
