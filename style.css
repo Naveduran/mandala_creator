@@ -277,7 +277,7 @@ label {
   align-self: center;
 }
 
-@media only screen and (min-width: 1080px) {
+@media only screen and (min-width: 1081px) {
   body {
     flex-wrap: wrap;
     max-width: 98vw;
