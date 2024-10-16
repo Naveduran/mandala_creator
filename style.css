@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sacramento&display=swap');
 
+
+@import url('https://github.com/necolas/normalize.css');
+
 :root {
   /* lightmode */
   --lm-background-color: rgb(255, 255, 255);
@@ -15,6 +18,11 @@
   --dm-accent-color-2: #b60b9a;
   --dm-unaccent-color: rgb(85, 84, 84);
 }
+
+html {
+  max-width: 95vw;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -25,9 +33,10 @@ body {
   line-height: 6vw;
   font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
-  width: 100%;
+  width: 100vw;
   background-color: var(--lm-background-color);
   color: var(--lm-font-color);
+  max-width: 95vw;
 }
 header {
   display: flex;
@@ -72,6 +81,11 @@ h1 .accent-2 {
   justify-content: center;
   padding-top: 1em;
 }
+.mandala {
+  display: flex;
+  flex-direction: column;
+}
+
 .layers {
   display: flex;
   flex-direction: column;
@@ -83,7 +97,7 @@ h1 .accent-2 {
   font-size: inherit;
   line-height: inherit;
 }
-button{
+button {
   align-self: center;
   font-family: "Open Sans", sans-serif;
   background-color: #f0a40c;
@@ -190,7 +204,6 @@ label {
 .layer {
   display: flex;
   flex-direction: row;
-  gap: 1em;
   width: 100%;
   border: lightgray dotted 0.1px;
   max-width: 100vw;
@@ -199,7 +212,7 @@ label {
   display: flex;
   flex-direction: column;
   align-self: center;
-  padding-left: 1em;
+  padding: 0 0.8em;
 }
 .layer-column-b {
   display: flex;
@@ -226,11 +239,11 @@ label {
 }
 .layer-column-b-row-1-column-a label .color-picker {
   color: transparent;
-  max-width: 4em;
+  max-width: 6em;
   border: grey solid 0.2px;
 }
 .layer-column-b-row-1-column-a label input {
-  max-width: 4em;
+  max-width: 6em;
   text-align: center;
 }
 .layer-column-b-row-1-column-b {
@@ -258,30 +271,66 @@ label {
   display: flex;
   flex-direction: row;
 }
+.input-slider {
+  max-width: max-content;
+}
+.plus-button {
+  align-self: center;
+}
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 800px) {
+  body {
+    flex-wrap: wrap;
+    max-width: 98vw;
+  }
   header, main {
-    font-size: 1.5vw;
-    line-height: 2vw;
+    font-size: 1.3vw;
+    line-height: 1.8vw;
     flex-grow: 2;
     flex-shrink: 2;
     min-width: fit-content;
+    max-width: 96vw;
   }
-  body {
-    flex-wrap: wrap;
-    max-height: 100vh;
-    max-width: 100vw;
+  header {
+    align-self: center;
+    padding: 4vh 0;
   }
   main {
+    font-size: 1vw;
+    line-height: 1.5vw;
     order: 2;
-    flex-grow: 2;
+    align-self: center;
+    flex-direction: row;
+    justify-content: space-around;
+    min-width: -webkit-fill-available;
+  }
+  main .mandala {
+    padding: 0 3vw;
+    max-height: 75vh;
+    max-width: calc(66vw / 2);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    align-self: flex-start;
   }
   canvas {
     order: 3;
-    align-self: flex-end;
-    height: 100vh;
-    min-width: 100vh !important;
-    max-width: 100vh;
+    align-self: center;
+    height: calc(75vw / 2) !important;
+    min-width: calc(75vw / 2) !important;
+    max-width: calc(75vw / 2);
+    align-self: flex-start;
+  }
+  .layers {
+    max-width: fit-content;
+    padding-top: 0;
+  }
+  .line-footer{
+    align-self: center;
+    width: auto;
+  }
+  .line-saving {
+    padding-top: 0;
+    align-self: flex-start;
   }
 }
 

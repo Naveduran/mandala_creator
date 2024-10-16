@@ -99,26 +99,25 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
 - OK allow add new layer at the end
       > OK icono
       > OK crear funcion createNewLayer()
-
-- permitir cambiar el orden de las layers
+-OK permitir cambiar el orden de las layers
       > OK icono
       > OK cambiar a dos iconos, uno fleccha arriba y otro hacia abajo
       > OK crear funcion moveLayer() y tener en cuenta los ids
+- OK allow download image saveCanvas()
+- OK write comments for all the functions
+- OK refix layout for phone and desktop with changes in p5 import 
 
-
+- write config in a file to save progress
 
 - remove next indexes when redo
-
-- hacer que se muestre backgroundColor que viene del tema en el colorpicker
+- conditional format for undo a redo buttons
+- guardar el background del mandala en la config
+- hacer que se muestre backgroundColor que viene de la config en el colorpicker
 
 - BUG too much trigger of save history when pick colors 
 - BUG change squares for rectangles en la config de polar
-
-- conditional format for undo a redo buttons
-
-- allow download image
-- allow saving configuration
-
+- BUG HTML inredo
+- BUG HTML inundo
 
 ## Extras
 

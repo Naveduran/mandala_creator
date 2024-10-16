@@ -1,8 +1,7 @@
-// This functions allows to create mandalas easily based on a configuration. It uses p5 and p5.polar libraries to do it.
+// This functions allows to create mandalas and play with them easily based on a configuration. It uses p5 and p5.polar libraries to do it.
 
 let backgroundColorInput;
 let backgroundColor = "#ffffff"
-
 
 const initialConfig = {
   size: 900,
@@ -121,8 +120,7 @@ const initialConfig = {
   ]
 }
 
-// we work over config, and we touch initialConfig only to save a permanent version
-
+// We work over config, and we touch initialConfig only to save a permanent version to allow 
 let history = [initialConfig]
 let currentIndex = 0
 let lastChange = 0;
@@ -145,11 +143,14 @@ function updateCanvasColor(event) {
 // Runs once, Creates the space to draw
 function setup()
 {
-  console.log(history[currentIndex].layers)
-  createCanvas(900,900);
+  //Set mandala canvas
+  let canva = document.getElementById('myCanvas')
+  createCanvas(width, width, P2D, canva);
   windowResized()
   frameRate(1);
+
   // Allow changing the background color of the canvas
+  // TODO: get color from config
   backgroundColorInput = document.querySelector("#backgroundColorInput");
   backgroundColorInput.addEventListener("input", updateCanvasColor, false);
   backgroundColorInput.select();
@@ -158,7 +159,6 @@ function setup()
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     backgroundColor = "#000000"
   }
-
   setupHtmlLayers()
 }
 
@@ -178,23 +178,19 @@ function setupHtmlLayers() {
 
   for (let index = 0; index < totalLayers; index++) {
     layersHtml.appendChild(
-      drawHtmlLayer(
-        layersConfig[index],
-        index,
-        totalLayers
-      )
-    )
+      drawHtmlLayer(layersConfig[index], index, totalLayers))
   }
-
 }
 
 function drawHtmlLayer(layerConfig, layerId, totalLayers){
-  let upButtonHtml = `<button class="imagedButton"  title="Move up" onclick="moveLayer(${layerId}, 'up')" >
-        <img class="clickable-button" src="https://img.icons8.com/?size=100&id=19162&format=png&color=000000" alt="move up"/>
-      </button>`
-  let downButtonHtml = `<button class="imagedButton" title="Move down" onclick="moveLayer(${layerId}, 'down')">
-  <img class="clickable-button" src="https://img.icons8.com/?size=100&id=19161&format=png&color=000000" alt="move down"/>
-</button>`
+  let upButtonHtml = `
+    <button class="imagedButton"  title="Move up" onclick="moveLayer(${layerId}, 'up')" >
+      <img class="clickable-button" src="https://img.icons8.com/?size=100&id=19162&format=png&color=000000" alt="move up"/>
+    </button>`
+  let downButtonHtml = `
+    <button class="imagedButton" title="Move down" onclick="moveLayer(${layerId}, 'down')">
+      <img class="clickable-button" src="https://img.icons8.com/?size=100&id=19161&format=png&color=000000" alt="move down"/>
+    </button>`
   let layerStructure = `
     <div class="layer-column-a">
       ${layerId > 0 ? upButtonHtml : ''}
@@ -207,36 +203,29 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
           <input type="text" data-coloris id="fillColor-${layerId}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}" title="Color inside the figure"></label>
           <label class="row-a"> Border
           <input type="text" data-coloris id="strokeColor-${layerId}", name="strokeColor" class="color-picker", value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}" title="Border color"></label>
-
-          <label class="row-a"> Quantity <input type="number" id="figureNumber-${layerId}" name="figureNumber" value="${layerConfig.total}" onchange="onChangeQuantity(${layerId}, value)" title="Number of figures"></input></label>
+          <label class="row-a"> Quantity 
+          <input type="number" id="figureNumber-${layerId}" name="figureNumber" value="${layerConfig.total}" onchange="onChangeQuantity(${layerId}, value)" title="Number of figures"></input></label>
         </div>
         <div class="layer-column-b-row-1-column-b">
-          <select name="figureName" id="figureName-${layerId}" class="clickable-button" value="${layerConfig.figureName}" onchange="onChangeDefault(${layerId}, 'figureName', value)" title="Figure">
-            <option value="triangle" ${layerConfig.figureName ==='triangle' ? "selected": ""}>
-              &#9651; 
-            </option>
-            <option value="circle" ${layerConfig.figureName ==='circle' ? "selected": ""}>
-              &#9711; 
-            </option>
-            <option value="line" ${layerConfig.figureName ==='line' ? "selected": ""}>
-              &nbsp;/
-            </option>
-            <option value="square" ${layerConfig.figureName ==='square' ? "selected": ""}>
-              &#9634; 
-            </option>
+          <select name="figureName" id="figureName-${layerId}" class="clickable-button" value="${layerConfig.figureName}"
+            onchange="onChangeDefault(${layerId}, 'figureName', value)" title="Figure">
+            <option value="triangle" ${layerConfig.figureName ==='triangle' ? "selected": ""}>&nbsp;&#9651;</option>
+            <option value="circle" ${layerConfig.figureName ==='circle' ? "selected": ""}>&#9711;</option>
+            <option value="line" ${layerConfig.figureName ==='line' ? "selected": ""}>&nbsp;&nbsp;/</option>
+            <option value="square" ${layerConfig.figureName ==='square' ? "selected": ""}>&nbsp;&#9634;</option>
           </select>
           <div class="layer-buttons">
           <button class="imagedButton" title="Show/hide this layer">
             <img class="clickable-button" src="https://img.icons8.com/?size=100&id=13758&format=png&color=000000" alt="visibility"/>
           </button>
-          <button class="imagedButton" title="Remove Layer" onclick="removeLayer(${layerId})"><img src="https://img.icons8.com/?size=100&id=74176&format=png&color=000000" alt="remove this layer" class="clickable-button"  onclick="removeLayer(${layerId})" title="Remove layer"/></button>
+          <button class="imagedButton" title="Remove Layer" onclick="removeLayer(${layerId})">
+            <img src="https://img.icons8.com/?size=100&id=74176&format=png&color=000000" alt="remove this layer" class="clickable-button"  onclick="removeLayer(${layerId})" title="Remove layer"/></button>
           </div>
         </div>
       </div>
       <div class="layer-column-b-row-2">
-        <label> Radius <input type="range" min="0" max="250" id="figureRadius${layerId}" name="figureRadius" value=${layerConfig.radius} onchange="onChangeDefault(${layerId}, 'radius', value)" title="Figure Size"></input></label>
-
-        <label> Distance <input type="range" min="0" max="400" id="figureDistance${layerId}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerId}, 'distance', value)" title="Distance from mandala's center to figure's center"></input></label>
+        <label> Radius <input class="input-slider" type="range" min="0" max="250" id="figureRadius${layerId}" name="figureRadius" value=${layerConfig.radius} onchange="onChangeDefault(${layerId}, 'radius', value)" title="Figure Size"></input></label>
+        <label> Distance <input class="input-slider" type="range" min="0" max="400" id="figureDistance${layerId}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerId}, 'distance', value)" title="Distance from mandala's center to figure's center"></input></label>
       </div>
     </div>`
 
@@ -249,16 +238,14 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
 
 // Use the received layer configuration to draw the described figures with its respective border and fill color
 function drawMandalaLayer(layer){
-    if (layer.strokeColor){stroke(layer.strokeColor);
-    } else {noStroke();}
-
-    if (layer.fillColor){fill(layer.fillColor);
-    } else {noFill();}
-
-    drawFigures(layer.figureName, layer)
+  if (layer.strokeColor){stroke(layer.strokeColor);
+  } else {noStroke();}
+  if (layer.fillColor){fill(layer.fillColor);
+  } else {noFill();}
+  drawFigures(layer.figureName, layer)
 }
 
-// Run the function that creates a figure
+// Run the function that creates each figure
 function drawFigures(figureName, layer){
   figures[figureName](layer)
 }
@@ -302,9 +289,127 @@ const figures = {
   }
 }
 
-function figuresNames() {return Object.keys(figures)}
-function figuresNumber() {return Object.keys(figures).length}
+// Update the history when the color of an input changes
+function onChangeColor(color, input){
+  // BUG: it is triggered too much times
 
+  // This if reduced the amount but not enough
+  if (lastChange >= (Date.now() - delay)){
+    return;
+  }; lastChange = Date.now();
+
+  let figureId = input.id.slice(input.id.indexOf("-") + 1)
+  let newConfig = history[currentIndex]
+  newConfig.layers[figureId][input.name] = color
+  saveOnHistory(newConfig)
+  input.setAttribute('style',`background-color:${color}`)
+}
+
+// Update the history when the ammount of figures of a layers changes
+function onChangeQuantity(figureId, value){
+  let newConfig = history[currentIndex]
+  newConfig.layers[figureId].total = value
+  saveOnHistory(newConfig)
+}
+
+// Update the history when an attribute of a layer changes
+function onChangeDefault(figureId, attribute, value){
+  let newConfig = history[currentIndex]
+  newConfig.layers[figureId][attribute] = value
+  saveOnHistory(newConfig)
+}
+
+// Apply the configuration of the previous index in the history of changes
+function undo() {
+  // BUG: HTML LAYERS DONT CHANGE
+  if (currentIndex > 0) {
+    currentIndex -= 1
+    draw()
+    drawHtmlAgain()
+  }
+}
+
+// Apply the configuration of the next index in the history of changes
+function redo() {
+  // BUG: HTML LAYERS DONT CHANGE
+  if (History.length > currentIndex) {
+    currentIndex += 1
+  }
+}
+
+// Save a new configuration in the history and update manndala and html
+function saveOnHistory(newConfig) {
+  history[currentIndex + 1] = newConfig
+  currentIndex += 1
+  draw()
+  drawHtmlAgain()
+}
+
+// Replace the old html layers with new ones
+function drawHtmlAgain(){
+  let oldLayers = document.getElementById("layers")
+  let newLayers = document.createElement('div');
+  newLayers.setAttribute("class", "layers");
+  newLayers.setAttribute("id", "layers");
+  oldLayers.replaceWith(newLayers)
+  setupHtmlLayers()
+}
+
+// Remove all layers except one
+function cleanAll(){
+  let newConfig = history[currentIndex]
+  let oneLayer = history[currentIndex].layers[0]
+  newConfig.layers = [oneLayer]
+  saveOnHistory(newConfig)
+}
+
+// Remove a layer based on it's position
+function removeLayer(layerId){
+  let newConfig = history[currentIndex]
+  let layers = newConfig.layers
+  if (layerId == 0) {
+    layers.shift();
+  } else if (layerId + 1== layers.length){
+    layers.pop()
+  } else {
+    layers.splice(layerId, 1)
+  }
+  newConfig.layers = layers
+  saveOnHistory(newConfig)
+}
+
+// Save current layers and reassign them to change the order
+function moveLayer(layerId, direction){
+  let newConfig = history[currentIndex]
+  let layers = newConfig.layers
+  let item = layers[layerId]
+
+  if (direction == 'down') {
+    let nextItem = layers[layerId + 1]
+    layers[layerId] = nextItem
+    layers[layerId + 1] = item
+  } else if (direction == 'up') {
+    let previousItem = layers[layerId - 1]
+    layers[layerId - 1] = item
+    layers[layerId] = previousItem
+  }
+  saveOnHistory(newConfig)
+}
+
+// Creates a new layer and save it in the history
+function createNewLayer(){
+  let newConfig = history[currentIndex]
+  let oneLayer = history[currentIndex].layers[0]
+  newConfig.layers.push(oneLayer)
+  saveOnHistory(newConfig)
+}
+
+// Download an image as jpg
+function downloadAsImage(){
+  saveCanvas(`mandala`, 'jpg')//'jpg,png, webp'
+}
+
+// Set the configuration of color pickers that *allows transparency!*
 Coloris({
   forceAlpha: true,
   format: 'hsl',
@@ -323,120 +428,3 @@ Coloris({
   },
   onChange: (color, input) => onChangeColor(color, input)
 });
-
-function onChangeColor(color, input){
-  // bug: it is triggered too much times
-  // this if reduced the amount but not enough
-  if (lastChange >= (Date.now() - delay)){
-    return;
-  }
-  lastChange = Date.now();
-
-  let attribute = input.name
-  let figureId = input.id.slice(input.id.indexOf("-") + 1)
-
-  let newConfig = history[currentIndex]
-  newConfig.layers[figureId][attribute] = color
-  saveOnHistory(newConfig)
-
-  input.setAttribute('style',`background-color:${color}`)
-}
-
-function onChangeDefault(figureId, attribute, value){
-  let newConfig = history[currentIndex]
-  newConfig.layers[figureId][attribute] = value
-  saveOnHistory(newConfig)
-}
-
-function onChangeQuantity(figureId, value){
-  let newConfig = history[currentIndex]
-  newConfig.layers[figureId].total = value
-  console.log('a', history[currentIndex].layers[0])
-  saveOnHistory(newConfig)
-  console.log('a', history[currentIndex].layers[0])
-}
-
-function undo() {
-  console.log("in undo", history.length)
-  console.log(document.getElementById("layers"))
-  if (currentIndex > 0) {
-    console.log("lets undo")
-    currentIndex -= 1
-    draw()
-    drawHtmlAgain()
-  }
-}
-
-function redo() {
-  console.log("in redo")
-  if (History.length > currentIndex) {
-    console.log("lets redo")
-    currentIndex += 1
-  }
-}
-
-function saveOnHistory(newConfig) {
-  history[currentIndex + 1] = newConfig
-  currentIndex += 1
-  draw()
-  drawHtmlAgain()
-}
-
-function drawHtmlAgain(){
-  let oldLayers = document.getElementById("layers")
-  let newLayers = document.createElement('div');
-  newLayers.setAttribute("class", "layers");
-  newLayers.setAttribute("id", "layers");
-  oldLayers.replaceWith(newLayers)
-
-  setupHtmlLayers()
-}
-
-function cleanAll(){
-  let newConfig = history[currentIndex]
-  let oneLayer = history[currentIndex].layers[0]
-  newConfig.layers = [oneLayer]
-  saveOnHistory(newConfig)
-}
-
-function removeLayer(layerId){
-  let newConfig = history[currentIndex]
-  let layers = newConfig.layers
-
-  if (layerId == 0) {
-    layers.shift();
-  } else if (layerId + 1== layers.length){
-    layers.pop()
-  } else {
-    layers.splice(layerId, 1)
-  }
-  newConfig.layers = layers
-  saveOnHistory(newConfig)
-}
-
-
-function moveLayer(layerId, direction){
-  // save config and item
-  //The copyWithin() method overwrites the existing values.
-  let newConfig = history[currentIndex]
-  let layers = newConfig.layers
-  let item = layers[layerId]
-
-  if (direction == 'down') {
-    let nextItem = layers[layerId + 1]
-    layers[layerId] = nextItem
-    layers[layerId + 1] = item
-  } else if (direction == 'up') {
-    let previousItem = layers[layerId - 1]
-    layers[layerId - 1] = item
-    layers[layerId] = previousItem
-  }
-  saveOnHistory(newConfig)
-}
-
-function createNewLayer(){
-  let newConfig = history[currentIndex]
-  let oneLayer = history[currentIndex].layers[0]
-  newConfig.layers.push(oneLayer)
-  saveOnHistory(newConfig)
-}
