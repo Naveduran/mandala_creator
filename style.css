@@ -277,7 +277,7 @@ label {
   align-self: center;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1080px) {
   body {
     flex-wrap: wrap;
     max-width: 98vw;
@@ -329,13 +329,6 @@ label {
   .line-saving {
     padding-top: 0;
     align-self: flex-start;
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-  header, main {
-    font-size: 1vw;
-    line-height: 1.2vw;
   }
 }
 
