@@ -4,7 +4,7 @@ let backgroundInput
 
 const initialConfig = {
   size: 900,
-  background: '#898989',
+  background: '#ffffff',
   layers: [
     {
       name:'Lines',
