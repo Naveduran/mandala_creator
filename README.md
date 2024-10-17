@@ -110,6 +110,7 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - OK write-read files for user load and save progress in pc
       > OK cannot use fs to write in library because no modules if not server 
       > OK allowed save a version in local storage
+      > OK disable functions
 - OK guardar el background del mandala en la config
 - OK hacer que se muestre backgroundColor que viene de la config en el colorpicker
 - OK bug change squares for polygons en la config de polar
@@ -132,3 +133,4 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 > first test file and framework with mocha
 > https://mochajs.org/
 - run in a server to allow saving multiple versions and show images of each saved version
+- allow other polygons
