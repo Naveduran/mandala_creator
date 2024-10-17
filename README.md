@@ -108,15 +108,13 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
 - OK refix layout for phone and desktop with changes in p5
 - OK BUG HTML undo and redo for using shallow copy of history, solved with structuredClone() method
 - OK write-read files for user load and save progress in pc
-> OK cannot use fs to write in library because no modules if not server 
-> OK allowed save a version in local storage
-
-- guardar el background del mandala en la config
-- hacer que se muestre backgroundColor que viene de la config en el colorpicker
+      > OK cannot use fs to write in library because no modules if not server 
+      > OK allowed save a version in local storage
+- OK guardar el background del mandala en la config
+- OK hacer que se muestre backgroundColor que viene de la config en el colorpicker
 
 - BUG too much trigger of save history when pick colors 
 - BUG change squares for rectangles en la config de polar
-
 - BUG only allows to undo two times
 - BUG remove next indexes when save changes after an undo
 

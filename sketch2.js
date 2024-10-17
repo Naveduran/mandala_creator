@@ -1,10 +1,10 @@
 // This functions allows to create mandalas and play with them easily based on a configuration. It uses p5 and p5.polar libraries to do it.
 
-let backgroundColorInput;
-let backgroundColor = "#ffffff"
+let backgroundInput
 
 const initialConfig = {
   size: 900,
+  background: '#898989',
   layers: [
     {
       name:'Lines',
@@ -126,7 +126,6 @@ let currentIndex = 0
 let lastChange = 0;
 let delay = 20;
 
-
 // Resize the canvas when the browser's size changes.
 function windowResized() {
   if (windowHeight > windowWidth){ //phone
@@ -138,7 +137,11 @@ function windowResized() {
 
 // use the rgb values of the color picker to set the mandala background
 function updateCanvasColor(event) {
-  backgroundColor = event.target.value
+  let newConfig = structuredClone(history[currentIndex])
+
+  backgroundInput.value = event.target.value
+  newConfig.background = event.target.value
+  saveOnHistory(newConfig)
 }
 
 // Runs once, Creates the space to draw
@@ -152,9 +155,9 @@ function setup()
 
   // Allow changing the background color of the canvas
   // TODO: get color from config
-  backgroundColorInput = document.querySelector("#backgroundColorInput");
-  backgroundColorInput.addEventListener("input", updateCanvasColor, false);
-  backgroundColorInput.select();
+  backgroundInput = document.querySelector("#backgroundColorInput");
+  backgroundInput.addEventListener("input", updateCanvasColor, false);
+  backgroundInput.value = history[currentIndex].background;
 
   // Set dark background if the user theme is dark
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -165,11 +168,12 @@ function setup()
 
 // Iterates trough configuration to draw each layer of the mandala
 function draw() {
-  background(backgroundColor);
+  background(history[currentIndex].background);
   setCenter(width/2, height/2);
   history[currentIndex].layers.forEach((layerConfig) => {
     drawMandalaLayer(layerConfig)
   })
+  backgroundInput.value = history[currentIndex].background;
 }
 
 function setupHtmlLayers() {
