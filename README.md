@@ -132,13 +132,16 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 
 ## Extras
 
-- permitir espanol e ingles
+- permitir espanol, ingles y chino
       > OK check https://medium.com/@nohanabil/building-a-multilingual-static-website-a-step-by-step-guide-7af238cc8505
       > OK remover opciones de otros idiomas
-      > OK json para ingles, espa;ol y chino
+      > OK json para ingles, español y chino
       > OK separar los textos de otros tags manteniendo el estilo
       > id para todas las etiquetas de texto
       > traduccion de tooltips
+      > funcion que se active al seleccionar len guaje 
+      >> cambiar el contenido de cada id
+      >> guardar el lenguage seleccionado en el local storage
 
 - conditional format for undo a redo buttons
 
