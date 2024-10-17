@@ -107,10 +107,12 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
 - OK write comments for all the functions
 - OK refix layout for phone and desktop with changes in p5 import 
 
-- write config in a file to save progress
+- write-read config file for user load and save progress in pc
+> https://www.geeksforgeeks.org/javascript-program-to-write-data-in-a-text-file/
+> write in file
+> read from file
 
-- remove next indexes when redo
-- conditional format for undo a redo buttons
+- remove next indexes when save changes after an undo
 - guardar el background del mandala en la config
 - hacer que se muestre backgroundColor que viene de la config en el colorpicker
 
@@ -121,8 +123,13 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
 
 ## Extras
 
+- conditional format for undo a redo buttons
 - traducir a otros idiomas (O)
+- cambiar de idiomas
 - M Find buggs with screen reader and accesibility tools
       >https://wave.webaim.org/
 
 - poner tooltip al ojito de visibilidad
+- unittests
+> first test file and framework with mocha
+> https://mochajs.org/

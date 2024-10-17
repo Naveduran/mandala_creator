@@ -126,6 +126,7 @@ let currentIndex = 0
 let lastChange = 0;
 let delay = 20;
 
+
 // Resize the canvas when the browser's size changes.
 function windowResized() {
   if (windowHeight > windowWidth){ //phone
@@ -292,7 +293,6 @@ const figures = {
 // Update the history when the color of an input changes
 function onChangeColor(color, input){
   // BUG: it is triggered too much times
-
   // This if reduced the amount but not enough
   if (lastChange >= (Date.now() - delay)){
     return;
@@ -407,6 +407,19 @@ function createNewLayer(){
 // Download an image as jpg
 function downloadAsImage(){
   saveCanvas(`mandala`, 'jpg')//'jpg,png, webp'
+}
+
+
+// Write json in local storage
+function saveInLocalStorage(){
+  let json = JSON.stringify(history[currentIndex])
+  localStorage.setItem("mandala", json);
+}
+
+// Load configuration from local storage
+function getFromLocalStorage(){
+  let newConfig = JSON.parse(localStorage.getItem("mandala"));
+  saveOnHistory(newConfig)
 }
 
 // Set the configuration of color pickers that *allows transparency!*
