@@ -294,12 +294,14 @@ const figures = {
 function onChangeColor(color, input){
   // BUG: it is triggered too much times
   // This if reduced the amount but not enough
+  /*
   if (lastChange >= (Date.now() - delay)){
     return;
   }; lastChange = Date.now();
-
+  */
   let figureId = input.id.slice(input.id.indexOf("-") + 1)
-  let newConfig = history[currentIndex]
+  let newConfig = structuredClone(history[currentIndex])
+
   newConfig.layers[figureId][input.name] = color
   saveOnHistory(newConfig)
   input.setAttribute('style',`background-color:${color}`)
@@ -307,14 +309,15 @@ function onChangeColor(color, input){
 
 // Update the history when the ammount of figures of a layers changes
 function onChangeQuantity(figureId, value){
-  let newConfig = history[currentIndex]
+  console
+  let newConfig = structuredClone(history[currentIndex])
   newConfig.layers[figureId].total = value
   saveOnHistory(newConfig)
 }
 
 // Update the history when an attribute of a layer changes
 function onChangeDefault(figureId, attribute, value){
-  let newConfig = history[currentIndex]
+  let newConfig = structuredClone(history[currentIndex])
   newConfig.layers[figureId][attribute] = value
   saveOnHistory(newConfig)
 }
@@ -323,9 +326,8 @@ function onChangeDefault(figureId, attribute, value){
 function undo() {
   // BUG: HTML LAYERS DONT CHANGE
   if (currentIndex > 0) {
-    currentIndex -= 1
-    draw()
-    drawHtmlAgain()
+    let newConfig = structuredClone(history[currentIndex - 1])
+    saveOnHistory(newConfig)
   }
 }
 
@@ -357,15 +359,15 @@ function drawHtmlAgain(){
 
 // Remove all layers except one
 function cleanAll(){
-  let newConfig = history[currentIndex]
-  let oneLayer = history[currentIndex].layers[0]
+  let newConfig = structuredClone(history[currentIndex])
+  let oneLayer = structuredClone(history[currentIndex].layers[0])
   newConfig.layers = [oneLayer]
   saveOnHistory(newConfig)
 }
 
 // Remove a layer based on it's position
 function removeLayer(layerId){
-  let newConfig = history[currentIndex]
+  let newConfig = structuredClone(history[currentIndex])
   let layers = newConfig.layers
   if (layerId == 0) {
     layers.shift();
@@ -380,7 +382,7 @@ function removeLayer(layerId){
 
 // Save current layers and reassign them to change the order
 function moveLayer(layerId, direction){
-  let newConfig = history[currentIndex]
+  let newConfig = structuredClone(history[currentIndex])
   let layers = newConfig.layers
   let item = layers[layerId]
 
@@ -398,7 +400,7 @@ function moveLayer(layerId, direction){
 
 // Creates a new layer and save it in the history
 function createNewLayer(){
-  let newConfig = history[currentIndex]
+  let newConfig = structuredClone(history[currentIndex])
   let oneLayer = history[currentIndex].layers[0]
   newConfig.layers.push(oneLayer)
   saveOnHistory(newConfig)
