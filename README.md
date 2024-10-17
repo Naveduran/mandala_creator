@@ -9,7 +9,7 @@ Click here to make your own [Mandala](https://naveduran.github.io/mandala_creato
 
 ## Credits
 
-Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for testing and playing for this app when it was yet an idea.
+Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for testing and playing for this app when it was yet an idea.
 
 ## Progress
 
@@ -112,9 +112,10 @@ Thanks to [Monica Vera](https://www.linkedin.com/in/monica-vera-duran-91b46b278/
       > OK allowed save a version in local storage
 - OK guardar el background del mandala en la config
 - OK hacer que se muestre backgroundColor que viene de la config en el colorpicker
+- OK bug change squares for polygons en la config de polar
 
-- BUG too much trigger of save history when pick colors 
-- BUG change squares for rectangles en la config de polar
+- BUG too much trigger of save history when pick colors
+
 - BUG only allows to undo two times
 - BUG remove next indexes when save changes after an undo
 

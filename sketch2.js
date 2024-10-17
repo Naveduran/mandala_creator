@@ -284,6 +284,7 @@ const figures = {
   'square':  function square(layer){
     try {
       //polarSquares(layer.total, layer.radius, layer.distance);
+      polarPolygons(layer.total, 4, layer.radius, layer.distance)
     } catch (error) {
       console.error(error);
     }
