@@ -195,11 +195,7 @@ input, select, option {
 option {
   text-align: center;
 }
-label {
-  display: flex;
-  padding: 0.2em;
-  justify-content: space-between;
-}
+
 .layer {
   display: flex;
   flex-direction: row;
@@ -229,21 +225,23 @@ label {
   width: -webkit-fill-available;
   max-width: 55vw;
 }
-.layer-column-b-row-1-column-a label {
+.input-row {
+  width: -webkit-fill-available;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  padding: 0.2em;
 }
-.layer-column-b-row-1-column-a .row-a {
-  padding-right: 1em;
-}
-.layer-column-b-row-1-column-a label .color-picker {
+.color-picker {
   color: transparent;
   max-width: 6em;
   border: grey solid 0.2px;
 }
-.layer-column-b-row-1-column-a label input {
-  max-width: 6em;
+.input-row input {
   text-align: center;
+}
+.input-slider {
+  min-width: 12em;
 }
 .layer-column-b-row-1-column-b {
   display: flex;
@@ -263,15 +261,10 @@ label {
   gap: 0.2em 1.5em ;
   flex-wrap: wrap;
 }
-.layer-column-b-row-2 label {
-  width: -webkit-fill-available;
-}
 .layer-buttons {
   display: flex;
   flex-direction: row;
-}
-.input-slider {
-  max-width: max-content;
+  justify-content: space-evenly;
 }
 .plus-button {
   align-self: center;

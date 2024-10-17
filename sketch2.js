@@ -1,6 +1,7 @@
 // This functions allows to create mandalas and play with them easily based on a configuration. It uses p5 and p5.polar libraries to do it.
 
 let backgroundInput
+let languageInput
 
 const initialConfig = {
   size: 900,
@@ -136,12 +137,16 @@ function windowResized() {
 }
 
 // use the rgb values of the color picker to set the mandala background
-function updateCanvasColor(event) {
+function updateCanvasColor(e) {
   let newConfig = structuredClone(history[currentIndex])
 
-  backgroundInput.value = event.target.value
-  newConfig.background = event.target.value
+  backgroundInput.value = e.target.value
+  newConfig.background = e.target.value
   saveOnHistory(newConfig)
+}
+
+function updateLanguage(e){
+  console.log(e.target.value)
 }
 
 // Runs once, Creates the space to draw
@@ -154,10 +159,13 @@ function setup()
   frameRate(1);
 
   // Allow changing the background color of the canvas
-  // TODO: get color from config
   backgroundInput = document.querySelector("#backgroundColorInput");
   backgroundInput.addEventListener("input", updateCanvasColor, false);
   backgroundInput.value = history[currentIndex].background;
+
+  // Allow change page language
+  languageInput = document.querySelector("#pageLanguage");
+  languageInput.addEventListener("change", updateLanguage, false);
 
   // Set dark background if the user theme is dark
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -204,12 +212,18 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
     <div class="layer-column-b">
       <div class="layer-column-b-row-1">
         <div class="layer-column-b-row-1-column-a">
-          <label class="row-a"> Fill 
-          <input type="text" data-coloris id="fillColor-${layerId}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}" title="Color inside the figure"></label>
-          <label class="row-a"> Border
-          <input type="text" data-coloris id="strokeColor-${layerId}", name="strokeColor" class="color-picker", value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}" title="Border color"></label>
-          <label class="row-a"> Quantity 
-          <input type="number" id="figureNumber-${layerId}" name="figureNumber" value="${layerConfig.total}" onchange="onChangeQuantity(${layerId}, value)" title="Number of figures"></input></label>
+          <div class="input-row">
+            <label for="fillColor-${layerId}"> Fill </label>
+            <input type="text" data-coloris id="fillColor-${layerId}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}" title="Color inside the figure">
+          </div>
+          <div class="input-row">
+            <label for="strokeColor-${layerId}"> Border </label>
+            <input type="text" data-coloris id="strokeColor-${layerId}" name="strokeColor" class="color-picker" value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}" title="Border color">
+          </div>
+          <div class="input-row">
+            <label for="figureNumber-${layerId}"> Quantity </label>
+            <input type="number" id="figureNumber-${layerId}" name="figureNumber" value="${layerConfig.total}" onchange="onChangeQuantity(${layerId}, value)" title="Number of figures"></input>
+          </div>
         </div>
         <div class="layer-column-b-row-1-column-b">
           <select name="figureName" id="figureName-${layerId}" class="clickable-button" value="${layerConfig.figureName}"
@@ -220,17 +234,24 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
             <option value="square" ${layerConfig.figureName ==='square' ? "selected": ""}>&nbsp;&#9634;</option>
           </select>
           <div class="layer-buttons">
+          <!--
           <button class="imagedButton" title="Show/hide this layer">
             <img class="clickable-button" src="https://img.icons8.com/?size=100&id=13758&format=png&color=000000" alt="visibility"/>
-          </button>
+          </button>-->
           <button class="imagedButton" title="Remove Layer" onclick="removeLayer(${layerId})">
             <img src="https://img.icons8.com/?size=100&id=74176&format=png&color=000000" alt="remove this layer" class="clickable-button"  onclick="removeLayer(${layerId})" title="Remove layer"/></button>
           </div>
         </div>
       </div>
       <div class="layer-column-b-row-2">
-        <label> Radius <input class="input-slider" type="range" min="0" max="250" id="figureRadius${layerId}" name="figureRadius" value=${layerConfig.radius} onchange="onChangeDefault(${layerId}, 'radius', value)" title="Figure Size"></input></label>
-        <label> Distance <input class="input-slider" type="range" min="0" max="400" id="figureDistance${layerId}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerId}, 'distance', value)" title="Distance from mandala's center to figure's center"></input></label>
+        <div class="input-row">
+          <label for="figureRadius${layerId}"> Radius </label>
+          <input class="input-slider" type="range" min="0" max="250" id="figureRadius${layerId}" name="figureRadius" value=${layerConfig.radius} onchange="onChangeDefault(${layerId}, 'radius', value)" title="Figure Size"></input>
+        </div>
+        <div class="input-row">
+          <label for="figureDistance${layerId}"> Distance </label>
+          <input class="input-slider" type="range" min="0" max="400" id="figureDistance${layerId}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerId}, 'distance', value)" title="Distance from mandala's center to figure's center"></input>
+        </div>
       </div>
     </div>`
 
@@ -283,15 +304,10 @@ const figures = {
   },
   'square':  function square(layer){
     try {
-      //polarSquares(layer.total, layer.radius, layer.distance);
       polarPolygons(layer.total, 4, layer.radius, layer.distance)
     } catch (error) {
       console.error(error);
     }
-    //Not working for a problem with the original library :(
-    //polarSquares(8,4,160);
-    //polarSquares(total, radius, distance);
-    //maybe let's consider rectangles!
   }
 }
 

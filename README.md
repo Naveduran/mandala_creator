@@ -115,22 +115,40 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - OK hacer que se muestre backgroundColor que viene de la config en el colorpicker
 - OK bug change squares for polygons en la config de polar
 
-- BUG too much trigger of save history when pick colors
 
-- BUG only allows to undo two times
-- BUG remove next indexes when save changes after an undo
+
+## Testing discoveries
+
+- OK add a layer duplicates behavior of previous one
+
+- too much trigger of save history when pick colors
+
+- only allows to undo two times
+- remove next indexes when save changes after an undo
+
+- a pair number of lines is drawn as half of them, but darker 4,6,8
+
+- describe all functions
 
 ## Extras
 
+- permitir espanol e ingles
+      > OK check https://medium.com/@nohanabil/building-a-multilingual-static-website-a-step-by-step-guide-7af238cc8505
+      > OK remover opciones de otros idiomas
+      > OK json para ingles, espa;ol y chino
+      > OK separar los textos de otros tags manteniendo el estilo
+      > id para todas las etiquetas de texto
+      > traduccion de tooltips
+
 - conditional format for undo a redo buttons
-- traducir a otros idiomas (O)
-- cambiar de idiomas
+
 - M Find buggs with screen reader and accesibility tools
       >https://wave.webaim.org/
 
-- poner tooltip al ojito de visibilidad
+- Visibility button functionality
+      > tooltip
 - unittests
-> first test file and framework with mocha
-> https://mochajs.org/
+      > first test file and framework with mocha
+      > https://mochajs.org/
 - run in a server to allow saving multiple versions and show images of each saved version
 - allow other polygons
