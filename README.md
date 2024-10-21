@@ -115,8 +115,6 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - OK hacer que se muestre backgroundColor que viene de la config en el colorpicker
 - OK bug change squares for polygons en la config de polar
 
-
-
 ## Testing discoveries
 
 - OK add a layer duplicates behavior of previous one
@@ -128,7 +126,7 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 
 - a pair number of lines is drawn as half of them, but darker 4,6,8
 
-- describe all functions
+- review documentation
 
 ## Extras
 
@@ -150,8 +148,11 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 
 - Visibility button functionality
       > tooltip
+
 - unittests
       > first test file and framework with mocha
       > https://mochajs.org/
-- run in a server to allow saving multiple versions and show images of each saved version
+
+- run in a server to allow saving multiple versions and show images of each saved version(?)
+
 - allow other polygons
