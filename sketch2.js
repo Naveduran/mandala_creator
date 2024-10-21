@@ -213,15 +213,15 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
       <div class="layer-column-b-row-1">
         <div class="layer-column-b-row-1-column-a">
           <div class="input-row">
-            <label for="fillColor-${layerId}"> Fill </label>
+            <label class="fill-label" for="fillColor-${layerId}"> Fill </label>
             <input type="text" data-coloris id="fillColor-${layerId}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}" title="Color inside the figure">
           </div>
           <div class="input-row">
-            <label for="strokeColor-${layerId}"> Border </label>
+            <label class="border-label" for="strokeColor-${layerId}"> Border </label>
             <input type="text" data-coloris id="strokeColor-${layerId}" name="strokeColor" class="color-picker" value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}" title="Border color">
           </div>
           <div class="input-row">
-            <label for="figureNumber-${layerId}"> Quantity </label>
+            <label class="quantity-label" for="figureNumber-${layerId}"> Quantity </label>
             <input type="number" id="figureNumber-${layerId}" name="figureNumber" value="${layerConfig.total}" onchange="onChangeQuantity(${layerId}, value)" title="Number of figures"></input>
           </div>
         </div>
@@ -245,11 +245,11 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
       </div>
       <div class="layer-column-b-row-2">
         <div class="input-row">
-          <label for="figureRadius${layerId}"> Radius </label>
+          <label class="radius-label" for="figureRadius${layerId}"> Radius </label>
           <input class="input-slider" type="range" min="0" max="250" id="figureRadius${layerId}" name="figureRadius" value=${layerConfig.radius} onchange="onChangeDefault(${layerId}, 'radius', value)" title="Figure Size"></input>
         </div>
         <div class="input-row">
-          <label for="figureDistance${layerId}"> Distance </label>
+          <label class="distance-label" for="figureDistance${layerId}"> Distance </label>
           <input class="input-slider" type="range" min="0" max="400" id="figureDistance${layerId}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerId}, 'distance', value)" title="Distance from mandala's center to figure's center"></input>
         </div>
       </div>
