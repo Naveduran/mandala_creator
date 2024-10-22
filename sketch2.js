@@ -167,10 +167,8 @@ const initialConfig = {
 }
 
 // We work over config, and we touch initialConfig only to save a permanent version to allow 
-let history = [initialConfig]
-let currentIndex = 0
-let lastChange = 0;
-let delay = 20;
+let history = [initialConfig];
+let currentIndex = 0;
 
 // Resize the canvas when the browser's size changes.
 function windowResized() {
@@ -232,6 +230,8 @@ function setupHtmlLayers() {
   let layersConfig = history[currentIndex].layers
   let totalLayers = layersConfig.length
 
+  console.log(layersConfig)
+
   for (let index = 0; index < totalLayers; index++) {
     layersHtml.appendChild(
       drawHtmlLayer(layersConfig[index], index, totalLayers))
@@ -259,11 +259,12 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
     <img class="clickable-button" src="https://img.icons8.com/?size=100&id=121535&format=png&color=000000" data-i18n="visibilityTitle" alt=${languages[preferredLanguage].visibilityTitle}/>
   </button>`
 
+  let fillColorInput = `          <input data-i18n="fillTitle" type="text" data-coloris id="fillColor-${layerId}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}" title="${languages[preferredLanguage].fillTitle}">`
+
   let layerStructure = `
     <div class="layer-column-a">
       ${layerId > 0 ? upButtonHtml : ''}
       ${layerId < totalLayers -1 ? downButtonHtml : ''}
-
       ${layerConfig.visibility ? visibilityButtonOn : visibilityButtonOff}
       <button class="imagedButton" data-i18n= "removeTitle" title="${languages[preferredLanguage].removeTitle}" onclick="removeLayer(${layerId})">
         <img src="https://img.icons8.com/?size=100&id=74176&format=png&color=000000" class="clickable-button" onclick="removeLayer(${layerId})" data-i18n="removeTitle" alt="${languages[preferredLanguage].removeTitle}"/>
@@ -283,7 +284,7 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
             <option value="square" ${layerConfig.figureName ==='square' ? "selected": ""} data-i18n="squareTitle" 
             title="${languages[preferredLanguage].squareTitle}">&nbsp;&#9634;</option>
           </select>
-          <input data-i18n="fillTitle" type="text" data-coloris id="fillColor-${layerId}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}" title="${languages[preferredLanguage].fillTitle}">
+          ${layerConfig.figureName !== 'line' ? fillColorInput : ''}
       </div>
       <div class="layer-row">
         <label data-i18n="strokeLabel" for="strokeWidth-${layerId}"> ${languages[preferredLanguage].strokeLabel} </label>
@@ -366,16 +367,9 @@ const figures = {
   }
 }
 
-
 // Update the history when the color of an input changes
 function onChangeColor(color, input){
   // BUG: it is triggered too much times
-  // This if reduced the amount but not enough
-  /*
-  if (lastChange >= (Date.now() - delay)){
-    return;
-  }; lastChange = Date.now();
-  */
   let figureId = input.id.slice(input.id.indexOf("-") + 1)
   let newConfig = structuredClone(history[currentIndex])
 
@@ -383,15 +377,6 @@ function onChangeColor(color, input){
   saveOnHistory(newConfig)
   input.setAttribute('style',`background-color:${color}`)
 }
-
-// Update the history when the ammount of figures of a layers changes
-function onChangeQuantity(figureId, value){
-  let newConfig = structuredClone(history[currentIndex])
-  newConfig.layers[figureId].total = value
-  saveOnHistory(newConfig)
-}
-
-
 
 // Update the history when an attribute of a layer changes
 function onChangeDefault(figureId, attribute, value){
@@ -402,18 +387,21 @@ function onChangeDefault(figureId, attribute, value){
 
 // Apply the configuration of the previous index in the history of changes
 function undo() {
-  // BUG: HTML LAYERS DONT CHANGE
+  console.log('undo')
   if (currentIndex > 0) {
-    let newConfig = structuredClone(history[currentIndex - 1])
-    saveOnHistory(newConfig)
+    currentIndex -=1
+    draw()
+    drawHtmlAgain()
   }
 }
 
 // Apply the configuration of the next index in the history of changes
 function redo() {
-  // BUG: HTML LAYERS DONT CHANGE
-  if (History.length > currentIndex) {
+  console.log('redo')
+  if (history.length > currentIndex) {
     currentIndex += 1
+    draw()
+    drawHtmlAgain()
   }
 }
 
