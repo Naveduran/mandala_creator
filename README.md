@@ -115,11 +115,10 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - OK hacer que se muestre backgroundColor que viene de la config en el colorpicker
 - OK bug change squares for polygons en la config de polar
 
-## Testing discoveries
+## Testing issues
 
 - OK add a layer duplicates behavior of previous one
 
-- too much trigger of save history when pick colors
 
 - only allows to undo two times
 
@@ -129,22 +128,21 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 
 - review documentation
 
+- too much trigger of save history when pick colors
+
 ## User testing proposals
 
 - OK reset debe eliminar todas las capas
 - OK if (reset + quitar capa){no permite agregar nueva capa agregar}
 - OK agregar una capa debe agregar una capa diferente a todas las que ya existen, pj 3 circulos negros y pequenios para que no se note
 - OK por defecto las nuevas capas no son visibles hasta que se le da click al ojo
-
-- cambiar en el dark mode el fondo del selector de la figura a negro
+- OK cambiar en el dark mode el fondo del selector de la figura a negro
 
 - permitir modificar grosor del borde
-
 - permitir modificar el angulo de cada layer
+- OK permitir (tambien) escribir los numeros radius y distance
 
 - pestañas en local storage para guardar nuevos mandalas
-
-- permitir (tambien) escribir los numeros radius y distance
 
 - allow other polygons
 
