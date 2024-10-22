@@ -348,4 +348,8 @@ option {
     color: var(--dm-accent-color-2);
     display: inline;
   }
+  .layer-column-b-row-1-column-b select {
+    background-color: black;
+    color: white;
+  }
 }
