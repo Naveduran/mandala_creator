@@ -83,6 +83,7 @@ h1 .accent-2 {
 .mandala {
   display: flex;
   flex-direction: column;
+  min-width: 40%;
 }
 .layers {
   display: flex;

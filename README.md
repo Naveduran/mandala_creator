@@ -145,7 +145,7 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
       > OK funcion
       > OK aplicar cambios en mandala dibujado
 - OK No mostrar fill si la figura es una linea
-- OK right now it only allows to undo one time
+- OK only allows to undo one time
 
 - remove next indexes when save changes after an undo
 - a pair number of lines is drawn as half of them, but darker 4,6,8
