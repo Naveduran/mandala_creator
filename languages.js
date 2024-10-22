@@ -33,7 +33,8 @@ let languages = {
     undoTitle: "Undo change",
     redoTitle: "Redo change",
     downloadTitle: "Download as image",
-    resetTitle: "Remove all layers"
+    resetTitle: "Remove all layers",
+    strokeWidth: "Border width"
   },
   es: {
     // Html text
@@ -69,7 +70,8 @@ let languages = {
     undoTitle: "Deshacer cambio",
     redoTitle: "Rehacer cambio",
     downloadTitle: "Descargar como imagen",
-    resetTitle: "Eliminar todas las capas"
+    resetTitle: "Eliminar todas las capas",
+    strokeWidth: "Grosor del borde"
   },
   zh: {
     // Html text
@@ -105,6 +107,7 @@ let languages = {
     undoTitle: "撤消更改",
     redoTitle: "重做更改",
     downloadTitle: "下载为图像",
-    resetTitle: "删除所有图层"
+    resetTitle: "删除所有图层",
+    strokeWidth: "边框宽度"
   }
 }

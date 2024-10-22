@@ -115,13 +115,17 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - OK hacer que se muestre backgroundColor que viene de la config en el colorpicker
 - OK bug change squares for polygons en la config de polar
 
+- activar y desactivar visibilidad
+      > formato condicional de ojito
+
 ## Testing issues
 
 - OK add a layer duplicates behavior of previous one
 
+- No mostrar fill si la figura es una linea
+- Mover los botones de borrar-layer y el ojito debajo de mover layer
 
-- only allows to undo two times
-
+- right now it only allows to undo one time
 - remove next indexes when save changes after an undo
 
 - a pair number of lines is drawn as half of them, but darker 4,6,8
@@ -137,13 +141,16 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - OK agregar una capa debe agregar una capa diferente a todas las que ya existen, pj 3 circulos negros y pequenios para que no se note
 - OK por defecto las nuevas capas no son visibles hasta que se le da click al ojo
 - OK cambiar en el dark mode el fondo del selector de la figura a negro
-
-- permitir modificar grosor del borde
-- permitir modificar el angulo de cada layer
 - OK permitir (tambien) escribir los numeros radius y distance
 
-- pestañas en local storage para guardar nuevos mandalas
+- OK permitir modificar grosor del borde
+      > OK incluirlo en la estructura que se crea en cada layer
+      > OK crear atributo en default mandala
+      > reajustar layout
 
+- permitir modificar el angulo de cada layer
+
+- pestañas en local storage para guardar nuevos mandalas
 - allow other polygons
 
 ## Extras
@@ -159,9 +166,6 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
       > OK condicional dependiendo del elemento a modificar
       > OK guardar el lenguage seleccionado en el local storage
       > OK traduccion de tooltips
-
-
-- conditional format for undo a redo buttons
 
 - M Find buggs with screen reader and accesibility tools
       >https://wave.webaim.org/

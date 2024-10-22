@@ -15,7 +15,8 @@ const initialConfig = {
       total: 4,
       radius: 180,
       distance: 0,
-      visibility: 1
+      visibility: 1,
+      strokeWidth: 1
     },
     {
       name:'Circle 1',
@@ -25,7 +26,8 @@ const initialConfig = {
       total: 14,
       radius: 50,
       distance: 165,
-      visibility: 1
+      visibility: 1,
+      strokeWidth: 1
     },
     {
       name:'Circle 2',
@@ -35,8 +37,8 @@ const initialConfig = {
       total: 10,
       radius: 35,
       distance: 135,
-      visibility: 1
-      
+      visibility: 1,
+      strokeWidth: 1
     },
     {
       name:'Circle 3',
@@ -46,7 +48,8 @@ const initialConfig = {
       radius: 60,
       total: 10,
       distance: 80,
-      visibility: 1
+      visibility: 1,
+      strokeWidth: 1
     },
     {
       name:'Circle 4',
@@ -56,7 +59,8 @@ const initialConfig = {
       radius: 30,
       total: 10,
       distance: 80,
-      visibility: 1
+      visibility: 1,
+      strokeWidth: 1
     },
     {
       name:'Circle 5',
@@ -66,8 +70,8 @@ const initialConfig = {
       total: 5,
       radius: 40,
       distance: 35,
-      visibility: 1
-      
+      visibility: 1,
+      strokeWidth: 1
     },
     {
       name:'Details 1',
@@ -77,7 +81,8 @@ const initialConfig = {
       total: 12,
       radius: 8,
       distance: 40,
-      visibility: 1
+      visibility: 1,
+      strokeWidth: 1
     },
     {
       name:'Circle 6',
@@ -87,7 +92,8 @@ const initialConfig = {
       total: 5,
       radius: 20,
       distance: 35,
-      visibility: 1
+      visibility: 1,
+      strokeWidth: 1
     },
     {
       name:'Details 2',
@@ -97,7 +103,8 @@ const initialConfig = {
       total: 4,
       radius: 6,
       distance: 60,
-      visibility: 1
+      visibility: 1,
+      strokeWidth: 1
     },
     {
       name:'Details 3',
@@ -107,7 +114,8 @@ const initialConfig = {
       total: 4,
       radius: 10,
       distance: 175,
-      visibility: 1
+      visibility: 1,
+      strokeWidth: 1
     },
     {
       name:'Details 4',
@@ -117,7 +125,8 @@ const initialConfig = {
       total: 8,
       radius: 2,
       distance: 80,
-      visibility: 1
+      visibility: 1,
+      strokeWidth: 1
     },
     {
       name:'Details 5',
@@ -127,7 +136,8 @@ const initialConfig = {
       total: 4,
       radius: 5,
       distance: 150,
-      visibility: 1
+      visibility: 1,
+      strokeWidth: 1
     },
   ]
 }
@@ -229,6 +239,7 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
           <div class="input-row">
             <label data-i18n="borderLabel" for="strokeColor-${layerId}"> ${languages[preferredLanguage].borderLabel} </label>
             <input data-i18n="borderTitle" type="text" data-coloris id="strokeColor-${layerId}" name="strokeColor" class="color-picker" value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}" title="${languages[preferredLanguage].borderTitle}">
+            <input class="input-slider" type="number" min="0" max="4" id="strokeWidth-${layerId}" name="strokeWidth" value=${layerConfig.strokeWidth} data-i18n="strokeWidth" title="${languages[preferredLanguage].strokeWidth}"></input>
           </div>
           <div class="input-row">
             <label data-i18n="quantityLabel" for="figureNumber-${layerId}"> ${languages[preferredLanguage].quantityLabel} </label>
