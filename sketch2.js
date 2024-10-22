@@ -14,7 +14,8 @@ const initialConfig = {
       figureName: 'line',
       total: 4,
       radius: 180,
-      distance: 0
+      distance: 0,
+      visibility: 1
     },
     {
       name:'Circle 1',
@@ -23,7 +24,8 @@ const initialConfig = {
       figureName: 'circle',
       total: 14,
       radius: 50,
-      distance: 165
+      distance: 165,
+      visibility: 1
     },
     {
       name:'Circle 2',
@@ -32,7 +34,8 @@ const initialConfig = {
       figureName: 'circle',
       total: 10,
       radius: 35,
-      distance: 135
+      distance: 135,
+      visibility: 1
       
     },
     {
@@ -42,8 +45,8 @@ const initialConfig = {
       figureName: 'circle',
       radius: 60,
       total: 10,
-      distance: 80
-      
+      distance: 80,
+      visibility: 1
     },
     {
       name:'Circle 4',
@@ -52,7 +55,8 @@ const initialConfig = {
       figureName: 'circle',
       radius: 30,
       total: 10,
-      distance: 80
+      distance: 80,
+      visibility: 1
     },
     {
       name:'Circle 5',
@@ -61,7 +65,8 @@ const initialConfig = {
       figureName: 'circle',
       total: 5,
       radius: 40,
-      distance: 35
+      distance: 35,
+      visibility: 1
       
     },
     {
@@ -71,7 +76,8 @@ const initialConfig = {
       figureName: 'circle',
       total: 12,
       radius: 8,
-      distance: 40
+      distance: 40,
+      visibility: 1
     },
     {
       name:'Circle 6',
@@ -80,7 +86,8 @@ const initialConfig = {
       figureName: 'circle',
       total: 5,
       radius: 20,
-      distance: 35
+      distance: 35,
+      visibility: 1
     },
     {
       name:'Details 2',
@@ -89,7 +96,8 @@ const initialConfig = {
       figureName: 'triangle',
       total: 4,
       radius: 6,
-      distance: 60
+      distance: 60,
+      visibility: 1
     },
     {
       name:'Details 3',
@@ -98,7 +106,8 @@ const initialConfig = {
       figureName: 'triangle',
       total: 4,
       radius: 10,
-      distance: 175
+      distance: 175,
+      visibility: 1
     },
     {
       name:'Details 4',
@@ -107,7 +116,8 @@ const initialConfig = {
       figureName: 'square',
       total: 8,
       radius: 2,
-      distance: 80
+      distance: 80,
+      visibility: 1
     },
     {
       name:'Details 5',
@@ -116,7 +126,8 @@ const initialConfig = {
       figureName: 'square',
       total: 4,
       radius: 5,
-      distance: 150
+      distance: 150,
+      visibility: 1
     },
   ]
 }
@@ -175,7 +186,9 @@ function draw() {
   background(history[currentIndex].background);
   setCenter(width/2, height/2);
   history[currentIndex].layers.forEach((layerConfig) => {
-    drawMandalaLayer(layerConfig)
+    if(layerConfig.visibility){
+      drawMandalaLayer(layerConfig)
+    }
   })
   backgroundInput.value = history[currentIndex].background;
 }
@@ -381,8 +394,7 @@ function drawHtmlAgain(){
 // Remove all layers except one
 function cleanAll(){
   let newConfig = structuredClone(history[currentIndex])
-  let oneLayer = structuredClone(history[currentIndex].layers[0])
-  newConfig.layers = [oneLayer]
+  newConfig.layers = []
   saveOnHistory(newConfig)
 }
 
@@ -422,7 +434,16 @@ function moveLayer(layerId, direction){
 // Creates a new layer and save it in the history
 function createNewLayer(){
   let newConfig = structuredClone(history[currentIndex])
-  let oneLayer = history[currentIndex].layers[0]
+  let oneLayer = {
+    name:'Lines',
+    strokeColor: null,
+    fillColor: 'hsla(0, 6%, 48%, 0.48)',
+    figureName: 'circle',
+    total: 3,
+    radius: 30,
+    distance: 90,
+    visibility: 0
+  }
   newConfig.layers.push(oneLayer)
   saveOnHistory(newConfig)
 }
