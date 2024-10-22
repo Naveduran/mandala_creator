@@ -259,10 +259,12 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
       <div class="layer-column-b-row-2">
         <div class="input-row">
           <label data-i18n="radiusLabel" for="figureRadius${layerId}"> ${languages[preferredLanguage].radiusLabel} </label>
+          <input data-i18n="radiusTitle" type="number" id="figureRadius${layerId}" name="figureRadius" value="${layerConfig.radius}" oninput="onChangeDefault(${layerId}, 'radius', value)" title="${languages[preferredLanguage].radiusTitle}"></input>
           <input class="input-slider" type="range" min="0" max="250" id="figureRadius${layerId}" name="figureRadius" value="${layerConfig.radius}" onchange="onChangeDefault(${layerId}, 'radius', value)" data-i18n="radiusTitle" title="${languages[preferredLanguage].radiusTitle}"></input>
         </div>
         <div class="input-row">
           <label data-i18n="distanceLabel" for="figureDistance${layerId}"> ${languages[preferredLanguage].distanceLabel}</label>
+          <input data-i18n="distanceTitle" type="number" id="figureDistance${layerId}" name="figureDistance" value="${layerConfig.distance}" oninput="onChangeDefault(${layerId}, 'distance', value)" title="${languages[preferredLanguage].distanceTitle}"></input>
           <input class="input-slider" type="range" min="0" max="400" id="figureDistance${layerId}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerId}, 'distance', value)" data-i18n="distanceTitle" title="${languages[preferredLanguage].distanceTitle}"></input>
         </div>
       </div>
