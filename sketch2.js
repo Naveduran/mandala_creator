@@ -256,6 +256,7 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
     <label data-i18n="borderLabel" for="strokeColor-${layerId}"> ${languages[preferredLanguage].borderLabel} </label>
       <input type="number" min="0" max="4" id="strokeWidth-${layerId}" name="strokeWidth" value=${layerConfig.strokeWidth}
       data-i18n="strokeWidth" title="${languages[preferredLanguage].strokeWidth}"></input>
+      <p></p>
       <input data-i18n="borderTitle" type="text" data-coloris id="strokeColor-${layerId}" name="strokeColor" class="color-picker" value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}" title="${languages[preferredLanguage].borderTitle}">
   </div>
   <div class="layer-row">

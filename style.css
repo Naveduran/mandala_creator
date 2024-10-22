@@ -214,7 +214,6 @@ option {
   max-width: 4em;
   border: grey solid 0.2px;
   line-height: 1.5em;
-  float: inline-end;
   vertical-align: middle;
 }
 .layer-column-a {
@@ -231,7 +230,11 @@ option {
   padding: 0.5em 0 0.5em 0;
 }
 .layer-row {
+  display: flex;
+  flex-direction: row;
   line-height: 2em;
+  align-items: center;
+  justify-content: start;
 }
 .layer-row label {
   display: inline-flex;
@@ -330,8 +333,11 @@ option {
     color: var(--dm-accent-color-2);
     display: inline;
   }
-  select {
+  select, input {
     background-color: black;
     color: white;
+  }
+  .color-picker {
+    background-color: white;
   }
 }
