@@ -250,12 +250,12 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
     </button>`
 
   let visibilityButtonOn = `<button class="imagedButton" data-i18n="visibilityTitle"
-    title="${languages[preferredLanguage].visibilityTitle}" onclick="toggleVisibility(${layerId}, 0)">
+    title="${languages[preferredLanguage].visibilityTitle}" onclick="onChangeDefault(${layerId}, 'visibility', 0)">
     <img class="clickable-button" src="https://img.icons8.com/?size=100&id=13758&format=png&color=000000" data-i18n="visibilityTitle" alt=${languages[preferredLanguage].visibilityTitle}/>
   </button>`
 
   let visibilityButtonOff = `<button class="imagedButton" data-i18n="visibilityTitle"
-    title="${languages[preferredLanguage].visibilityTitle}" onclick="toggleVisibility(${layerId}, 1)">
+    title="${languages[preferredLanguage].visibilityTitle}" onclick="onChangeDefault(${layerId}, 'visibility', 1)">
     <img class="clickable-button" src="https://img.icons8.com/?size=100&id=121535&format=png&color=000000" data-i18n="visibilityTitle" alt=${languages[preferredLanguage].visibilityTitle}/>
   </button>`
 
@@ -272,7 +272,7 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
     <div class="layer-column-b">
       <div class="layer-row">
         <label data-i18n="fillLabel" for="fillColor-${layerId}"> ${languages[preferredLanguage].fillLabel}</label>
-          <input class="quantity-input" data-i18n="quantityTitle" type="number" id="figureNumber-${layerId}" name="figureNumber" value="${layerConfig.total}" onchange="onChangeQuantity(${layerId}, value)" title="${languages[preferredLanguage].quantityTitle}"></input>
+          <input class="quantity-input" data-i18n="quantityTitle" type="number" id="figureNumber-${layerId}" name="figureNumber" value="${layerConfig.total}" onchange="onChangeDefault(${layerId}, 'total', value)" title="${languages[preferredLanguage].quantityTitle}"></input>
           <select name="figureName" id="figureName-${layerId}" class="clickable-button" value="${layerConfig.figureName}" data-i18n="figureTitle" onchange="onChangeDefault(${layerId}, 'figureName', value)" title="${languages[preferredLanguage].figureTitle}">
             <option value="triangle" ${layerConfig.figureName ==='triangle' ? "selected": ""} data-i18n="triangleTitle" 
             title=${languages[preferredLanguage].triangleTitle}>&nbsp;&#9651;</option>
@@ -391,18 +391,12 @@ function onChangeQuantity(figureId, value){
   saveOnHistory(newConfig)
 }
 
+
+
 // Update the history when an attribute of a layer changes
 function onChangeDefault(figureId, attribute, value){
   let newConfig = structuredClone(history[currentIndex])
   newConfig.layers[figureId][attribute] = value
-  saveOnHistory(newConfig)
-}
-
-//
-function toggleVisibility(layerId, value){
-  console.log(value)
-  let newConfig = structuredClone(history[currentIndex])
-  newConfig.layers[layerId].visibility = value
   saveOnHistory(newConfig)
 }
 
