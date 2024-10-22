@@ -9,43 +9,44 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/>
     <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
     <script src="./sketch2.js"></script>
+    <script src="./languages.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="https://github.com/necolas/normalize.css">
   </head>
   <body>
     <header>
-      <h1 class="page-title">Mandala Playground</h1>
+      <h1 data-i18n="pageTitle">Mandala Playground</h1>
     </header>
     <main id="main">
 
       <div class="mandala-2">
         <div class="line-saving">
-          <input type="color" id="backgroundColorInput" name="backgroundColorInput" value="#000000" class="clickable-button " title="Mandala background color"/>
+          <input type="color" id="backgroundColorInput" name="backgroundColorInput" value="#000000" class="clickable-button" data-i18n="backgroundTitle" title="Mandala background color"/>
   
-          <button class="imagedButton" title="Undo" onclick="undo()"><img src="https://img.icons8.com/?size=100&id=12964&format=png&color=000000" alt="undo" class="clickable-button"/></button>
-          <button class="imagedButton" title="Redo" onclick="redo()"><img src="https://img.icons8.com/?size=100&id=12961&format=png&color=000000" alt="redo" class="clickable-button"/></button>
+          <button class="imagedButton" data-i18n="undoTitle" title="Undo" onclick="undo()"><img src="https://img.icons8.com/?size=100&id=12964&format=png&color=000000" alt="undo" class="clickable-button"/></button>
+          <button class="imagedButton" data-i18n="redoTitle" title="Redo" onclick="redo()"><img src="https://img.icons8.com/?size=100&id=12961&format=png&color=000000" alt="redo" class="clickable-button"/></button>
 
-          <button class="imagedButton" title="Download as image" onclick="downloadAsImage()"><img src="https://img.icons8.com/?size=100&id=114320&format=png&color=000000" alt="save image" class="clickable-button"/></button>
+          <button class="imagedButton" data-i18n="downloadTitle" title="Download as image" onclick="downloadAsImage()"><img src="https://img.icons8.com/?size=100&id=114320&format=png&color=000000" alt="save image" class="clickable-button"/></button>
           <!--
           /* Functions disabled until program is run on a server to be able to use fs to write in files to download */
           <button class="imagedButton" title="Upload mandala configuration"><img src="https://img.icons8.com/?size=100&id=15452&format=png&color=000000" alt="Upload mandala configuration" class="clickable-button" /></button>
           <button class="imagedButton" title="Download mandala configuration" onclick="saveInLocalStorage()"><img src="https://img.icons8.com/?size=100&id=15428&format=png&color=000000" alt="Download mandala configuration" class="clickable-button" /></button>-->
-          <button class="imagedButton" title="Reset" onclick="cleanAll()"><img src="https://img.icons8.com/?size=100&id=74176&format=png&color=000000" alt="reset" class="clickable-button"/></button>
+          <button class="imagedButton" data-i18n="resetTitle" title="Reset" onclick="cleanAll()"><img src="https://img.icons8.com/?size=100&id=74176&format=png&color=000000" alt="reset" class="clickable-button"/></button>
         </div>
         <canvas id='myCanvas'>
       </div>
       <div class="mandala">
 
         <div class="layers" id="layers"></div>      
-        <button class="plus-button" type="button" title="Add a new layer" onclick="createNewLayer()" >+</button>
+        <button class="plus-button" type="button" data-i18n="addLayerTitle" title="Add a new layer" onclick="createNewLayer()" >+</button>
         <div class="line-footer">
-          <p>Made for fun by Natalia Vera</p>
+          <p data-i18n="footerLabel">Made for fun by Natalia Vera</p>
           <div class="config">
-            <label for="pageLanguage">Language</label>
+            <label data-i18n="languageLabel" for="pageLanguage">Language</label>
             <select name="pageLanguage" id="pageLanguage" form="pageLanguage">
-              <option value="EN" selected>English, American</option>
-              <option value="ES">Spanish</option>
-              <option value="ZH">Chinese (Mandarin)</option>
+              <option value="EN" data-i18n="englishLabel" selected>English, American</option>
+              <option value="ES" data-i18n="spanishLabel" >Spanish</option>
+              <option value="ZH" data-i18n="chineseLabel" >Chinese (Mandarin)</option>
             </select>
           </div>
         </div>

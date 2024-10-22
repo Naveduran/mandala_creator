@@ -122,11 +122,30 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - too much trigger of save history when pick colors
 
 - only allows to undo two times
+
 - remove next indexes when save changes after an undo
 
 - a pair number of lines is drawn as half of them, but darker 4,6,8
 
 - review documentation
+
+## User testing proposals
+
+- agregar una capa debe agregar una capa diferente a todas las que ya existen, pj 3 circulos negros y pequenios para que no se note, o agregar un boton que se llame aplicar para que las nuevas figuras no asusten a la persona por que produ e cambios no deseados mientras que aun se esta configurando la capa
+
+- reset debe eliminar todas las capas
+
+- if (reset + quitar capa){no permite agregar nueva capa agregar}
+
+- cambiar en el dark mode el fondo del selector de la figura a negro
+
+- permitir modificar grosor del borde
+
+- permitir modificar el angulo de cada layer
+
+- pestañas en local storage para guardar nuevos mandalas
+
+- permitir (tambien) escribir los numeros radius y distance
 
 ## Extras
 
@@ -135,11 +154,15 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
       > OK remover opciones de otros idiomas
       > OK json para ingles, español y chino
       > OK separar los textos de otros tags manteniendo el estilo
-      > id para todas las etiquetas de texto
-      > traduccion de tooltips
-      > funcion que se active al seleccionar len guaje 
-      >> cambiar el contenido de cada id
-      >> guardar el lenguage seleccionado en el local storage
+      > OK data-i18n para todas las etiquetas de texto (no id xq se repiten)
+      > OK funcion que se active al seleccionar len guaje 
+      >> OK cambiar el contenido de cada id
+      >> OK condicional dependiendo del elemento a modificar
+      >> OK guardar el lenguage seleccionado en el local storage
+      > OK traduccion de tooltips
+      > revision en ingles
+      > revision en español
+      > revision en chino
 
 - conditional format for undo a redo buttons
 

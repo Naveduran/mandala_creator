@@ -145,10 +145,6 @@ function updateCanvasColor(e) {
   saveOnHistory(newConfig)
 }
 
-function updateLanguage(e){
-  console.log(e.target.value)
-}
-
 // Runs once, Creates the space to draw
 function setup()
 {
@@ -196,13 +192,14 @@ function setupHtmlLayers() {
 }
 
 function drawHtmlLayer(layerConfig, layerId, totalLayers){
-  let upButtonHtml = `
-    <button class="imagedButton"  title="Move up" onclick="moveLayer(${layerId}, 'up')" >
-      <img class="clickable-button" src="https://img.icons8.com/?size=100&id=19162&format=png&color=000000" alt="move up"/>
+  const preferredLanguage = localStorage.getItem('language') || 'en';
+  let upButtonHtml = ` 
+    <button class="imagedButton" data-i18n="upTitle" title="${languages[preferredLanguage].upTitle}" onclick="moveLayer(${layerId}, 'up')" >
+      <img class="clickable-button"  data-i18n="upTitle" src="https://img.icons8.com/?size=100&id=19162&format=png&color=000000" alt="${languages[preferredLanguage].upTitle}"/>
     </button>`
   let downButtonHtml = `
-    <button class="imagedButton" title="Move down" onclick="moveLayer(${layerId}, 'down')">
-      <img class="clickable-button" src="https://img.icons8.com/?size=100&id=19161&format=png&color=000000" alt="move down"/>
+    <button data-i18n="downTitle" class="imagedButton" title="${languages[preferredLanguage].downTitle}" onclick="moveLayer(${layerId}, 'down')">
+      <img data-i18n="downTitle" class="clickable-button" src="https://img.icons8.com/?size=100&id=19161&format=png&color=000000" alt="${languages[preferredLanguage].downTitle}"/>
     </button>`
   let layerStructure = `
     <div class="layer-column-a">
@@ -213,44 +210,47 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
       <div class="layer-column-b-row-1">
         <div class="layer-column-b-row-1-column-a">
           <div class="input-row">
-            <label class="fill-label" for="fillColor-${layerId}"> Fill </label>
-            <input type="text" data-coloris id="fillColor-${layerId}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}" title="Color inside the figure">
+            <label data-i18n="fillLabel" for="fillColor-${layerId}"> ${languages[preferredLanguage].fillLabel}</label>
+            <input data-i18n="fillTitle" type="text" data-coloris id="fillColor-${layerId}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}" title="${languages[preferredLanguage].fillTitle}">
           </div>
           <div class="input-row">
-            <label class="border-label" for="strokeColor-${layerId}"> Border </label>
-            <input type="text" data-coloris id="strokeColor-${layerId}" name="strokeColor" class="color-picker" value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}" title="Border color">
+            <label data-i18n="borderLabel" for="strokeColor-${layerId}"> ${languages[preferredLanguage].borderLabel} </label>
+            <input data-i18n="borderTitle" type="text" data-coloris id="strokeColor-${layerId}" name="strokeColor" class="color-picker" value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}" title="${languages[preferredLanguage].borderTitle}">
           </div>
           <div class="input-row">
-            <label class="quantity-label" for="figureNumber-${layerId}"> Quantity </label>
-            <input type="number" id="figureNumber-${layerId}" name="figureNumber" value="${layerConfig.total}" onchange="onChangeQuantity(${layerId}, value)" title="Number of figures"></input>
+            <label data-i18n="quantityLabel" for="figureNumber-${layerId}"> ${languages[preferredLanguage].quantityLabel} </label>
+            <input data-i18n="quantityTitle" type="number" id="figureNumber-${layerId}" name="figureNumber" value="${layerConfig.total}" onchange="onChangeQuantity(${layerId}, value)" title="${languages[preferredLanguage].quantityTitle}"></input>
           </div>
         </div>
         <div class="layer-column-b-row-1-column-b">
-          <select name="figureName" id="figureName-${layerId}" class="clickable-button" value="${layerConfig.figureName}"
-            onchange="onChangeDefault(${layerId}, 'figureName', value)" title="Figure">
-            <option value="triangle" ${layerConfig.figureName ==='triangle' ? "selected": ""}>&nbsp;&#9651;</option>
-            <option value="circle" ${layerConfig.figureName ==='circle' ? "selected": ""}>&#9711;</option>
-            <option value="line" ${layerConfig.figureName ==='line' ? "selected": ""}>&nbsp;&nbsp;/</option>
-            <option value="square" ${layerConfig.figureName ==='square' ? "selected": ""}>&nbsp;&#9634;</option>
+          <select name="figureName" id="figureName-${layerId}" class="clickable-button" value="${layerConfig.figureName}" data-i18n="figureTitle" onchange="onChangeDefault(${layerId}, 'figureName', value)" title="${languages[preferredLanguage].figureTitle}">
+            <option value="triangle" ${layerConfig.figureName ==='triangle' ? "selected": ""} data-i18n="triangleTitle" 
+            title=${languages[preferredLanguage].triangleTitle}>&nbsp;&#9651;</option>
+            <option value="circle" ${layerConfig.figureName ==='circle' ? "selected": ""} data-i18n="triangleTitle" 
+            title="${languages[preferredLanguage].triangleTitle}">&#9711;</option>
+            <option value="line" ${layerConfig.figureName ==='line' ? "selected": ""} data-i18n="lineTitle" 
+            title="${languages[preferredLanguage].lineTitle}">&nbsp;&nbsp;/</option>
+            <option value="square" ${layerConfig.figureName ==='square' ? "selected": ""} data-i18n="squareTitle" 
+            title="${languages[preferredLanguage].squareTitle}">&nbsp;&#9634;</option>
           </select>
           <div class="layer-buttons">
-          <!--
-          <button class="imagedButton" title="Show/hide this layer">
-            <img class="clickable-button" src="https://img.icons8.com/?size=100&id=13758&format=png&color=000000" alt="visibility"/>
-          </button>-->
-          <button class="imagedButton" title="Remove Layer" onclick="removeLayer(${layerId})">
-            <img src="https://img.icons8.com/?size=100&id=74176&format=png&color=000000" alt="remove this layer" class="clickable-button"  onclick="removeLayer(${layerId})" title="Remove layer"/></button>
+          <button class="imagedButton" data-i18n="visibilityTitle" title="${languages[preferredLanguage].visibilityTitle}">
+            <img class="clickable-button" src="https://img.icons8.com/?size=100&id=13758&format=png&color=000000" data-i18n="visibilityTitle"
+            alt=${languages[preferredLanguage].visibilityTitle}/>
+          </button>
+          <button class="imagedButton" data-i18n= "removeTitle" title="${languages[preferredLanguage].removeTitle}" onclick="removeLayer(${layerId})">
+            <img src="https://img.icons8.com/?size=100&id=74176&format=png&color=000000" class="clickable-button" onclick="removeLayer(${layerId})" data-i18n="removeTitle" alt="${languages[preferredLanguage].removeTitle}"/></button>
           </div>
         </div>
       </div>
       <div class="layer-column-b-row-2">
         <div class="input-row">
-          <label class="radius-label" for="figureRadius${layerId}"> Radius </label>
-          <input class="input-slider" type="range" min="0" max="250" id="figureRadius${layerId}" name="figureRadius" value=${layerConfig.radius} onchange="onChangeDefault(${layerId}, 'radius', value)" title="Figure Size"></input>
+          <label data-i18n="radiusLabel" for="figureRadius${layerId}"> ${languages[preferredLanguage].radiusLabel} </label>
+          <input class="input-slider" type="range" min="0" max="250" id="figureRadius${layerId}" name="figureRadius" value="${layerConfig.radius}" onchange="onChangeDefault(${layerId}, 'radius', value)" data-i18n="radiusTitle" title="${languages[preferredLanguage].radiusTitle}"></input>
         </div>
         <div class="input-row">
-          <label class="distance-label" for="figureDistance${layerId}"> Distance </label>
-          <input class="input-slider" type="range" min="0" max="400" id="figureDistance${layerId}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerId}, 'distance', value)" title="Distance from mandala's center to figure's center"></input>
+          <label data-i18n="distanceLabel" for="figureDistance${layerId}"> ${languages[preferredLanguage].distanceLabel}</label>
+          <input class="input-slider" type="range" min="0" max="400" id="figureDistance${layerId}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerId}, 'distance', value)" data-i18n="distanceTitle" title="${languages[preferredLanguage].distanceTitle}"></input>
         </div>
       </div>
     </div>`
@@ -442,7 +442,28 @@ function saveInLocalStorage(){
 // Load configuration from local storage
 function getFromLocalStorage(){
   let newConfig = JSON.parse(localStorage.getItem("mandala"));
-  saveOnHistory(newConfig)
+  saveOnHistory(newConfig);
+}
+
+function updateLanguage(e){
+  let newLanguage = e.target.value.toLowerCase();
+  localStorage.setItem('language', newLanguage);
+  updateContent(newLanguage);
+}
+
+// Function to update content based on selected language
+function updateContent(newLanguage) {
+  let langData = languages[newLanguage]
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    if (element.localName == 'label'){
+      element.innerHTML = langData[key];
+    } else if (element.localName == 'alt'){
+      element.title = langData[key];
+    } else {
+      element.alt = langData[key];
+    }
+  });
 }
 
 // Set the configuration of color pickers that *allows transparency!*
