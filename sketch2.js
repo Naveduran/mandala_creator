@@ -303,12 +303,13 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
         <input data-i18n="distanceTitle" type="number" id="figureDistance-${layerId}" name="figureDistance" value="${layerConfig.distance}" oninput="onChangeDefault(${layerId}, 'distance', value)" title="${languages[preferredLanguage].distanceTitle}"></input>
         <input class="input-slider" type="range" min="0" max="400" id="figureDistance-${layerId}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerId}, 'distance', value)" data-i18n="distanceTitle" title="${languages[preferredLanguage].distanceTitle}"></input>
       </div>
-        <div class="layer-row">
+      <!---
+      <div class="layer-row">
         <label data-i18n="angleLabel" for="figureAngle${layerId}"> ${languages[preferredLanguage].angleLabel}</label>
         <input data-i18n="distanceTitle" type="number" min=0 max=180 id="figureDistance${layerId}" name="figureDistance" value="${layerConfig.angle}" oninput="onChangeDefault(${layerId}, 'angle', value)" title="${languages[preferredLanguage].angleTitle}"></input>
         <input class="input-slider" type="range" min=0 max=180 list="markers" id="figureAngle${layerId}" name="figureAngle" value=${layerConfig.angle} onchange="onChangeDefault(${layerId}, 'angle', value)" data-i18n="angleTitle" title="${languages[preferredLanguage].angleTitle}"></input>
-
       </div>
+      --->
     </div>`
 
   let newLayer = document.createElement('div');
@@ -320,6 +321,7 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
 
 // Use the received layer configuration to draw the described figures with its respective border and fill color
 function drawMandalaLayer(layer){
+  strokeWeight(layer.strokeWidth * 2)
   if (layer.strokeColor){stroke(layer.strokeColor);
   } else {noStroke();}
   if (layer.fillColor){fill(layer.fillColor);
@@ -387,7 +389,6 @@ function onChangeDefault(figureId, attribute, value){
 
 // Apply the configuration of the previous index in the history of changes
 function undo() {
-  console.log('undo')
   if (currentIndex > 0) {
     currentIndex -=1
     draw()
@@ -397,7 +398,6 @@ function undo() {
 
 // Apply the configuration of the next index in the history of changes
 function redo() {
-  console.log('redo')
   if (history.length > currentIndex) {
     currentIndex += 1
     draw()

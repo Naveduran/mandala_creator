@@ -20,69 +20,69 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - OK buscar iconos en icons8
 - OK arrows, selects y colores senalar con dedo
 - OK construir mandala inicial
-      >OK separate config in another file
-      >OK study modules
-      >OK study cors
-      >OK for each leer "initial config" para crear el mandala
-      >OK modify size to fit smaller screen sizes
+      > OK separate config in another file
+      > OK study modules
+      > OK study cors
+      > OK for each leer "initial config" para crear el mandala
+      > OK modify size to fit smaller screen sizes
 - OK crear boton guardar en archivo y cargar de archivo
 - OK crear css
-      >OK cel
-      >OK tablet
-      >OK pc
-      >OK ultragrande
-      >OK si mas ancho que largo, poner controles al lado izquierdo
+      > OK cel
+      > OK tablet
+      > OK pc
+      > OK ultragrande
+      > OK si mas ancho que largo, poner controles al lado izquierdo
 - OK habilitar dark theme
-      >OK disminuir la cantidad de lugares en donde se cambian los colores
-      >OK set colors for dark and light theme
-      >OK get dark-light theme preference from user system and apply automatically
+      > OK disminuir la cantidad de lugares en donde se cambian los colores
+      > OK set colors for dark and light theme
+      > OK get dark-light theme preference from user system and apply automatically
 - OK habilitar cambiar background
-      >OK crear variable
-      >OK crear event listener para el input y la funcion que corre cuando se detona el evento
-      >OK cambiar el background del canvas
+      > OK crear variable
+      > OK crear event listener para el input y la funcion que corre cuando se detona el evento
+      > OK cambiar el background del canvas
 - OK encerrar imagen de flechas dentro de botones
 - OK en layer, cambiar div por form
 - OK cambiar ubicacion del boton de background
 - OK enviar lenguaje al footer
 - OK encerrar imagenes de line saving en botones
 - OK crear los botones de los layers de acuerdo a la config inicial
-      >OK leer la configuracion para ver los detalles de cada layer
-      >OK crear una funcion que genere codigo html X
-      >OK traer layers by id
-      >OK crear input de cantidad de figuras con sus botones
-      >OK crear select de tipo de figura
-      >OK crear selector de color de borde
-      >OK crear selector de color de figura
-      >OK crear boton para generar nueva layer
-      >OK remove static layer
+      > OK leer la configuracion para ver los detalles de cada layer
+      > OK crear una funcion que genere codigo html X
+      > OK traer layers by id
+      > OK crear input de cantidad de figuras con sus botones
+      > OK crear select de tipo de figura
+      > OK crear selector de color de borde
+      > OK crear selector de color de figura
+      > OK crear boton para generar nueva layer
+      > OK remove static layer
 - OK permitir cambiar tamanio de las figuras
 - OK permitir cambiar distancia de las figuras
 - OK debuggear why no se muestra el COLOR en el fillcolor
 - OK ponerle limite al numero, radio, y distancia de las figuras
-      >OK quedan descartados porque es mas usable con sliders
+      > OK quedan descartados porque es mas usable con sliders
 - OK crear un mandala default con colores legibles en formato rgb
-      >OK research
-      >OK ya no es necesario porque es mejor un color picker con rgba o hsla
+      > OK research
+      > OK ya no es necesario porque es mejor un color picker con rgba o hsla
 - OK Habilitar alpha channel para los color picker?
-      >OK general research
-      >OK play with https://github.com/mdbassit/Coloris
+      > OK general research
+      > OK play with https://github.com/mdbassit/Coloris
 - OK asignar ids unicos a cada elemento html del main
 - OK rehacer el layout para ser mas usable y ajustable a phone y pcs
-      >OK mockup
-      >OK cambiar input number por sliders
-      >OK cambiar select por figure selector
+      > OK mockup
+      > OK cambiar input number por sliders
+      > OK cambiar select por figure selector
 - OK centrar el mandala
 - OK volver a poner la configuracion del mandala default
 - OK poner tooltip a los botones de la primera linea
 - OK hacer que se muestre el color que viene de la config en el colorpicker
 - OK set history saving to make multiple redo and undo
-      >OK design solution plan
-      >OK create variables
-      >OK undo if currentIndex > 0
-      >OK redo executed only if History.length > currentIndex
+      > OK design solution plan
+      > OK create variables
+      > OK undo if currentIndex > 0
+      > OK redo executed only if History.length > currentIndex
 - OK hacer que se muestre el valor en el select de los tipos de figura
-      >OK entender el problema
-      >OK añadir 'selected' como atributo de la opcion que coincide con el value
+      > OK entender el problema
+      > OK añadir 'selected' como atributo de la opcion que coincide con el value
 - OK definir rangos para sliders de tamanio y distancia
 - OK move add layer button to bottom
 - OK add trash button
@@ -94,12 +94,12 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
       > OK sliders
       > OK figure
 - OK permitir borrar una layer
-      >OK anadir icono
-      >OK crear funcion removeLayer() y tener en cuenta los ids
+      > OK anadir icono
+      > OK crear funcion removeLayer() y tener en cuenta los ids
 - OK allow add new layer at the end
       > OK icono
       > OK crear funcion createNewLayer()
--OK permitir cambiar el orden de las layers
+- OK permitir cambiar el orden de las layers
       > OK icono
       > OK cambiar a dos iconos, uno fleccha arriba y otro hacia abajo
       > OK crear funcion moveLayer() y tener en cuenta los ids
@@ -123,7 +123,7 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - OK por defecto las nuevas capas no son visibles hasta que se le da click al ojo
 - OK cambiar en el dark mode el fondo del selector de la figura a negro
 - OK permitir (tambien) escribir los numeros radius y distance
-- OK Nuevo layout para incluir funciones sugeridas en el user testing
+- OK nuevo layout para incluir funciones sugeridas en el user testing
       > OK Diseño
 - OK permitir modificar el angulo de cada layer
       > OK funcion
@@ -132,22 +132,21 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
       > OK incluirlo en la estructura que se crea en cada layer
       > OK crear atributo en default mandala
       > OK funcion
-- Aplicar cambios del nuevo alyout en el mandala dibujado
-      > grosor del borde
-      > angulo de la layer
+- OK Aplicar cambios del nuevo layout en el mandala dibujado
+      > OK grosor del borde
+      > OK angulo de la layer (cancelado por ahora xq es mas complejo de lo esperado, tocaria dibujar c/figura una x una)
+      > OK remover la posibilidad de cambiar el angulo en el html
 
 ## Testing issues
 
 - OK add a layer duplicates behavior of previous one
+- OK activar y desactivar visibilidad
+      > OK formato condicional de ojito
+      > OK funcion
+      > OK aplicar cambios en mandala dibujado
+- OK No mostrar fill si la figura es una linea
+- OK right now it only allows to undo one time
 
-- activar y desactivar visibilidad
-      OK formato condicional de ojito
-      > funcion
-      > aplicar cambios en mandala dibujado
-
-- No mostrar fill si la figura es una linea
-
-- right now it only allows to undo one time
 - remove next indexes when save changes after an undo
 - a pair number of lines is drawn as half of them, but darker 4,6,8
 - review documentation
@@ -173,8 +172,9 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - Visibility button functionality
       > tooltip
 
-- pestañas en local storage para guardar nuevos mandalas
 - allow other polygons
+- pestañas en local storage para guardar nuevos mandalas
+- posibilidad de cambiar el angulo de cada layer
 
 ### Automatic Testing
 
