@@ -2,9 +2,8 @@ let languages = {
   en : {
     // Html text
     pageTitle: "Mandala Playground",
-    fillLabel: "Fill",
+    fillLabel: "Figure",
     borderLabel: "Border",
-    quantityLabel: "Quantity",
     radiusLabel: "Radius",
     distanceLabel: "Distance",
     footerLabel: "Made with joy by Natalia Vera",
@@ -34,14 +33,13 @@ let languages = {
     redoTitle: "Redo change",
     downloadTitle: "Download as image",
     resetTitle: "Remove all layers",
-    strokeWidth: "Border width"
+    strokeWidth: "Border width",
   },
   es: {
     // Html text
     pageTitle: "Juega con Mandalas",
-    fillLabel: "Relleno",
+    fillLabel: "Figura",
     borderLabel: "Borde",
-    quantityLabel: "Cantidad",
     radiusLabel: "Tamaño",
     distanceLabel: "Distancia",
     footerLabel: "Hecho con cariño por Natalia Vera",
@@ -78,7 +76,6 @@ let languages = {
     pageTitle: "曼陀罗游乐场",
     fillLabel: "填充",
     borderLabel: "边框",
-    quantityLabel: "数量",
     radiusLabel: "半径",
     distanceLabel: "距离",
     footerLabel: "由 Natalia Vera 精心制作",
