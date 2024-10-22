@@ -248,14 +248,25 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
     <button data-i18n="downTitle" class="imagedButton" title="${languages[preferredLanguage].downTitle}" onclick="moveLayer(${layerId}, 'down')">
       <img data-i18n="downTitle" class="clickable-button" src="https://img.icons8.com/?size=100&id=19161&format=png&color=000000" alt="${languages[preferredLanguage].downTitle}"/>
     </button>`
-  let layerStructure = `
+
+  let visibilityButtonOn = `<button class="imagedButton" data-i18n="visibilityTitle"
+    title="${languages[preferredLanguage].visibilityTitle}" onchange="toggleVisibility(${layerId}, value)">
+    <img class="clickable-button" src="https://img.icons8.com/?size=100&id=13758&format=png&color=000000" data-i18n="visibilityTitle" alt=${languages[preferredLanguage].visibilityTitle}/>
+  </button>`
+  
+  let visibilityButtonOff = `<button class="imagedButton" data-i18n="visibilityTitle"
+    title="${languages[preferredLanguage].visibilityTitle}" onchange="toggleVisibility(${layerId}, value)">
+    <img class="clickable-button" src="https://img.icons8.com/?size=100&id=121535&format=png&color=000000" data-i18n="visibilityTitle" alt=${languages[preferredLanguage].visibilityTitle}/>
+  </button>`
+
+
+  console.log("visibility: ", layerConfig.visibility)
+let layerStructure = `
 <div class="layer-column-a">
   ${layerId > 0 ? upButtonHtml : ''}
   ${layerId < totalLayers -1 ? downButtonHtml : ''}
-  <button class="imagedButton" data-i18n="visibilityTitle" title="${languages[preferredLanguage].visibilityTitle}">
-    <img class="clickable-button" src="https://img.icons8.com/?size=100&id=13758&format=png&color=000000" data-i18n="visibilityTitle"
-    alt=${languages[preferredLanguage].visibilityTitle}/>
-  </button>
+
+  ${layerConfig.visibility ? visibilityButtonOn : visibilityButtonOff}
   <button class="imagedButton" data-i18n= "removeTitle" title="${languages[preferredLanguage].removeTitle}" onclick="removeLayer(${layerId})">
     <img src="https://img.icons8.com/?size=100&id=74176&format=png&color=000000" class="clickable-button" onclick="removeLayer(${layerId})" data-i18n="removeTitle" alt="${languages[preferredLanguage].removeTitle}"/>
   </button>
@@ -389,6 +400,11 @@ function onChangeDefault(figureId, attribute, value){
   saveOnHistory(newConfig)
 }
 
+//
+function toggleVisibility(){
+  
+}
+
 // Apply the configuration of the previous index in the history of changes
 function undo() {
   // BUG: HTML LAYERS DONT CHANGE
@@ -486,7 +502,6 @@ function downloadAsImage(){
   saveCanvas(`mandala`, 'jpg')//'jpg,png, webp'
 }
 
-
 // Write json in local storage
 function saveInLocalStorage(){
   let json = JSON.stringify(history[currentIndex])
@@ -499,6 +514,7 @@ function getFromLocalStorage(){
   saveOnHistory(newConfig);
 }
 
+// Cambiar lenguaje y guardar la preferencia en el localstorage
 function updateLanguage(e){
   let newLanguage = e.target.value.toLowerCase();
   localStorage.setItem('language', newLanguage);
@@ -519,6 +535,7 @@ function updateContent(newLanguage) {
     }
   });
 }
+
 
 // Set the configuration of color pickers that *allows transparency!*
 Coloris({
