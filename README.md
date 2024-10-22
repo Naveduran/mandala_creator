@@ -131,11 +131,10 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 
 ## User testing proposals
 
-- agregar una capa debe agregar una capa diferente a todas las que ya existen, pj 3 circulos negros y pequenios para que no se note, o agregar un boton que se llame aplicar para que las nuevas figuras no asusten a la persona por que produ e cambios no deseados mientras que aun se esta configurando la capa
-
-- reset debe eliminar todas las capas
-
-- if (reset + quitar capa){no permite agregar nueva capa agregar}
+- OK reset debe eliminar todas las capas
+- OK if (reset + quitar capa){no permite agregar nueva capa agregar}
+- OK agregar una capa debe agregar una capa diferente a todas las que ya existen, pj 3 circulos negros y pequenios para que no se note
+- OK por defecto las nuevas capas no son visibles hasta que se le da click al ojo
 
 - cambiar en el dark mode el fondo del selector de la figura a negro
 
@@ -147,22 +146,22 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 
 - permitir (tambien) escribir los numeros radius y distance
 
+- allow other polygons
+
 ## Extras
 
-- permitir espanol, ingles y chino
+- OK permitir espanol, ingles y chino
       > OK check https://medium.com/@nohanabil/building-a-multilingual-static-website-a-step-by-step-guide-7af238cc8505
       > OK remover opciones de otros idiomas
       > OK json para ingles, español y chino
       > OK separar los textos de otros tags manteniendo el estilo
       > OK data-i18n para todas las etiquetas de texto (no id xq se repiten)
       > OK funcion que se active al seleccionar len guaje 
-      >> OK cambiar el contenido de cada id
-      >> OK condicional dependiendo del elemento a modificar
-      >> OK guardar el lenguage seleccionado en el local storage
+      > OK cambiar el contenido de cada id
+      > OK condicional dependiendo del elemento a modificar
+      > OK guardar el lenguage seleccionado en el local storage
       > OK traduccion de tooltips
-      > revision en ingles
-      > revision en español
-      > revision en chino
+
 
 - conditional format for undo a redo buttons
 
@@ -172,10 +171,10 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - Visibility button functionality
       > tooltip
 
+
+
+### Testing
+
 - unittests
       > first test file and framework with mocha
       > https://mochajs.org/
-
-- run in a server to allow saving multiple versions and show images of each saved version(?)
-
-- allow other polygons
