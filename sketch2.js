@@ -225,61 +225,50 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
       <img data-i18n="downTitle" class="clickable-button" src="https://img.icons8.com/?size=100&id=19161&format=png&color=000000" alt="${languages[preferredLanguage].downTitle}"/>
     </button>`
   let layerStructure = `
-    <div class="layer-column-a">
-      ${layerId > 0 ? upButtonHtml : ''}
-      ${layerId < totalLayers -1 ? downButtonHtml : ''}
-    </div>
-    <div class="layer-column-b">
-      <div class="layer-column-b-row-1">
-        <div class="layer-column-b-row-1-column-a">
-          <div class="input-row">
-            <label data-i18n="fillLabel" for="fillColor-${layerId}"> ${languages[preferredLanguage].fillLabel}</label>
-            <input data-i18n="fillTitle" type="text" data-coloris id="fillColor-${layerId}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}" title="${languages[preferredLanguage].fillTitle}">
-          </div>
-          <div class="input-row">
-            <label data-i18n="borderLabel" for="strokeColor-${layerId}"> ${languages[preferredLanguage].borderLabel} </label>
-            <input data-i18n="borderTitle" type="text" data-coloris id="strokeColor-${layerId}" name="strokeColor" class="color-picker" value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}" title="${languages[preferredLanguage].borderTitle}">
-            <input class="input-slider" type="number" min="0" max="4" id="strokeWidth-${layerId}" name="strokeWidth" value=${layerConfig.strokeWidth} data-i18n="strokeWidth" title="${languages[preferredLanguage].strokeWidth}"></input>
-          </div>
-          <div class="input-row">
-            <label data-i18n="quantityLabel" for="figureNumber-${layerId}"> ${languages[preferredLanguage].quantityLabel} </label>
-            <input data-i18n="quantityTitle" type="number" id="figureNumber-${layerId}" name="figureNumber" value="${layerConfig.total}" onchange="onChangeQuantity(${layerId}, value)" title="${languages[preferredLanguage].quantityTitle}"></input>
-          </div>
-        </div>
-        <div class="layer-column-b-row-1-column-b">
-          <select name="figureName" id="figureName-${layerId}" class="clickable-button" value="${layerConfig.figureName}" data-i18n="figureTitle" onchange="onChangeDefault(${layerId}, 'figureName', value)" title="${languages[preferredLanguage].figureTitle}">
-            <option value="triangle" ${layerConfig.figureName ==='triangle' ? "selected": ""} data-i18n="triangleTitle" 
-            title=${languages[preferredLanguage].triangleTitle}>&nbsp;&#9651;</option>
-            <option value="circle" ${layerConfig.figureName ==='circle' ? "selected": ""} data-i18n="triangleTitle" 
-            title="${languages[preferredLanguage].triangleTitle}">&#9711;</option>
-            <option value="line" ${layerConfig.figureName ==='line' ? "selected": ""} data-i18n="lineTitle" 
-            title="${languages[preferredLanguage].lineTitle}">&nbsp;&nbsp;/</option>
-            <option value="square" ${layerConfig.figureName ==='square' ? "selected": ""} data-i18n="squareTitle" 
-            title="${languages[preferredLanguage].squareTitle}">&nbsp;&#9634;</option>
-          </select>
-          <div class="layer-buttons">
-          <button class="imagedButton" data-i18n="visibilityTitle" title="${languages[preferredLanguage].visibilityTitle}">
-            <img class="clickable-button" src="https://img.icons8.com/?size=100&id=13758&format=png&color=000000" data-i18n="visibilityTitle"
-            alt=${languages[preferredLanguage].visibilityTitle}/>
-          </button>
-          <button class="imagedButton" data-i18n= "removeTitle" title="${languages[preferredLanguage].removeTitle}" onclick="removeLayer(${layerId})">
-            <img src="https://img.icons8.com/?size=100&id=74176&format=png&color=000000" class="clickable-button" onclick="removeLayer(${layerId})" data-i18n="removeTitle" alt="${languages[preferredLanguage].removeTitle}"/></button>
-          </div>
-        </div>
-      </div>
-      <div class="layer-column-b-row-2">
-        <div class="input-row">
-          <label data-i18n="radiusLabel" for="figureRadius${layerId}"> ${languages[preferredLanguage].radiusLabel} </label>
-          <input data-i18n="radiusTitle" type="number" id="figureRadius${layerId}" name="figureRadius" value="${layerConfig.radius}" oninput="onChangeDefault(${layerId}, 'radius', value)" title="${languages[preferredLanguage].radiusTitle}"></input>
-          <input class="input-slider" type="range" min="0" max="250" id="figureRadius${layerId}" name="figureRadius" value="${layerConfig.radius}" onchange="onChangeDefault(${layerId}, 'radius', value)" data-i18n="radiusTitle" title="${languages[preferredLanguage].radiusTitle}"></input>
-        </div>
-        <div class="input-row">
-          <label data-i18n="distanceLabel" for="figureDistance${layerId}"> ${languages[preferredLanguage].distanceLabel}</label>
-          <input data-i18n="distanceTitle" type="number" id="figureDistance${layerId}" name="figureDistance" value="${layerConfig.distance}" oninput="onChangeDefault(${layerId}, 'distance', value)" title="${languages[preferredLanguage].distanceTitle}"></input>
-          <input class="input-slider" type="range" min="0" max="400" id="figureDistance${layerId}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerId}, 'distance', value)" data-i18n="distanceTitle" title="${languages[preferredLanguage].distanceTitle}"></input>
-        </div>
-      </div>
-    </div>`
+<div class="layer-column-a">
+  ${layerId > 0 ? upButtonHtml : ''}
+  ${layerId < totalLayers -1 ? downButtonHtml : ''}
+  <button class="imagedButton" data-i18n="visibilityTitle" title="${languages[preferredLanguage].visibilityTitle}">
+    <img class="clickable-button" src="https://img.icons8.com/?size=100&id=13758&format=png&color=000000" data-i18n="visibilityTitle"
+    alt=${languages[preferredLanguage].visibilityTitle}/>
+  </button>
+  <button class="imagedButton" data-i18n= "removeTitle" title="${languages[preferredLanguage].removeTitle}" onclick="removeLayer(${layerId})">
+    <img src="https://img.icons8.com/?size=100&id=74176&format=png&color=000000" class="clickable-button" onclick="removeLayer(${layerId})" data-i18n="removeTitle" alt="${languages[preferredLanguage].removeTitle}"/>
+  </button>
+</div>
+<div class="layer-column-b">
+  <div class="layer-row">
+    <label data-i18n="fillLabel" for="fillColor-${layerId}"> ${languages[preferredLanguage].fillLabel}</label>
+      <input class="quantity-input" data-i18n="quantityTitle" type="number" id="figureNumber-${layerId}" name="figureNumber" value="${layerConfig.total}" onchange="onChangeQuantity(${layerId}, value)" title="${languages[preferredLanguage].quantityTitle}"></input>
+      <select name="figureName" id="figureName-${layerId}" class="clickable-button" value="${layerConfig.figureName}" data-i18n="figureTitle" onchange="onChangeDefault(${layerId}, 'figureName', value)" title="${languages[preferredLanguage].figureTitle}">
+        <option value="triangle" ${layerConfig.figureName ==='triangle' ? "selected": ""} data-i18n="triangleTitle" 
+        title=${languages[preferredLanguage].triangleTitle}>&nbsp;&#9651;</option>
+        <option value="circle" ${layerConfig.figureName ==='circle' ? "selected": ""} data-i18n="triangleTitle" 
+        title="${languages[preferredLanguage].triangleTitle}">&#9711;</option>
+        <option value="line" ${layerConfig.figureName ==='line' ? "selected": ""} data-i18n="lineTitle" 
+        title="${languages[preferredLanguage].lineTitle}">&nbsp;&nbsp;/</option>
+        <option value="square" ${layerConfig.figureName ==='square' ? "selected": ""} data-i18n="squareTitle" 
+        title="${languages[preferredLanguage].squareTitle}">&nbsp;&#9634;</option>
+      </select>
+      <input data-i18n="fillTitle" type="text" data-coloris id="fillColor-${layerId}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}" title="${languages[preferredLanguage].fillTitle}">
+  </div>
+  <div class="layer-row">
+    <label data-i18n="borderLabel" for="strokeColor-${layerId}"> ${languages[preferredLanguage].borderLabel} </label>
+      <input type="number" min="0" max="4" id="strokeWidth-${layerId}" name="strokeWidth" value=${layerConfig.strokeWidth}
+      data-i18n="strokeWidth" title="${languages[preferredLanguage].strokeWidth}"></input>
+      <input data-i18n="borderTitle" type="text" data-coloris id="strokeColor-${layerId}" name="strokeColor" class="color-picker" value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}" title="${languages[preferredLanguage].borderTitle}">
+  </div>
+  <div class="layer-row">
+    <label data-i18n="radiusLabel" for="figureRadius${layerId}"> ${languages[preferredLanguage].radiusLabel} </label>
+    <input data-i18n="radiusTitle" type="number" id="figureRadius${layerId}" name="figureRadius" value="${layerConfig.radius}" oninput="onChangeDefault(${layerId}, 'radius', value)" title="${languages[preferredLanguage].radiusTitle}"></input>
+    <input class="input-slider" type="range" min="0" max="250" id="figureRadius${layerId}" name="figureRadius" value="${layerConfig.radius}" onchange="onChangeDefault(${layerId}, 'radius', value)" data-i18n="radiusTitle" title="${languages[preferredLanguage].radiusTitle}"></input>
+  </div>
+  <div class="layer-row">
+    <label data-i18n="distanceLabel" for="figureDistance${layerId}"> ${languages[preferredLanguage].distanceLabel}</label>
+    <input data-i18n="distanceTitle" type="number" id="figureDistance${layerId}" name="figureDistance" value="${layerConfig.distance}" oninput="onChangeDefault(${layerId}, 'distance', value)" title="${languages[preferredLanguage].distanceTitle}"></input>
+    <input class="input-slider" type="range" min="0" max="400" id="figureDistance${layerId}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerId}, 'distance', value)" data-i18n="distanceTitle" title="${languages[preferredLanguage].distanceTitle}"></input>
+  </div>
+</div>`
 
   let newLayer = document.createElement('div');
   newLayer.setAttribute("class", "layer");
