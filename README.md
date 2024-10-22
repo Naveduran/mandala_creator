@@ -136,13 +136,14 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
       > grosor del borde
       > angulo de la layer
 
-
 ## Testing issues
 
 - OK add a layer duplicates behavior of previous one
 
 - activar y desactivar visibilidad
-      > formato condicional de ojito
+      OK formato condicional de ojito
+      > funcion
+      > aplicar cambios en mandala dibujado
 
 - No mostrar fill si la figura es una linea
 
