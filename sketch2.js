@@ -9,17 +9,20 @@ const initialConfig = {
   layers: [
     {
       name:'Lines',
-      strokeColor: 'hsla(130, 0%, 50%, 1)',//OK
-      fillColor: null,//OK
+      strokeWidth: 1,
+      strokeColor: 'hsla(130, 0%, 50%, 1)',
+      fillColor: null,
       figureName: 'line',
       total: 4,
       radius: 180,
       distance: 0,
       visibility: 1,
-      strokeWidth: 1
+      strokeWidth: 1,
+      angle: 0
     },
     {
       name:'Circle 1',
+      strokeWidth: 0,
       strokeColor: null,
       fillColor: 'hsla(239, 100%, 65%, 0.5)',
       figureName: 'circle',
@@ -27,10 +30,12 @@ const initialConfig = {
       radius: 50,
       distance: 165,
       visibility: 1,
-      strokeWidth: 1
+      strokeWidth: 1,
+      angle: 0
     },
     {
       name:'Circle 2',
+      strokeWidth: 0,
       strokeColor: null,
       fillColor: 'hsla(240, 94%, 72%, 0.5)',
       figureName: 'circle',
@@ -38,10 +43,12 @@ const initialConfig = {
       radius: 35,
       distance: 135,
       visibility: 1,
-      strokeWidth: 1
+      strokeWidth: 1,
+      angle: 0
     },
     {
       name:'Circle 3',
+      strokeWidth: 0,
       strokeColor: null,
       fillColor: 'hsla(240, 94%, 81%, 0.5)',
       figureName: 'circle',
@@ -49,10 +56,12 @@ const initialConfig = {
       total: 10,
       distance: 80,
       visibility: 1,
-      strokeWidth: 1
+      strokeWidth: 1,
+      angle: 0
     },
     {
       name:'Circle 4',
+      strokeWidth: 0,
       strokeColor: null,
       fillColor: 'hsla(54, 86%, 83%, 0.5)',
       figureName: 'circle',
@@ -60,10 +69,12 @@ const initialConfig = {
       total: 10,
       distance: 80,
       visibility: 1,
-      strokeWidth: 1
+      strokeWidth: 1,
+      angle: 0
     },
     {
       name:'Circle 5',
+      strokeWidth: 0,
       strokeColor: null,
       fillColor: 'hsla(300, 100%, 90%, 0.5)',
       figureName: 'circle',
@@ -71,10 +82,12 @@ const initialConfig = {
       radius: 40,
       distance: 35,
       visibility: 1,
-      strokeWidth: 1
+      strokeWidth: 1,
+      angle: 0
     },
     {
       name:'Details 1',
+      strokeWidth: 0,
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
       figureName: 'circle',
@@ -82,10 +95,12 @@ const initialConfig = {
       radius: 8,
       distance: 40,
       visibility: 1,
-      strokeWidth: 1
+      strokeWidth: 1,
+      angle: 0
     },
     {
       name:'Circle 6',
+      strokeWidth: 0,
       strokeColor: null,
       fillColor: 'hsla(269, 72%, 86%, 0.4)',
       figureName: 'circle',
@@ -93,10 +108,12 @@ const initialConfig = {
       radius: 20,
       distance: 35,
       visibility: 1,
-      strokeWidth: 1
+      strokeWidth: 1,
+      angle: 0
     },
     {
       name:'Details 2',
+      strokeWidth: 0,
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
       figureName: 'triangle',
@@ -104,10 +121,12 @@ const initialConfig = {
       radius: 6,
       distance: 60,
       visibility: 1,
-      strokeWidth: 1
+      strokeWidth: 1,
+      angle: 0
     },
     {
       name:'Details 3',
+      strokeWidth: 0,
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
       figureName: 'triangle',
@@ -115,10 +134,12 @@ const initialConfig = {
       radius: 10,
       distance: 175,
       visibility: 1,
-      strokeWidth: 1
+      strokeWidth: 1,
+      angle: 0
     },
     {
       name:'Details 4',
+      strokeWidth: 0,
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
       figureName: 'square',
@@ -126,10 +147,12 @@ const initialConfig = {
       radius: 2,
       distance: 80,
       visibility: 1,
-      strokeWidth: 1
+      strokeWidth: 1,
+      angle: 0
     },
     {
       name:'Details 5',
+      strokeWidth: 0,
       strokeColor: null,
       fillColor: 'hsla(319, 99%, 69%, 0.55)',
       figureName: 'square',
@@ -137,7 +160,8 @@ const initialConfig = {
       radius: 5,
       distance: 150,
       visibility: 1,
-      strokeWidth: 1
+      strokeWidth: 1,
+      angle: 0
     },
   ]
 }
@@ -253,21 +277,27 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
       <input data-i18n="fillTitle" type="text" data-coloris id="fillColor-${layerId}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}" title="${languages[preferredLanguage].fillTitle}">
   </div>
   <div class="layer-row">
-    <label data-i18n="borderLabel" for="strokeColor-${layerId}"> ${languages[preferredLanguage].borderLabel} </label>
+    <label data-i18n="strokeLabel" for="strokeWidth-${layerId}"> ${languages[preferredLanguage].strokeLabel} </label>
       <input type="number" min="0" max="4" id="strokeWidth-${layerId}" name="strokeWidth" value=${layerConfig.strokeWidth}
-      data-i18n="strokeWidth" title="${languages[preferredLanguage].strokeWidth}"></input>
+      data-i18n="strokeWidth" onchange="onChangeDefault(${layerId}, 'strokeWidth', value)" title="${languages[preferredLanguage].strokeWidthTitle}"></input>
       <p></p>
-      <input data-i18n="borderTitle" type="text" data-coloris id="strokeColor-${layerId}" name="strokeColor" class="color-picker" value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}" title="${languages[preferredLanguage].borderTitle}">
+      <input data-i18n="strokeTitle" type="text" data-coloris id="strokeColor-${layerId}" name="strokeColor" class="color-picker" value="${layerConfig.strokeColor}" style="background-color: ${layerConfig.strokeColor}" title="${languages[preferredLanguage].strokeColorTitle}">
   </div>
   <div class="layer-row">
     <label data-i18n="radiusLabel" for="figureRadius${layerId}"> ${languages[preferredLanguage].radiusLabel} </label>
-    <input data-i18n="radiusTitle" type="number" id="figureRadius${layerId}" name="figureRadius" value="${layerConfig.radius}" oninput="onChangeDefault(${layerId}, 'radius', value)" title="${languages[preferredLanguage].radiusTitle}"></input>
-    <input class="input-slider" type="range" min="0" max="250" id="figureRadius${layerId}" name="figureRadius" value="${layerConfig.radius}" onchange="onChangeDefault(${layerId}, 'radius', value)" data-i18n="radiusTitle" title="${languages[preferredLanguage].radiusTitle}"></input>
+    <input data-i18n="radiusTitle" type="number" id="figureRadius-${layerId}" name="figureRadius" value="${layerConfig.radius}" oninput="onChangeDefault(${layerId}, 'radius', value)" title="${languages[preferredLanguage].radiusTitle}"></input>
+    <input class="input-slider" type="range" min="0" max="250" id="figureRadius-${layerId}" name="figureRadius" value="${layerConfig.radius}" onchange="onChangeDefault(${layerId}, 'radius', value)" data-i18n="radiusTitle" title="${languages[preferredLanguage].radiusTitle}"></input>
   </div>
   <div class="layer-row">
     <label data-i18n="distanceLabel" for="figureDistance${layerId}"> ${languages[preferredLanguage].distanceLabel}</label>
-    <input data-i18n="distanceTitle" type="number" id="figureDistance${layerId}" name="figureDistance" value="${layerConfig.distance}" oninput="onChangeDefault(${layerId}, 'distance', value)" title="${languages[preferredLanguage].distanceTitle}"></input>
-    <input class="input-slider" type="range" min="0" max="400" id="figureDistance${layerId}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerId}, 'distance', value)" data-i18n="distanceTitle" title="${languages[preferredLanguage].distanceTitle}"></input>
+    <input data-i18n="distanceTitle" type="number" id="figureDistance-${layerId}" name="figureDistance" value="${layerConfig.distance}" oninput="onChangeDefault(${layerId}, 'distance', value)" title="${languages[preferredLanguage].distanceTitle}"></input>
+    <input class="input-slider" type="range" min="0" max="400" id="figureDistance-${layerId}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerId}, 'distance', value)" data-i18n="distanceTitle" title="${languages[preferredLanguage].distanceTitle}"></input>
+  </div>
+    <div class="layer-row">
+    <label data-i18n="angleLabel" for="figureAngle${layerId}"> ${languages[preferredLanguage].angleLabel}</label>
+    <input data-i18n="distanceTitle" type="number" min=0 max=180 id="figureDistance${layerId}" name="figureDistance" value="${layerConfig.angle}" oninput="onChangeDefault(${layerId}, 'angle', value)" title="${languages[preferredLanguage].angleTitle}"></input>
+    <input class="input-slider" type="range" min=0 max=180 list="markers" id="figureAngle${layerId}" name="figureAngle" value=${layerConfig.angle} onchange="onChangeDefault(${layerId}, 'angle', value)" data-i18n="angleTitle" title="${languages[preferredLanguage].angleTitle}"></input>
+
   </div>
 </div>`
 
@@ -327,6 +357,7 @@ const figures = {
   }
 }
 
+
 // Update the history when the color of an input changes
 function onChangeColor(color, input){
   // BUG: it is triggered too much times
@@ -346,7 +377,6 @@ function onChangeColor(color, input){
 
 // Update the history when the ammount of figures of a layers changes
 function onChangeQuantity(figureId, value){
-  console
   let newConfig = structuredClone(history[currentIndex])
   newConfig.layers[figureId].total = value
   saveOnHistory(newConfig)

@@ -123,15 +123,10 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - OK add a layer duplicates behavior of previous one
 
 - No mostrar fill si la figura es una linea
-- Mover los botones de borrar-layer y el ojito debajo de mover layer
-
 - right now it only allows to undo one time
 - remove next indexes when save changes after an undo
-
 - a pair number of lines is drawn as half of them, but darker 4,6,8
-
 - review documentation
-
 - too much trigger of save history when pick colors
 
 ## User testing proposals
@@ -142,13 +137,18 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - OK por defecto las nuevas capas no son visibles hasta que se le da click al ojo
 - OK cambiar en el dark mode el fondo del selector de la figura a negro
 - OK permitir (tambien) escribir los numeros radius y distance
-
+- OK Nuevo layout para incluir funciones sugeridas en el user testing
+      > OK Diseño
+- OK permitir modificar el angulo de cada layer
+      > OK funcion
+      > OK incluir angulo en layout
 - OK permitir modificar grosor del borde
       > OK incluirlo en la estructura que se crea en cada layer
       > OK crear atributo en default mandala
-      > reajustar layout
-
-- permitir modificar el angulo de cada layer
+      > OK funcion
+' Aplicar cambios del nuevo alyout en el mandala dibujado
+      > grosor del borde
+      > angulo de la layer
 
 - pestañas en local storage para guardar nuevos mandalas
 - allow other polygons
