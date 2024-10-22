@@ -115,20 +115,6 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - OK hacer que se muestre backgroundColor que viene de la config en el colorpicker
 - OK bug change squares for polygons en la config de polar
 
-- activar y desactivar visibilidad
-      > formato condicional de ojito
-
-## Testing issues
-
-- OK add a layer duplicates behavior of previous one
-
-- No mostrar fill si la figura es una linea
-- right now it only allows to undo one time
-- remove next indexes when save changes after an undo
-- a pair number of lines is drawn as half of them, but darker 4,6,8
-- review documentation
-- too much trigger of save history when pick colors
-
 ## User testing proposals
 
 - OK reset debe eliminar todas las capas
@@ -146,12 +132,25 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
       > OK incluirlo en la estructura que se crea en cada layer
       > OK crear atributo en default mandala
       > OK funcion
-' Aplicar cambios del nuevo alyout en el mandala dibujado
+- Aplicar cambios del nuevo alyout en el mandala dibujado
       > grosor del borde
       > angulo de la layer
 
-- pestañas en local storage para guardar nuevos mandalas
-- allow other polygons
+
+## Testing issues
+
+- OK add a layer duplicates behavior of previous one
+
+- activar y desactivar visibilidad
+      > formato condicional de ojito
+
+- No mostrar fill si la figura es una linea
+
+- right now it only allows to undo one time
+- remove next indexes when save changes after an undo
+- a pair number of lines is drawn as half of them, but darker 4,6,8
+- review documentation
+- too much trigger of save history when pick colors
 
 ## Extras
 
@@ -173,9 +172,10 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - Visibility button functionality
       > tooltip
 
+- pestañas en local storage para guardar nuevos mandalas
+- allow other polygons
 
-
-### Testing
+### Automatic Testing
 
 - unittests
       > first test file and framework with mocha
