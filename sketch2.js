@@ -230,8 +230,6 @@ function setupHtmlLayers() {
   let layersConfig = history[currentIndex].layers
   let totalLayers = layersConfig.length
 
-  console.log(layersConfig)
-
   for (let index = 0; index < totalLayers; index++) {
     layersHtml.appendChild(
       drawHtmlLayer(layersConfig[index], index, totalLayers))
@@ -407,6 +405,11 @@ function redo() {
 
 // Save a new configuration in the history and update manndala and html
 function saveOnHistory(newConfig) {
+  if (history.length - currentIndex > 1){  // after an undo
+    let newHistory = history.slice(0, currentIndex)
+    history = newHistory
+    currentIndex = newHistory.length - 1
+  }
   history[currentIndex + 1] = newConfig
   currentIndex += 1
   draw()

@@ -149,6 +149,11 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
       > OK grosor del borde
       > OK angulo de la layer (cancelado por ahora xq es mas complejo de lo esperado, tocaria dibujar c/figura una x una)
       > OK remover la posibilidad de cambiar el angulo en el html
+- OK Download icons
+- OK Credits to icons8 for free icons
+- conditional format undo and redo buttons
+      > OK get icons
+      > functions
 
 ## Testing issues
 
@@ -160,9 +165,9 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - OK No mostrar fill si la figura es una linea
 - OK only allows to undo one time
 - OK page style when no layers
+- OK remove next indexes when save changes after an undo
 
-- conditional format undo and redo
-- remove next indexes when save changes after an undo
+
 - a pair number of lines is drawn as half of them, but darker 4,6,8
 - review documentation
 - too much trigger of save history when pick colors

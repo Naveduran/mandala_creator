@@ -147,8 +147,9 @@ button:hover {
 .line-footer {
   display: flex;
   flex-direction: column;
-  font-size: inherit;
-  line-height: inherit;
+  font-size: 0.8em;
+  line-height: 0em;
+  gap: 0.8em;
   margin: 0.5em 0;
   text-align: center;
   cursor: context-menu;
@@ -158,16 +159,17 @@ button:hover {
   display: flex;
   flex-direction: row;
   gap: 0.5em;
-  font-size: 0.5em;
+  font-size: 0.8em;
   align-self: self-end;
   margin-right: 0.5em;
   color: var(--lm-unaccent-color);
   width: 100%;
   justify-content: flex-end;
+  align-items: baseline;
 }
 .config label {
-  font-size: inherit;
-  line-height: inherit;
+  font-size: 1em;
+  line-height: 2em;
   width: fit-content;
 }
 .config select {
@@ -303,7 +305,7 @@ option {
   }
   .line-footer{
     align-self: center;
-    width: auto;
+    width: 100%;
   }
   .line-saving {
     padding-top: 0;
