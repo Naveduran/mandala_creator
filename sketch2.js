@@ -259,7 +259,7 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
     <img class="clickable-button" src="https://img.icons8.com/?size=100&id=34271&format=png&color=000000" data-i18n="visibilityTitle" alt=${languages[preferredLanguage].visibilityTitle}/>
   </button>`
 
-  let fillColorInput = `          <input data-i18n="fillTitle" type="text" data-coloris id="fillColor-${layerId}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}" title="${languages[preferredLanguage].fillTitle}">`
+  let fillColorInput = `<input data-i18n="fillTitle" type="text" data-coloris id="fillColor-${layerId}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}" title="${languages[preferredLanguage].fillTitle}">`
 
   let layerStructure = `
     <div class="layer-column-a">
