@@ -114,6 +114,19 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 - OK guardar el background del mandala en la config
 - OK hacer que se muestre backgroundColor que viene de la config en el colorpicker
 - OK bug change squares for polygons en la config de polar
+- OK permitir espanol, ingles y chino
+      > OK check https://medium.com/@nohanabil/building-a-multilingual-static-website-a-step-by-step-guide-7af238cc8505
+      > OK remover opciones de otros idiomas
+      > OK json para ingles, español y chino
+      > OK separar los textos de otros tags manteniendo el estilo
+      > OK data-i18n para todas las etiquetas de texto (no id xq se repiten)
+      > OK funcion que se active al seleccionar len guaje 
+      > OK cambiar el contenido de cada id
+      > OK condicional dependiendo del elemento a modificar
+      > OK guardar el lenguage seleccionado en el local storage
+      > OK traduccion de tooltips
+- OK Visibility button functionality
+      > OK tooltip
 
 ## User testing proposals
 
@@ -146,7 +159,9 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
       > OK aplicar cambios en mandala dibujado
 - OK No mostrar fill si la figura es una linea
 - OK only allows to undo one time
+- OK page style when no layers
 
+- conditional format undo and redo
 - remove next indexes when save changes after an undo
 - a pair number of lines is drawn as half of them, but darker 4,6,8
 - review documentation
@@ -154,25 +169,13 @@ Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) for
 
 ## Extras
 
-- OK permitir espanol, ingles y chino
-      > OK check https://medium.com/@nohanabil/building-a-multilingual-static-website-a-step-by-step-guide-7af238cc8505
-      > OK remover opciones de otros idiomas
-      > OK json para ingles, español y chino
-      > OK separar los textos de otros tags manteniendo el estilo
-      > OK data-i18n para todas las etiquetas de texto (no id xq se repiten)
-      > OK funcion que se active al seleccionar len guaje 
-      > OK cambiar el contenido de cada id
-      > OK condicional dependiendo del elemento a modificar
-      > OK guardar el lenguage seleccionado en el local storage
-      > OK traduccion de tooltips
+- Pre-charge the mandala drawing 
 
 - M Find buggs with screen reader and accesibility tools
       >https://wave.webaim.org/
 
-- Visibility button functionality
-      > tooltip
-
 - allow other polygons
+
 - pestañas en local storage para guardar nuevos mandalas
 - posibilidad de cambiar el angulo de cada layer
 
