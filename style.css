@@ -60,17 +60,9 @@ h1 {
   font-size: 2.5em;
   text-wrap: nowrap;
   align-self: center;
-  margin: 1em 0 0.8em 0;
+  margin: 1.2em 0 1em 0;
   box-sizing: border-box;
   cursor: context-menu;
-}
-h1 .accent-1 {
-  color: var(--lm-accent-color-1);
-  display: inline;
-}
-h1 .accent-2 {
-  color: var(--lm-accent-color-2);
-  display: inline;
 }
 .line-saving {
   display: flex;
@@ -79,11 +71,18 @@ h1 .accent-2 {
   gap: 1em;
   justify-content: center;
   padding-top: 1em;
+  align-self: center;
 }
 .mandala {
   display: flex;
   flex-direction: column;
   min-width: 40%;
+}
+.mandala-2 {
+  display: flex;
+  flex-direction: column;
+  min-width: 40%;
+  align-self: flex-start;
 }
 .layers {
   display: flex;
@@ -262,7 +261,7 @@ option {
     flex-wrap: wrap;
     max-width: 98vw;
   }
-  header, main {
+  header {
     font-size: 1.3vw;
     line-height: 1.8vw;
     flex-grow: 2;
@@ -272,9 +271,12 @@ option {
   }
   header {
     align-self: center;
-    padding: 4vh 0;
   }
   main {
+    flex-grow: 2;
+    flex-shrink: 2;
+    max-width: 96vw;
+    min-width: -webkit-fill-available;
     font-size: 1.8vw;
     line-height: 2vw;
     order: 2;
@@ -282,10 +284,9 @@ option {
     gap: 1em;
     flex-direction: row;
     justify-content: center;
-    min-width: -webkit-fill-available;
   }
-  main .mandala {
-    max-height: 75vh;
+  .mandala {
+    max-height: calc(100vh - 5.5em);
     max-width: calc(85vw / 2);
     overflow-y: scroll;
     overflow-x: hidden;
@@ -294,9 +295,9 @@ option {
   canvas {
     order: 3;
     align-self: center;
-    height: calc(75vw / 2) !important;
-    min-width: calc(75vw / 2) !important;
-    max-width: calc(75vw / 2);
+    height: calc(100vw / 2) !important;
+    min-width: calc(100vw / 2) !important;
+    max-width: calc(100vw / 2);
     align-self: flex-start;
   }
   .layers {
@@ -309,7 +310,7 @@ option {
   }
   .line-saving {
     padding-top: 0;
-    align-self: flex-start;
+    align-self: center;
   }
 }
 
@@ -327,14 +328,6 @@ option {
   }
   .config {
     color: var(--dm-unaccent-color);
-  }
-  h1 .accent-1 {
-    color: var(--dm-accent-color-1);
-    display: inline;
-  }
-  h1 .accent-2 {
-    color: var(--dm-accent-color-2);
-    display: inline;
   }
   select, input {
     background-color: black;
