@@ -295,9 +295,9 @@ option {
   canvas {
     order: 3;
     align-self: center;
-    height: calc(100vw / 2) !important;
-    min-width: calc(100vw / 2) !important;
-    max-width: calc(100vw / 2);
+    height: min(80vw / 2, 80vh) !important;
+    min-width: min(80vw / 2, 80vh) !important;
+    max-width: min(80vw / 2, 80vh);
     align-self: flex-start;
   }
   .layers {
