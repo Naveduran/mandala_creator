@@ -29,7 +29,6 @@ let languages = {
     radiusTitle: "Figure size",
     distanceTitle:"Distance from mandala's center to figures's center",
     addLayerTitle:"Add a new layer",
-    //
     backgroundTitle: "Mandala background color",
     undoTitle: "Undo change",
     redoTitle: "Redo change",
@@ -66,7 +65,6 @@ let languages = {
     radiusTitle: "Tamaño de las figuras de esta capa",
     distanceTitle:"Distancia desde el centro del mandala hasta las figuras",
     addLayerTitle:"Añadir una nueva capa",
-    //
     backgroundTitle: "Color de fondo del mandala",
     undoTitle: "Deshacer cambio",
     redoTitle: "Rehacer cambio",
@@ -90,8 +88,8 @@ let languages = {
     upTitle:"向上移动",
     downTitle: "向下移动",
     fillTitle: "图形内的颜色",
-    strokeColorTitle: "Color of the stroke",
-    strokeWidthTitle: "Width of the stroke",
+    strokeColorTitle: "笔触颜色",
+    strokeWidthTitle: "笔触宽度",
     quantityTitle: "图形数量",
     figureTitle: "图形",
     triangleTitle: "三角形",
@@ -103,7 +101,6 @@ let languages = {
     radiusTitle: "图形大小",
     distanceTitle:"从曼陀罗中心到图形中心的距离",
     addLayerTitle:"添加新图层",
-    //    
     backgroundTitle: "曼陀罗背景颜色",
     undoTitle: "撤消更改",
     redoTitle: "重做更改",
