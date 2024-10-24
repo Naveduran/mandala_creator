@@ -4,7 +4,7 @@ Mandala creator allows creating symetric images based on geometric patterns with
 
 Just click or slide to select forms, colors and sizes of each layer of figures to create your own mandalas.
 
-Click here to make your own [Mandala](https://naveduran.github.io/mandala_creator/)
+Click here to make your own [Mandala](https://naveduran.github.io/mandala_creator/). Have fun!
 
 ## Functionalities
 
@@ -15,7 +15,7 @@ Click here to make your own [Mandala](https://naveduran.github.io/mandala_creato
 - Available in English, Spanish and Chinese
 - Mandalas can be downloaded as jpg images
 - A history of changes allows to undo and redo multiple times
-- Transparent colors are admitted in the mandala figures thanks to [Coloris color picker](https://github.com/mdbassit/Coloris)
+- Transparent colors are admitted in the mandala figures
 - Buttons, selectors and sliders have tooltips to improve usability
 - One or all layers can be removed and new layers added
 - A layer can be sent forwards or backwards
@@ -42,8 +42,11 @@ Click here to make your own [Mandala](https://naveduran.github.io/mandala_creato
 
 ## Credits
 
-Thanks to [p5](https://p5js.org/) to inspire artists to create their own tools top make art, and make it easier and accesible for them.
-
 Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) and [Nicolas](https://www.linkedin.com/in/nicolasopf/) for playing and testing this app when it was yet an idea. 
 
+Thanks to [p5](https://p5js.org/) to inspire artists to create their own tools top make art, and make it easier and accesible for them.
+
+Thanks to [polar](https://github.com/liz-peng/p5.Polar) for abstracting the math to create geometric patterns.
+Thanks to [Coloris](https://github.com/mdbassit/Coloris) for the color picker with alpha channel.
 Thanks to [icons8](https://icons8.com/) for free icons.
+
