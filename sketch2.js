@@ -50,7 +50,6 @@ function setup() {
 // Iterates trough configuration to draw each layer of the mandala
 function draw() {
   background(history[currentIndex].background);
-  setCenter(width/2, height/2);
   history[currentIndex].layers.forEach((layerConfig) => {
     if (layerConfig.visibility) {
       drawMandalaLayer(layerConfig);
@@ -135,13 +134,11 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
         <input data-i18n="distanceTitle" type="number" id="figureDistance-${layerId}" name="figureDistance" value="${layerConfig.distance}" oninput="onChangeDefault(${layerId}, 'distance', value)" title="${languages[preferredLanguage].distanceTitle}"></input>
         <input class="input-slider" type="range" min="0" max="400" id="figureDistance-${layerId}" name="figureDistance" value=${layerConfig.distance} onchange="onChangeDefault(${layerId}, 'distance', value)" data-i18n="distanceTitle" title="${languages[preferredLanguage].distanceTitle}"></input>
       </div>
-      <!---
       <div class="layer-row">
         <label data-i18n="angleLabel" for="figureAngle${layerId}"> ${languages[preferredLanguage].angleLabel}</label>
         <input data-i18n="distanceTitle" type="number" min=0 max=180 id="figureDistance${layerId}" name="figureDistance" value="${layerConfig.angle}" oninput="onChangeDefault(${layerId}, 'angle', value)" title="${languages[preferredLanguage].angleTitle}"></input>
         <input class="input-slider" type="range" min=0 max=180 list="markers" id="figureAngle${layerId}" name="figureAngle" value=${layerConfig.angle} onchange="onChangeDefault(${layerId}, 'angle', value)" data-i18n="angleTitle" title="${languages[preferredLanguage].angleTitle}"></input>
       </div>
-      --->
     </div>`
 
   let newLayer = document.createElement('div');
@@ -153,25 +150,23 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
 
 // Use the received layer configuration to draw the described figures with its respective border and fill color
 function drawMandalaLayer(layer){
-  strokeWeight(layer.strokeWidth * 2)
-  if (layer.strokeColor){
-    stroke(layer.strokeColor);
-  } else {
-    noStroke();
-  }
+  // Clean previous transformations in coordinate system
+	resetMatrix();
+  setCenter(width/2, height/2);
 
-  if (layer.fillColor){
-    fill(layer.fillColor);
-  } else {
-    noFill();
-  }
+  // Define border weight and color
+  strokeWeight(layer.strokeWidth * 2)
+  if (layer.strokeColor){ stroke(layer.strokeColor); } else { noStroke(); }
+
+  // Define fill color
+  if (layer.fillColor){ fill(layer.fillColor); } else { noFill(); }
 
   drawFigures(layer.figureName, layer);
 }
 
 // Run the function that creates each figure
-function drawFigures(figureName, layer) {
-  figures[figureName](layer);
+function drawFigures(figureName, layerConfig) {
+  figures[figureName](layerConfig);
 }
 
 // Update the history when the color of an input changes

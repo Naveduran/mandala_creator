@@ -23,6 +23,7 @@ Click here to make your own [Mandala](https://naveduran.github.io/mandala_creato
 - A layer can be shown or hidden 
 - By default a new layer is hidden until user show it
 - Configuration can be written in numbers to allow accuracy on sizes and distances
+- Each layer can be set in a different angle
 
 ## Future possible functionalities
 
@@ -42,11 +43,10 @@ Click here to make your own [Mandala](https://naveduran.github.io/mandala_creato
 
 ## Credits
 
-Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) and [Nicolas](https://www.linkedin.com/in/nicolasopf/) for playing and testing this app when it was yet an idea. 
-
 Thanks to [p5](https://p5js.org/) to inspire artists to create their own tools top make art, and make it easier and accesible for them.
-
 Thanks to [polar](https://github.com/liz-peng/p5.Polar) for abstracting the math to create geometric patterns.
 Thanks to [Coloris](https://github.com/mdbassit/Coloris) for the color picker with alpha channel.
 Thanks to [icons8](https://icons8.com/) for free icons.
 
+Thanks to [Monica](https://www.linkedin.com/in/monica-vera-duran-91b46b278/) and [Nicolas](https://www.linkedin.com/in/nicolasopf/) for playing and testing this app when it was yet an idea. 
+Thanks to president of Colombia [Petro](https://x.com/petrogustavo) for believing in my country, in the human future, in nature mother, and making social justice.
