@@ -36,6 +36,7 @@ const initialConfig = {
       strokeWidth: 1,
       angle: 0
     },
+    
     {
       name:'Circle 1',
       strokeWidth: 0,
@@ -182,11 +183,24 @@ const initialConfig = {
   ]
 }
 
+// The default layer when a new layer adding is required
+const oneLayer = {
+  name:'Three gray circles',
+  strokeColor: null,
+  fillColor: 'hsla(0, 6%, 48%, 0.48)',
+  figureName: 'circle',
+  total: 3,
+  radius: 30,
+  distance: 90,
+  visibility: 0,
+  angle: 0
+}
+
 // Contains the figures name with its correspondent function
 const figures = {
-  'line': function lines(layer){
+  'line': function liness(layer){
     for (line=0; line < layer.total; line++){
-      let angle = (360 /layer.total)*line;
+      let angle = (360 /layer.total) * line + layer.angle;
       try {
         polarLine(angle, layer.radius, layer.distance);
       } catch (error) {
@@ -194,36 +208,36 @@ const figures = {
       }
     }
   },
-  'circle': function circles(layer){
-    try {
-      polarEllipses(layer.total, layer.radius, layer.radius, layer.distance);
-    } catch (error) {
-      console.error(error);
+  'circle': function circless(layer){
+    for (circle=0; circle < layer.total; circle++){
+      let angle = (360 /layer.total) * circle + layer.angle;
+      try {
+        polarEllipse(angle, layer.radius, layer.radius, layer.distance)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+  },
+  'triangle': function triangless(layer){
+    for (circle=0; circle < layer.total; circle++){
+      let angle = (360 /layer.total) * circle + layer.angle;
+      try {
+        polarTriangle(angle, layer.radius, layer.distance)
+      } catch (error) {
+        console.error(error);
+      }
     }
   },
-  'triangle': function triangle(layer){
-    try {
-      polarTriangles(layer.total, layer.radius, layer.distance);
-    } catch (error) {
-      console.error(error);
-    }
-  },
-  'square':  function square(layer){
-    try {
-      polarPolygons(layer.total, 4, layer.radius, layer.distance)
-    } catch (error) {
-      console.error(error);
+  'square':  function squaress(layer){
+    for (circle=0; circle < layer.total; circle++){
+      let angle = (360 /layer.total) * circle + layer.angle;
+      try {
+        polarPolygon(4, angle, layer.radius, layer.distance)
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 }
 
-const oneLayer = {
-  name:'Lines',
-  strokeColor: null,
-  fillColor: 'hsla(0, 6%, 48%, 0.48)',
-  figureName: 'circle',
-  total: 3,
-  radius: 30,
-  distance: 90,
-  visibility: 0
-}
