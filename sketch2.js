@@ -137,7 +137,7 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
       </div>
       <div class="layer-row">
         <label data-i18n="angleLabel" for="figureAngle${layerId}"> ${languages[preferredLanguage].angleLabel}</label>
-        <input data-i18n="distanceTitle" type="number" min=0 max=180 id="figureDistance${layerId}" name="figureDistance" value="${layerConfig.angle}" oninput="onChangeDefault(${layerId}, 'angle', value)" title="${languages[preferredLanguage].angleTitle}"></input>
+        <input data-i18n="angleTitle" type="number" min=0 max=180 id="figureAngle${layerId}" name="figureAngle" value="${layerConfig.angle}" oninput="onChangeDefault(${layerId}, 'angle', value)" title="${languages[preferredLanguage].angleTitle}"></input>
         <input class="input-slider" type="range" min=0 max=180 list="markers" id="figureAngle${layerId}" name="figureAngle" value=${layerConfig.angle} onchange="onChangeDefault(${layerId}, 'angle', value)" data-i18n="angleTitle" title="${languages[preferredLanguage].angleTitle}"></input>
       </div>
     </div>`

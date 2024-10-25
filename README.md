@@ -20,23 +20,24 @@ Click here to make your own [Mandala](https://naveduran.github.io/mandala_creato
 - One or all layers can be removed and new layers added
 - A layer can be sent forwards or backwards
 - A layer can be made of triangles, circles, squares, or lines
-- A layer can be shown or hidden 
+- A layer can be shown or hidden
 - By default a new layer is hidden until user show it
 - Configuration can be written in numbers to allow accuracy on sizes and distances
+- Each layer can have a different angle
 
 ## Future possible functionalities
 
 - Allow other polygons
 - Save and load mandala configuration in a file
 - Work on multiple mandalas using tabs and local storage instead of memory
-- Conditional format undo and redo buttons
-- Pre-charge the mandala drawing 
-- Improving [accesibility](https://wave.webaim.org/), and check screen reader functionalities
-- Allow changing the angle of each layer (requires to draw each figure instead of using polar)
+- Pre-charge the mandala drawing
+- Check screen reader functionalities and [accesibility](https://wave.webaim.org/)
 - Automatic testing with [mocha](https://mochajs.org/)
+- Allow borders to have multiple colors
 
 ## Reported bugs
 
+- Undo and redo buttons should have conditional format
 - A pair number of lines is drawn as half of them, but darker 4,6,8
 - Picking a color can trigger multiple changes in history
 
