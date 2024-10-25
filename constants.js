@@ -36,7 +36,6 @@ const initialConfig = {
       strokeWidth: 1,
       angle: 0
     },
-    
     {
       name:'Circle 1',
       strokeWidth: 0,
@@ -200,7 +199,7 @@ const oneLayer = {
 const figures = {
   'line': function liness(layer){
     for (line=0; line < layer.total; line++){
-      let angle = (360 /layer.total) * line + layer.angle;
+      let angle = ((360 /layer.total) * line) + layer.angle;
       try {
         polarLine(angle, layer.radius, layer.distance);
       } catch (error) {
@@ -210,7 +209,7 @@ const figures = {
   },
   'circle': function circless(layer){
     for (circle=0; circle < layer.total; circle++){
-      let angle = (360 /layer.total) * circle + layer.angle;
+      let angle = ((360 / layer.total) * circle) + Number(layer.angle);
       try {
         polarEllipse(angle, layer.radius, layer.radius, layer.distance)
       } catch (error) {
@@ -221,7 +220,7 @@ const figures = {
   },
   'triangle': function triangless(layer){
     for (circle=0; circle < layer.total; circle++){
-      let angle = (360 /layer.total) * circle + layer.angle;
+      let angle = (360 /layer.total) * circle + Number(layer.angle);
       try {
         polarTriangle(angle, layer.radius, layer.distance)
       } catch (error) {
@@ -231,7 +230,7 @@ const figures = {
   },
   'square':  function squaress(layer){
     for (circle=0; circle < layer.total; circle++){
-      let angle = (360 /layer.total) * circle + layer.angle;
+      let angle = (360 /layer.total) * circle + Number(layer.angle);
       try {
         polarPolygon(4, angle, layer.radius, layer.distance)
       } catch (error) {
@@ -240,4 +239,3 @@ const figures = {
     }
   }
 }
-
