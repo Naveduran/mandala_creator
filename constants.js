@@ -24,7 +24,7 @@ const initialConfig = {
   background: '#ffffff',
   layers: [
     {
-      name:'Lines',
+      name:'Lines original',
       strokeWidth: 1,
       strokeColor: 'hsla(130, 0%, 50%, 1)',
       fillColor: null,
@@ -36,9 +36,23 @@ const initialConfig = {
       strokeWidth: 1,
       angle: 0
     },
+
+    {
+      name:'Lines',
+      strokeWidth: 1,
+      strokeColor: 'hsla(130, 0%, 50%, 1)',
+      fillColor: null,
+      figureName: 'line',
+      total: 4,
+      radius: 180,
+      distance: 0,
+      visibility: 1,
+      strokeWidth: 1,
+      angle: 10
+    },
     
     {
-      name:'Circle 1',
+      name:'Circle 1 original',
       strokeWidth: 0,
       strokeColor: null,
       fillColor: 'hsla(239, 100%, 65%, 0.5)',
@@ -50,6 +64,20 @@ const initialConfig = {
       strokeWidth: 1,
       angle: 0
     },
+    {
+      name:'Circle 1',
+      strokeWidth: 0,
+      strokeColor: null,
+      fillColor: 'hsla(360, 83%, 43%, 0.5)',
+      figureName: 'circle',
+      total: 14,
+      radius: 50,
+      distance: 165,
+      visibility: 1,
+      strokeWidth: 1,
+      angle: 10
+    },
+    /*
     {
       name:'Circle 2',
       strokeWidth: 0,
@@ -63,6 +91,7 @@ const initialConfig = {
       strokeWidth: 1,
       angle: 0
     },
+
     {
       name:'Circle 3',
       strokeWidth: 0,
@@ -179,7 +208,7 @@ const initialConfig = {
       visibility: 1,
       strokeWidth: 1,
       angle: 0
-    },
+    },*/
   ]
 }
 
@@ -200,9 +229,10 @@ const oneLayer = {
 const figures = {
   'line': function liness(layer){
     for (line=0; line < layer.total; line++){
-      let angle = (360 /layer.total) * line + layer.angle;
+      let angle = ((360 /layer.total) * line) + layer.angle;
       try {
         polarLine(angle, layer.radius, layer.distance);
+        console.log("line", angle)
       } catch (error) {
         console.error(error);
       }
@@ -210,8 +240,9 @@ const figures = {
   },
   'circle': function circless(layer){
     for (circle=0; circle < layer.total; circle++){
-      let angle = (360 /layer.total) * circle + layer.angle;
+      let angle = ((360 /layer.total) * circle) + layer.angle;
       try {
+        console.log("circle", angle)
         polarEllipse(angle, layer.radius, layer.radius, layer.distance)
       } catch (error) {
         console.error(error);
@@ -221,8 +252,9 @@ const figures = {
   },
   'triangle': function triangless(layer){
     for (circle=0; circle < layer.total; circle++){
-      let angle = (360 /layer.total) * circle + layer.angle;
+      let angle = ((360 /layer.total) * circle) + layer.angle;
       try {
+        console.log("triangle", angle)
         polarTriangle(angle, layer.radius, layer.distance)
       } catch (error) {
         console.error(error);
@@ -231,8 +263,9 @@ const figures = {
   },
   'square':  function squaress(layer){
     for (circle=0; circle < layer.total; circle++){
-      let angle = (360 /layer.total) * circle + layer.angle;
+      let angle = ((360 /layer.total) * circle) + layer.angle;
       try {
+        console.log("square", angle)
         polarPolygon(4, angle, layer.radius, layer.distance)
       } catch (error) {
         console.error(error);
