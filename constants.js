@@ -34,7 +34,6 @@ const initialConfig = {
       distance: 0,
       visibility: 1,
       strokeWidth: 1,
-      angle: 0
     },
     {
       name:'Circle 1',
@@ -47,7 +46,6 @@ const initialConfig = {
       distance: 165,
       visibility: 1,
       strokeWidth: 1,
-      angle: 0
     },
     {
       name:'Circle 2',
@@ -60,7 +58,6 @@ const initialConfig = {
       distance: 135,
       visibility: 1,
       strokeWidth: 1,
-      angle: 0
     },
     {
       name:'Circle 3',
@@ -73,7 +70,6 @@ const initialConfig = {
       distance: 80,
       visibility: 1,
       strokeWidth: 1,
-      angle: 0
     },
     {
       name:'Circle 4',
@@ -86,7 +82,6 @@ const initialConfig = {
       distance: 80,
       visibility: 1,
       strokeWidth: 1,
-      angle: 0
     },
     {
       name:'Circle 5',
@@ -99,7 +94,6 @@ const initialConfig = {
       distance: 35,
       visibility: 1,
       strokeWidth: 1,
-      angle: 0
     },
     {
       name:'Details 1',
@@ -112,7 +106,6 @@ const initialConfig = {
       distance: 40,
       visibility: 1,
       strokeWidth: 1,
-      angle: 0
     },
     {
       name:'Circle 6',
@@ -125,7 +118,6 @@ const initialConfig = {
       distance: 35,
       visibility: 1,
       strokeWidth: 1,
-      angle: 0
     },
     {
       name:'Details 2',
@@ -138,7 +130,6 @@ const initialConfig = {
       distance: 60,
       visibility: 1,
       strokeWidth: 1,
-      angle: 0
     },
     {
       name:'Details 3',
@@ -151,7 +142,6 @@ const initialConfig = {
       distance: 175,
       visibility: 1,
       strokeWidth: 1,
-      angle: 0
     },
     {
       name:'Details 4',
@@ -164,7 +154,6 @@ const initialConfig = {
       distance: 80,
       visibility: 1,
       strokeWidth: 1,
-      angle: 0
     },
     {
       name:'Details 5',
@@ -177,7 +166,6 @@ const initialConfig = {
       distance: 150,
       visibility: 1,
       strokeWidth: 1,
-      angle: 0
     },
   ]
 }
@@ -192,7 +180,6 @@ const oneLayer = {
   radius: 30,
   distance: 90,
   visibility: 0,
-  angle: 0
 }
 
 // Contains the figures name with its correspondent function
@@ -229,4 +216,3 @@ const figures = {
     }
   }
 }
-
