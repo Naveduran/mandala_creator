@@ -228,11 +228,21 @@ const figures = {
       }
     }
   },
-  'square':  function squaress(layer){
+  'square': function squaress(layer){
     for (circle=0; circle < layer.total; circle++){
       let angle = (360 /layer.total) * circle + Number(layer.angle);
       try {
         polarPolygon(4, angle, layer.radius, layer.distance)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  },
+  'polygon': function poligons(layer){
+    for (polygon=0; polygon < layer.total; polygon++){
+      let angle = (360 /layer.total) * polygon + Number(layer.angle);
+      try {
+        polarPolygon(layer.sides, angle, layer.radius, layer.distance)
       } catch (error) {
         console.error(error);
       }
