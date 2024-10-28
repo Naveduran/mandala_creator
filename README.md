@@ -19,7 +19,7 @@ Click here to make your own [Mandala](https://naveduran.github.io/mandala_creato
 - Buttons, selectors and sliders have tooltips to improve usability
 - One or all layers can be removed and new layers added
 - A layer can be sent forwards or backwards
-- A layer can be made of triangles, circles, squares, or lines
+- A layer can be made of lines, triangles, circles, squares, and polygons until 10 sides
 - A layer can be shown or hidden
 - By default a new layer is hidden until user show it
 - Configuration can be written in numbers to allow accuracy on sizes and distances
