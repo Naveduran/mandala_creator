@@ -93,6 +93,8 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
 
   let fillColorInput = `<input data-i18n="fillTitle" type="text" data-coloris id="fillColor-${layerId}" name="fillColor" class="color-picker" value="${layerConfig.fillColor}" style="background-color: ${layerConfig.fillColor}" title="${languages[preferredLanguage].fillTitle}">`
 
+  let sidesInput = `<input class="sides-input" data-i18n="sidesTitle" type="number" min="4" max="10" id="sidesNumber-${layerId}" name="sidesNumber" value="${layerConfig.sides || 0}" onchange="onChangeDefault(${layerId}, 'sides', value)" title="${languages[preferredLanguage].sidesTitle}"></input>`
+
   let layerStructure = `
     <div class="layer-column-a">
       ${layerId > 0 ? upButtonHtml : ''}
@@ -109,14 +111,18 @@ function drawHtmlLayer(layerConfig, layerId, totalLayers){
           <select name="figureName" id="figureName-${layerId}" class="clickable-button" value="${layerConfig.figureName}" data-i18n="figureTitle" onchange="onChangeDefault(${layerId}, 'figureName', value)" title="${languages[preferredLanguage].figureTitle}">
             <option value="triangle" ${layerConfig.figureName ==='triangle' ? "selected": ""} data-i18n="triangleTitle" 
             title=${languages[preferredLanguage].triangleTitle}>&nbsp;&#9651;</option>
-            <option value="circle" ${layerConfig.figureName ==='circle' ? "selected": ""} data-i18n="triangleTitle" 
-            title="${languages[preferredLanguage].triangleTitle}">&#9711;</option>
+            <option value="circle" ${layerConfig.figureName ==='circle' ? "selected": ""} data-i18n="circleTitle" 
+            title="${languages[preferredLanguage].circleTitle}">&#9711;</option>
             <option value="line" ${layerConfig.figureName ==='line' ? "selected": ""} data-i18n="lineTitle" 
             title="${languages[preferredLanguage].lineTitle}">&nbsp;&nbsp;/</option>
             <option value="square" ${layerConfig.figureName ==='square' ? "selected": ""} data-i18n="squareTitle" 
             title="${languages[preferredLanguage].squareTitle}">&nbsp;&#9634;</option>
+            <option value="polygon" ${layerConfig.figureName ==='polygon' ? "selected": ""} data-i18n="polygonTitle" 
+            title="${languages[preferredLanguage].polygonTitle}">&nbsp;?</option>
           </select>
-          ${layerConfig.figureName !== 'line' ? fillColorInput : ''}
+
+      ${layerConfig.figureName ==='polygon' ? sidesInput : ''}
+      ${layerConfig.figureName !== 'line' ? fillColorInput : ''}
       </div>
       <div class="layer-row">
         <label data-i18n="strokeLabel" for="strokeWidth-${layerId}"> ${languages[preferredLanguage].strokeLabel} </label>
@@ -184,9 +190,9 @@ function onChangeColor(color, input) {
 }
 
 // Update the history when an attribute of a layer changes
-function onChangeDefault(figureId, attribute, value) {
+function onChangeDefault(layerId, attribute, value) {
   let newConfig = structuredClone(history[currentIndex]);
-  newConfig.layers[figureId][attribute] = value;
+  newConfig.layers[layerId][attribute] = value;
   saveOnHistory(newConfig);
 }
 
