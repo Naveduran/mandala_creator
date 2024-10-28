@@ -56,7 +56,7 @@ canvas {
   align-self: center;
 }
 h1 {
-  font-family: "Sacramento", cursive;
+  font-family: "Sacramento", "Georgia", "Comic Sans MS", cursive;
   font-size: 2.5em;
   text-wrap: nowrap;
   align-self: center;
