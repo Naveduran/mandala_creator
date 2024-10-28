@@ -34,6 +34,7 @@ let languages = {
     redoTitle: "Redo change",
     downloadTitle: "Download as image",
     resetTitle: "Remove all layers",
+    sidesTitle: "Select the number of sides of your polygon"
   },
   es: {
     // Html text
@@ -70,6 +71,7 @@ let languages = {
     redoTitle: "Rehacer cambio",
     downloadTitle: "Descargar como imagen",
     resetTitle: "Eliminar todas las capas",
+    sidesTitle: "Selecciona el numero de lados de tu polígono"
   },
   zh: {
     // Html text
@@ -106,5 +108,6 @@ let languages = {
     redoTitle: "重做更改",
     downloadTitle: "下载为图像",
     resetTitle: "删除所有图层",
+    sidesTitle: "Select the number of sides of your polygon"
   }
 }
