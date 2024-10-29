@@ -29,7 +29,7 @@ body {
   flex-direction: column;
   flex-wrap: nowrap;
   font-size: 4vw;
-  line-height: 4vw;
+  line-height: 6vw;
   font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
   width: 100vw;
@@ -116,6 +116,7 @@ button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  line-height: 1em;
 }
 button:before {
   background-color: initial;
@@ -190,13 +191,13 @@ input, select, option {
   font-size: inherit;
   line-height: inherit;
   max-width: 4em;
-  padding: 0;
+  border: none;
 }
 option {
   text-align: center;
 }
 .input-slider {
-  min-width: 9em;
+  min-width: 8em;
 }
 .plus-button {
   align-self: center;
@@ -227,33 +228,32 @@ option {
   display: flex;
   flex-direction: column;
   width: -webkit-fill-available;
-  gap: 0.5em;
+  gap: 0.1em;
   padding: 0.5em 0 0.5em 0;
 }
 .layer-row {
   display: flex;
   flex-direction: row;
-  line-height: inherit;
+  line-height: 2em;
   align-items: center;
   justify-content: start;
-  gap: 0.3em;
 }
 .layer-row label {
   display: inline-flex;
-  width: 4.5em;
+  width: 5em;
 }
 .layer-row input {
-  width: 3em;
+  width: 4em;
   text-align: center;
 }
 .layer-row select {
-  font-size: inherit;
+  font-size: 1.6em;
 }
 
 @media only screen and (min-width: 724px) and (max-width: 1024px){
   main {
     font-size: 2.5vw;
-    line-height: 2.5vw;
+    line-height: 2.8vw;
   }
 }
 @media only screen and (min-width: 1081px) {
@@ -263,7 +263,7 @@ option {
   }
   header {
     font-size: 1.3vw;
-    line-height: 1.3vw;
+    line-height: 1.8vw;
     flex-grow: 2;
     flex-shrink: 2;
     min-width: fit-content;
@@ -278,7 +278,7 @@ option {
     max-width: 96vw;
     min-width: -webkit-fill-available;
     font-size: 1.8vw;
-    line-height: 1.8vw;
+    line-height: 2vw;
     order: 2;
     align-self: center;
     gap: 1em;
